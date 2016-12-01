@@ -1,8 +1,12 @@
 ﻿
+using System;
+
 namespace vegetable.core.Entities
 {
     public class Holder
     {
+        public Guid Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
