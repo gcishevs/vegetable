@@ -19,5 +19,7 @@ namespace vegetable.core.Entities
         public string Unit { get; set; }
 
         public string[] PhoneNumbers { get; set; }
+
+        public string Email { get; set; }
     }
 }
