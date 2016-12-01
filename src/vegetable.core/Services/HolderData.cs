@@ -26,7 +26,7 @@ namespace vegetable.core.Services
                 return new Holder
                 {
                     Title = "Mock Salon",
-                    Description = "We are super team. we mock any data...",
+                    Description = "We are super team. We mock any data...",
                     Moniker = "mock",
                     Tags = new string[] { "mock", "fake" },
                     Address = new Address
@@ -38,7 +38,8 @@ namespace vegetable.core.Services
                         PostalCode = "12345-123",
                         Street = "Mock way",
                         Unit = "55",
-                        PhoneNumbers = new string[] { "9876543210" }
+                        PhoneNumbers = new string[] { "9876543210" },
+                        Email = "mock@gmail.com"
                     },
                     SocialNetworks = new SocialNetwork[] {
 

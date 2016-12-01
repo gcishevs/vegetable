@@ -6,11 +6,31 @@
 
 @if (Model != null)
 {
-    <div class="container-fluid">
-        PWS...
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <h2>@Model.Title</h2>
+                <h5>@Model.Description</h5>
+
+                <address>
+                    <strong>@Model.Title</strong><br>
+                    @Model.Address.Street, @Model.Address.Unit<br>
+                    @Model.Address.City, @Model.Address.State @Model.Address.PostalCode<br>
+                    <abbr title="Phone">P:</abbr> @Model.Address.PhoneNumbers[0]
+                </address>
+
+                <address>
+                    <strong>Contact us:</strong><br>
+                    <a href="mailto:#">@Model.Address.Email</a>
+                </address>
+            </div>
+        </div>
+        <div class="col-md-6">
+            One of two columns
+        </div>
     </div>
 }
 else
 {
-    <div>Sorry, this site doesn't exist</div>
+    <div class="text-danger">Sorry, this site doesn't exist</div>
 }
