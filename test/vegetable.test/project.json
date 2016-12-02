@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "testRunner": "xunit",
 
@@ -12,7 +12,7 @@
     "vegetable.core": {
       "target": "project"
     }
-  },
+   },
 
   "frameworks": {
     "netcoreapp1.0": {

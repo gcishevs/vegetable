@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using vegetable.core.Data;
 using vegetable.core.Services;
 
 namespace vegetable.web
@@ -33,7 +34,8 @@ namespace vegetable.web
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // IoC
-            services.AddSingleton<IHolderData, MockHolderData>();
+            services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(Configuration["Database:Connection"]));
+            services.AddSingleton<IHolderData, HolderData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

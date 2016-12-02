@@ -1,11 +1,12 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace vegetable.core.Entities
 {
     public class Holder
     {
-        public Guid Id { get; set; }
+        public Guid HolderId { get; set; }
 
         public string Title { get; set; }
 
@@ -13,11 +14,11 @@ namespace vegetable.core.Entities
 
         public string Moniker { get; set; }
 
-        public string[] Tags { get; set; }
+        public IEnumerable<Tag> Tags { get; set; }
 
         public Address Address { get; set; }
 
-        public SocialNetwork[] SocialNetworks { get; set; }
+        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }
               
     }
 }

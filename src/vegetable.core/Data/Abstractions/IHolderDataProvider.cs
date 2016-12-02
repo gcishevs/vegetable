@@ -10,10 +10,12 @@ namespace vegetable.core.Data
     {
         Holder GetHolder(string moniker);
 
-        void AddHolder(Holder holder);
-
-        void UpdateHolder(Guid holderId, Holder holderData);
+        void AddHolder(Holder holder);        
 
         void DeleteHolder(Guid holderId);
+
+        void DeleteHolder(string moniker);
+
+        void UpdateHolder(Guid holderId, Holder holderData);
     }
 }

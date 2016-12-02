@@ -14,14 +14,14 @@
 
                 <address>
                     <strong>@Model.Title</strong><br>
-                    @Model.Address.Street, @Model.Address.Unit<br>
-                    @Model.Address.City, @Model.Address.State @Model.Address.PostalCode<br>
-                    <abbr title="Phone">P:</abbr> @Model.Address.PhoneNumbers[0]
+                    @Model.Address?.Street, @Model.Address?.Unit<br>
+                    @Model.Address?.City, @Model.Address?.State @Model.Address?.PostalCode<br>
+                    <abbr title="Phone">P:</abbr> @Model.Address?.PhoneNumbers?.FirstOrDefault().Number
                 </address>
 
                 <address>
                     <strong>Contact us:</strong><br>
-                    <a href="mailto:#">@Model.Address.Email</a>
+                    <a href="mailto:#">@Model.Address?.Email</a>
                 </address>
             </div>
         </div>

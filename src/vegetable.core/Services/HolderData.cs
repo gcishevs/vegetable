@@ -1,4 +1,5 @@
 ﻿using System;
+using vegetable.core.Data;
 using vegetable.core.Entities;
 
 namespace vegetable.core.Services
@@ -10,9 +11,16 @@ namespace vegetable.core.Services
 
     public class HolderData : IHolderData
     {
+        IHolderDataProvider _provider;
+
+        public HolderData(IHolderDataProvider provider)
+        {
+            _provider = provider;
+        }
+
         public Holder GetHolderData(string moniker)
         {
-            throw new NotImplementedException();
+            return _provider.GetHolder(moniker);
         }
     }
 
@@ -28,7 +36,12 @@ namespace vegetable.core.Services
                     Title = "Mock Salon",
                     Description = "We are super team. We mock any data...",
                     Moniker = "mock",
-                    Tags = new string[] { "mock", "fake" },
+                    Tags = new Tag[]
+                    {
+                        new Tag { Name = "mock"},
+                        new Tag { Name = "fake"}
+                    },
+
                     Address = new Address
                     {
                         AddressId = new Guid(),
@@ -38,7 +51,7 @@ namespace vegetable.core.Services
                         PostalCode = "12345-123",
                         Street = "Mock way",
                         Unit = "55",
-                        PhoneNumbers = new string[] { "9876543210" },
+                        PhoneNumbers = new PhoneNumber[] { new PhoneNumber { Number = "9876543210" } },
                         Email = "mock@gmail.com"
                     },
                     SocialNetworks = new SocialNetwork[] {

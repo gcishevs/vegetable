@@ -238,3 +238,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Migrations
+src/**/Migrations/

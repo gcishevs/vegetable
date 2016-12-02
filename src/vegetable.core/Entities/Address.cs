@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vegetable.core.Entities
 {
@@ -18,8 +20,13 @@ namespace vegetable.core.Entities
         
         public string Unit { get; set; }
 
-        public string[] PhoneNumbers { get; set; }
+        public IEnumerable<PhoneNumber> PhoneNumbers { get; set; }
 
         public string Email { get; set; }
+
+        public Guid HolderId { get; set; }
+
+        [ForeignKey("HolderId")]
+        public virtual Holder Holder { get; set; }
     }
 }
