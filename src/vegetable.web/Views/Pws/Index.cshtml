@@ -7,26 +7,44 @@
 @if (Model != null)
 {
     <div class="row">
-        <div class="col-md-6">
-            <div>
-                <h2>@Model.Title</h2>
-                <h5>@Model.Description</h5>
+        <div class="col-md-5 offset-md-1 pws-content">
+            <div class="pws-vertical-center">
+                <div>
+                    <div>
+                        <h2 class="display-2 pws-content-title">@Model.Title</h2>
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <span>#@tag.Name</span>
+                        }
+                    </div>
+                    <br>
+                    <br>
 
-                <address>
-                    <strong>@Model.Title</strong><br>
-                    @Model.Address?.Street, @Model.Address?.Unit<br>
-                    @Model.Address?.City, @Model.Address?.State @Model.Address?.PostalCode<br>
-                    <abbr title="Phone">P:</abbr> @Model.Address?.PhoneNumbers?.FirstOrDefault().Number
-                </address>
+                    <h5>@Model.Description</h5>
+                    <br>
 
-                <address>
-                    <strong>Contact us:</strong><br>
-                    <a href="mailto:#">@Model.Address?.Email</a>
-                </address>
+                    <address>
+                        <strong>@Model.Title</strong><br>
+                        @Model.Address?.Street, @Model.Address?.Unit<br>
+                        @Model.Address?.City, @Model.Address?.State @Model.Address?.PostalCode<br>
+                        <abbr title="Phone">P:</abbr> @Model.Address?.PhoneNumbers?.FirstOrDefault().Number
+                    </address>
+
+
+
+                    <div>
+                        <address>
+                            <strong>Contact us:</strong><br>
+                            <a href="mailto:#">@Model.Address?.Email</a>
+                        </address>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            One of two columns
+        <div class="col-md-6 pws-book">
+            <div class="pws-vertical-center">
+                <button type="button" class="btn btn-outline-danger">Book me</button>
+            </div>
         </div>
     </div>
 }
