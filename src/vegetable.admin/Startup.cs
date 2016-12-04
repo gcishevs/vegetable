@@ -28,6 +28,12 @@ namespace vegetable.admin
         {
             // Add framework services.
             services.AddMvc();
+
+            // Add caching
+            services.AddMemoryCache();
+
+            // IoC
+            services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(Configuration["Database:Connection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

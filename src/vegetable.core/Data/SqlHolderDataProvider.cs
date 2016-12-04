@@ -77,6 +77,16 @@ namespace vegetable.core.Data
             }
         }
 
-       
+        public Holder GetHolder(Guid id)
+        {
+            using (var context = new BaseInfoDbContext(_connectionString))
+            {
+                return context.Holders
+                    .Include(h => h.Address).ThenInclude(a => a.PhoneNumbers)
+                    .Include(h => h.SocialNetworks)
+                    .Include(h => h.Tags)
+                    .FirstOrDefault(h => h.HolderId == id);
+            }
+        }
     }
 }

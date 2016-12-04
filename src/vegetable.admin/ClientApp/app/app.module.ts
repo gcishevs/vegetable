@@ -6,6 +6,10 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { PersonalInfoComponent } from './components/personalinfo/personalinfo.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdTypeaheadBasic } from './components/typeahead/typeahead.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -14,15 +18,20 @@ import { CounterComponent } from './components/counter/counter.component';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        PersonalInfoComponent,
+        HomeComponent,
+        NgbdTypeaheadBasic  
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        NgbModule.forRoot(),
+        FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'personal-info', component: PersonalInfoComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

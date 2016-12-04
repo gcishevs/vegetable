@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractCSS = new ExtractTextPlugin('vendor.css');
 
+
 module.exports = {
     resolve: {
         extensions: [ '', '.js' ]
@@ -32,6 +33,8 @@ module.exports = {
             'es6-promise',
             'jquery',
             'zone.js',
+            '@ng-bootstrap/ng-bootstrap',
+            'rxjs'
         ]
     },
     output: {
