@@ -27,6 +27,7 @@ module.exports = {
             '@angular/platform-server',
             'angular2-universal',
             'angular2-universal-polyfills',
+             'tether',
             'bootstrap',
             'bootstrap/dist/css/bootstrap.css',
             'es6-shim',
@@ -35,6 +36,7 @@ module.exports = {
             'zone.js',
             '@ng-bootstrap/ng-bootstrap',
             'rxjs'
+           
         ]
     },
     output: {
@@ -49,7 +51,13 @@ module.exports = {
         new webpack.DllPlugin({
             path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
             name: '[name]_[hash]'
-        })
+        }),
+           new webpack.ProvidePlugin({
+               $: "jquery",
+               jQuery: "jquery",
+               "window.jQuery": "jquery",
+               "window.Tether": 'tether'
+           })
     ].concat(isDevBuild ? [] : [
         new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ])

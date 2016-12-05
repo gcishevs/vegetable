@@ -34,6 +34,7 @@ namespace vegetable.admin
 
             // IoC
             services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(Configuration["Database:Connection"]));
+            services.AddSingleton<IAddressDataProvider>(h => new SqlAddressDataProvider(Configuration["Database:Connection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

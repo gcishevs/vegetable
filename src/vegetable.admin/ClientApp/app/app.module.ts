@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UniversalModule } from 'angular2-universal';
 import { AppComponent } from './components/app/app.component'
@@ -9,7 +10,8 @@ import { CounterComponent } from './components/counter/counter.component';
 import { PersonalInfoComponent } from './components/personalinfo/personalinfo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdTypeaheadBasic } from './components/typeahead/typeahead.component';
-import { FormsModule } from '@angular/forms';
+import { RlTagInputModule } from 'angular2-tag-input';
+
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -20,12 +22,13 @@ import { FormsModule } from '@angular/forms';
         FetchDataComponent,
         PersonalInfoComponent,
         HomeComponent,
-        NgbdTypeaheadBasic  
+        NgbdTypeaheadBasic
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         NgbModule.forRoot(),
         FormsModule,
+        RlTagInputModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },

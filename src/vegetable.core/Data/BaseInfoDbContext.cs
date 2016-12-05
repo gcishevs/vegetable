@@ -24,8 +24,22 @@ namespace vegetable.core.Data
 
         public DbSet<Holder> Holders { get; set; }
 
+        public DbSet<Country> Countries { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
             => optionsBuilder.UseSqlServer(_connectionString);
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Country>().Property(p => p.CountryCode).HasColumnType("varchar(3)");
+            modelBuilder.Entity<Country>(b =>
+            {
+                b.HasKey(e => e.CountryId);
+                b.Property(e => e.CountryId).ValueGeneratedOnAdd();
+            });
+        }
+
+
     }
 
    
