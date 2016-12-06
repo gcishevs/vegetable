@@ -23,7 +23,8 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "vegetable.core": {
       "target": "project"
-    }
+    },
+    "Microsoft.Extensions.Caching.Memory": "1.1.0"
   },
 
   "tools": {

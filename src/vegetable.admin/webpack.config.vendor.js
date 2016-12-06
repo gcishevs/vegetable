@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractCSS = new ExtractTextPlugin('vendor.css');
 
+
 module.exports = {
     resolve: {
         extensions: [ '', '.js' ]
@@ -26,12 +27,16 @@ module.exports = {
             '@angular/platform-server',
             'angular2-universal',
             'angular2-universal-polyfills',
+             'tether',
             'bootstrap',
             'bootstrap/dist/css/bootstrap.css',
             'es6-shim',
             'es6-promise',
             'jquery',
             'zone.js',
+            '@ng-bootstrap/ng-bootstrap',
+            'rxjs'
+           
         ]
     },
     output: {
@@ -46,7 +51,13 @@ module.exports = {
         new webpack.DllPlugin({
             path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
             name: '[name]_[hash]'
-        })
+        }),
+           new webpack.ProvidePlugin({
+               $: "jquery",
+               jQuery: "jquery",
+               "window.jQuery": "jquery",
+               "window.Tether": 'tether'
+           })
     ].concat(isDevBuild ? [] : [
         new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
     ])
