@@ -10,8 +10,9 @@
         <div class="col-md-5 offset-md-1 pws-content">
             <div class="pws-vertical-center">
                 <div>
+                    <img src="~/images/bread.jpg" alt="..." class="rounded-circle pws-head-img">
                     <div>
-                        <h2 class="display-2 pws-content-title">@Model.Title</h2>
+                        <h1 class="display-2 thead-inverse pws-content-title">@Model.Title</h1>
                         @foreach (var tag in Model.Tags)
                         {
                             <span>#@tag.Name</span>
@@ -20,24 +21,48 @@
                     <br>
                     <br>
 
-                    <h5>@Model.Description</h5>
+                    <h6>@Model.Description</h6>
                     <br>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">E-MAIL</th>
+                                <td>@Model.Address.Email</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">PHONE</th>
+                                <td>@Model.Address.PhoneNumbers.FirstOrDefault().Number</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">WORKING HOURS</th>
+                                <td>10.00-18.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ADDRESS</th>
+                                <td>@Model.Address.PostalCode, @Model.Address.Country, @Model.Address.State, @Model.Address.City, @Model.Address.Street @Model.Address.Unit</td>
+                            </tr>
 
-                    <address>
-                        <strong>@Model.Title</strong><br>
-                        @Model.Address?.Street, @Model.Address?.Unit<br>
-                        @Model.Address?.City, @Model.Address?.State @Model.Address?.PostalCode<br>
-                        <abbr title="Phone">P:</abbr> @Model.Address?.PhoneNumbers?.FirstOrDefault().Number
-                    </address>
-
-
-
-                    <div>
-                        <address>
-                            <strong>Contact us:</strong><br>
-                            <a href="mailto:#">@Model.Address?.Email</a>
-                        </address>
-                    </div>
+                        </tbody>
+                    </table>
+                    <table class="table table-inverse pws-table-danger">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </td>
+                                <td>
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </td>
+                                <td>
+                                    <i class="fa fa-vk" aria-hidden="true"></i>
+                                </td>
+                                <td>
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @*<div id="map" style="height: 400px"></div>*@
                 </div>
             </div>
         </div>
@@ -52,3 +77,24 @@ else
 {
     <div class="text-danger">Sorry, this site doesn't exist</div>
 }
+
+
+@*<script type="text/javascript">
+    ymaps.ready(init);
+    var myMap,
+        myPlacemark;
+
+    function init() {
+        myMap = new ymaps.Map("map", {
+            center: [55.76, 37.64],
+            zoom: 7
+        });
+
+        myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+            hintContent: 'Москва!',
+            balloonContent: 'Столица России'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>*@
