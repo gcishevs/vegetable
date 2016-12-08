@@ -3,6 +3,25 @@
     width: 300px;   
 }
 
+.pws-date{
+    background-color: #d9534f;
+    width: 53%;
+}
+
+.pws-day{
+    font-size: 74px;
+}
+
+.pws-month {
+    font-size: 33px;
+    letter-spacing: 0.2em;
+}
+
+.pws-week{
+    font-size: 36px;
+    letter-spacing: 0.08em;
+}
+
 .pws-table-danger{
         color: #d9534f;
     }

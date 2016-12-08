@@ -68,7 +68,39 @@
         </div>
         <div class="col-md-6 pws-book">
             <div class="pws-vertical-center">
-                <button type="button" class="btn btn-outline-danger">Book me</button>
+                @*<button type="button" class="btn btn-outline-danger">Book me</button>*@
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <table class="table table-inverse">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td class="pws-day">7</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="pws-month">Dec</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="pws-week">Wednesday</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -80,21 +112,21 @@ else
 
 
 @*<script type="text/javascript">
-    ymaps.ready(init);
-    var myMap,
-        myPlacemark;
+        ymaps.ready(init);
+        var myMap,
+            myPlacemark;
 
-    function init() {
-        myMap = new ymaps.Map("map", {
-            center: [55.76, 37.64],
-            zoom: 7
-        });
+        function init() {
+            myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 7
+            });
 
-        myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-            hintContent: 'Москва!',
-            balloonContent: 'Столица России'
-        });
+            myPlacemark = new ymaps.Placemark([55.76, 37.64], {
+                hintContent: 'Москва!',
+                balloonContent: 'Столица России'
+            });
 
-        myMap.geoObjects.add(myPlacemark);
-    }
-</script>*@
+            myMap.geoObjects.add(myPlacemark);
+        }
+    </script>*@
