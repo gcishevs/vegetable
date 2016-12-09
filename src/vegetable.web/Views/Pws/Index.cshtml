@@ -7,8 +7,8 @@
 @if (Model != null)
 {
     <div class="row">
-        <div class="col-md-5 offset-md-1 pws-content">
-            <div class="pws-vertical-center">
+        <div class="col-md-6 pws-content pws-vertical-center-container">
+            <div class="pws-vertical-center-items">
                 <div>
                     <img src="~/images/bread.jpg" alt="..." class="rounded-circle pws-head-img">
                     <div>
@@ -66,40 +66,46 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 pws-book">
-            <div class="pws-vertical-center">
-                @*<button type="button" class="btn btn-outline-danger">Book me</button>*@
+        <div class="col-md-6 pws-book pws-vertical-center-container">
+            <div class="pws-vertical-center-items">
+              
+                @******************** CALENDAR START **********************@
 
+                <div class="section-box">
+                    <div class="calendar-busy">
+                        <div class="calendar-today">
+                            <div class="valign-outer">
+                                <div class="valign-middle">
+                                    <div class="valign-inner">
+                                        <div class="date">
+                                            <span class="day">9</span>
+                                            <span class="month">Dec</span>
+                                        </div>
+                                        <div class="week-day">Friday</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <table class="table table-inverse">
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td class="pws-day">7</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="pws-month">Dec</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td class="pws-week">Wednesday</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="calendar-cont">
+                            <div class="calendar-header">
+                                <div class="calendar-nav">
+                                    <span class="active-date"><span class="active-month">February</span><span class="active-year">2017</span></span>
+                                    <a class="calendar-prev ripple-centered" title="Prev"><i class="rsicon rsicon-chevron_left"></i></a>
+                                    <a class="calendar-next ripple-centered" title="Next"><i class="rsicon rsicon-chevron_right"></i></a>
+                                </div>
+                            </div>
+                            <input type="hidden" value="2016, 01, 21&amp;2016, 01, 22&amp;2016, 02, 05&amp;2016, 03, 01&amp;2016, 04, 13&amp;2016, 04, 19&amp;2016, 05, 02&amp;2016, 05, 18" class="busy_days_to_js">
+                            <table class="calendar-body">
+                                <thead class="calendar-thead"><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead>
+                                <tbody class="calendar-tbody"><tr><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-current-month"><span class="">1</span></td><td class="calendar-current-month"><span class="">2</span></td><td class="calendar-current-month"><span class="">3</span></td><td class="calendar-current-month"><span class="">4</span></td></tr><tr><td class="calendar-current-month"><span class="">5</span></td><td class="calendar-current-month"><span class="">6</span></td><td class="calendar-current-month"><span class="">7</span></td><td class="calendar-current-month"><span class="">8</span></td><td class="calendar-current-month"><span class="">9</span></td><td class="calendar-current-month"><span class="">10</span></td><td class="calendar-current-month"><span class="">11</span></td></tr><tr><td class="calendar-current-month"><span class="">12</span></td><td class="calendar-current-month"><span class="">13</span></td><td class="calendar-current-month"><span class="">14</span></td><td class="calendar-current-month"><span class="">15</span></td><td class="calendar-current-month"><span class="">16</span></td><td class="calendar-current-month"><span class="">17</span></td><td class="calendar-current-month"><span class="">18</span></td></tr><tr><td class="calendar-current-month"><span class="">19</span></td><td class="calendar-current-month"><span class="">20</span></td><td class="calendar-current-month"><span class="">21</span></td><td class="calendar-current-month"><span class="">22</span></td><td class="calendar-current-month"><span class="">23</span></td><td class="calendar-current-month"><span class="">24</span></td><td class="calendar-current-month"><span class="">25</span></td></tr><tr><td class="calendar-current-month"><span class="">26</span></td><td class="calendar-current-month"><span class="">27</span></td><td class="calendar-current-month"><span class="">28</span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td></tr><tr><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td></tr></tbody>
+                            </table>
+                            <div class="calendar-busy-note">Sorry. I'm not available on those days</div>
+                        </div>
                     </div>
-                    <div class="col-md-8"></div>
                 </div>
+
+                @******************** CALENDAR END **********************@
 
             </div>
         </div>
