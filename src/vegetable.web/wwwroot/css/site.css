@@ -3,10 +3,6 @@
     width: 300px;
 }
 
-.pws-table-danger {
-    color: #d9534f;
-}
-
 @media (min-width: 767px) {
 
     .pws-vertical-center-container {
@@ -27,9 +23,9 @@
 }
 
 @media (min-width: 992px) {
-    .pws-vertical-center-items {
+    /*.pws-vertical-center-items {
         flex-grow: 0.8;
-    }
+    }*/
 }
 
 
@@ -195,42 +191,46 @@
         text-align: center;
     }
 
-    .calendar-busy .calendar-nav .active-month {
-        margin-right: 7px;
-    }
+.calendar-body {
+    width: 100%;
+}
 
-    .calendar-busy .calendar-nav .active-month, .calendar-busy .calendar-nav .active-year {
-        opacity: 1;
-        display: inline-block;
-        -webkit-transform: translate3d(0px, 0px, 0px);
-        -moz-transform: translate3d(0px, 0px, 0px);
-        transform: translate3d(0px, 0px, 0px);
-        -webkit-transition: -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        -moz-transition: -moz-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    }
+.calendar-busy .calendar-nav .active-month {
+    margin-right: 7px;
+}
 
-    .calendar-busy .calendar-nav .active-month, .calendar-busy .calendar-nav .active-year {
-        opacity: 1;
-        display: inline-block;
-        -webkit-transform: translate3d(0px, 0px, 0px);
-        -moz-transform: translate3d(0px, 0px, 0px);
-        transform: translate3d(0px, 0px, 0px);
-        -webkit-transition: -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        -moz-transition: -moz-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    }
+.calendar-busy .calendar-nav .active-month, .calendar-busy .calendar-nav .active-year {
+    opacity: 1;
+    display: inline-block;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -moz-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    -webkit-transition: -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    -moz-transition: -moz-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
 
-    .calendar-busy .calendar-nav .calendar-prev {
-        left: -3px;
-    }
+.calendar-busy .calendar-nav .active-month, .calendar-busy .calendar-nav .active-year {
+    opacity: 1;
+    display: inline-block;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -moz-transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+    -webkit-transition: -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    -moz-transition: -moz-transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
 
-    .calendar-busy .calendar-nav .calendar-next, .calendar-busy .calendar-nav .calendar-prev {
-        top: -5px;
-        position: absolute;
-        display: block;
-        cursor: pointer;
-    }
+.calendar-busy .calendar-nav .calendar-prev {
+    left: -3px;
+}
+
+.calendar-busy .calendar-nav .calendar-next, .calendar-busy .calendar-nav .calendar-prev {
+    top: -5px;
+    position: absolute;
+    display: block;
+    cursor: pointer;
+}
 
 .rsicon, blockquote:before, .ref-box .person-speech:before, .widget_search .search-form:before, .widget_product_search .woocommerce-product-search:before {
     display: inline-block;
@@ -407,13 +407,6 @@
             margin: 0 5px;
         }
 
-        .calendar-busy .calendar-today .day, .calendar-busy .calendar-today .month {
-            display: inline-block;
-            font-size: 45px;
-            letter-spacing: 0;
-            margin: 0 5px;
-        }
-
         .calendar-busy .calendar-today .week-day {
             font-size: 25px;
         }
@@ -425,6 +418,11 @@
     .calendar-busy .calendar-nav {
         float: none;
         text-align: center;
+    }
+
+
+    .calendar-busy .calendar-today .date:before, .calendar-busy .calendar-today .date:after {
+        display: none;
     }
 }
 
