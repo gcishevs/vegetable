@@ -1,1 +1,5 @@
-﻿// Write your Javascript code.
+﻿$(function () {
+
+   // $('.carousel').carousel('pause')
+})
+

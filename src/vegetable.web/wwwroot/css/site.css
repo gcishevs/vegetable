@@ -1,6 +1,21 @@
-﻿.pws-head-img {
+﻿/*body{
+    font-family: 'Times New Roman', serif;
+}*/
+
+/*.pws-title{
+    font-family: 'Times New Roman', serif;
+}*/
+
+.pws-head-img {
     opacity: 0.8;
     width: 300px;
+}
+
+.pws-tick {
+    background-color: #d73444;
+    height: 2px;
+    width: 10px;
+    position: absolute;
 }
 
 @media (min-width: 767px) {
@@ -10,6 +25,7 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
+        padding-left: 90px;
     }
 
     .pws-vertical-center-items {
@@ -19,15 +35,60 @@
     .pws-content {
         border-right-style: solid;
         border-right-width: thin;
+        
+    }
+
+    .pws-wizard-navigation{
+        position: absolute;
+        bottom: 0;
     }
 }
 
-@media (min-width: 992px) {
-    /*.pws-vertical-center-items {
-        flex-grow: 0.8;
-    }*/
+@media (min-width: 1024px) {
+    .pws-tick {
+        /*height: 2px;*/
+        height: 0.25rem;
+    }
 }
 
+/* hover link */
+a, a:visited, a:hover, a:active {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    transition: 0.5s color ease;
+    text-decoration: none !important;
+    color: black;
+}
+
+    /*a:hover {
+        color: #d73444;
+    }*/
+
+    a.after:after {
+        content: "";
+        transition: 0.5s all ease;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        position: absolute;
+    }
+
+    a.after:after {
+        height: 1px;
+        height: 0.25rem;
+        width: 0;
+        background: #d73444;
+    }
+
+    a.first:after {
+        left: 0;
+    }
+
+    a.after:hover:after {
+        width: 100%;
+    }
+
+/* hover link */
 
 /*  Calendar Start  */
 .section-calendar .section-box {
@@ -426,5 +487,5 @@
     }
 }
 
-
 /*  Calendar End  */
+
