@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html ng-app="adminApp">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -15,8 +15,17 @@
     <script src="~/app/bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="~/app/bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="~/app/bower_components/angular-material/angular-material.min.js"></script>
-    <div>
-        @RenderBody()
+    <script src="~/app/dist/controllers/mainController.js"></script>
+    <script src="~/app/dist/controllers/dashboardController.js"></script>
+    <script src="~/app/dist/boot.js"></script>
+    <div layout="row" ng-controller="mainController as vm">
+        <div ng-include="'app/pages/sidenav.html'" layout="vertical"></div>
+        <div layout="column" flex>
+            <div ng-include="'app/pages/contentheader.html'"></div>
+            <md-content flex>
+                @RenderBody()
+            </md-content>
+        </div>
     </div>
 </body>
 </html>
