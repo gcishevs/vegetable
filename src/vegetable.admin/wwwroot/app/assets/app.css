@@ -92,7 +92,7 @@ margin-left: 16px;
     border-bottom-color: rgb(101, 46, 115);
 }
 
-.active {
+.docs-menu li.active {
   border-bottom-color: white;
 }
 

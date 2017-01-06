@@ -3,13 +3,15 @@ module AdminApp {
     export class MainController {
         static $inject = ['$mdSidenav'];
 
-        menuItems: string[] = [];
-        selectedMenuItem: string = null;
-
+        menuItems: MenuItem[] = [];
+        selectedMenuItem: MenuItem = null;
 
         constructor(
             private $mdSidenav: ng.material.MDSidenavService) {
-            this.menuItems = ['Home', 'Personal Info'];
+            this.menuItems = [
+                { name: 'name', displayName: 'Home', url: '#!' },
+                { name: 'personalInfo', displayName: 'Personal Info', url: '#!personalInfo' }
+            ];
             this.selectedMenuItem = this.menuItems[0];
         }
 
@@ -17,7 +19,7 @@ module AdminApp {
             this.$mdSidenav('left').toggle();
         }
 
-        selectMenuItem(item: string): void {
+        selectMenuItem(item: MenuItem): void {
             this.selectedMenuItem = item; 
             var sidenav = this.$mdSidenav('left');
             if (sidenav.isOpen()) {

@@ -6,7 +6,10 @@ var AdminApp;
             this.$mdSidenav = $mdSidenav;
             this.menuItems = [];
             this.selectedMenuItem = null;
-            this.menuItems = ['Home', 'Personal Info'];
+            this.menuItems = [
+                { name: 'name', displayName: 'Home', url: '#!' },
+                { name: 'personalInfo', displayName: 'Personal Info', url: '#!personalInfo' }
+            ];
             this.selectedMenuItem = this.menuItems[0];
         }
         MainController.prototype.toggleSideNav = function () {
