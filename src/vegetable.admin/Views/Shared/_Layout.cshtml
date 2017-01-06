@@ -8,24 +8,25 @@
 
     <link href="~/app/bower_components/angular-material/angular-material.min.css" rel="stylesheet" />
     <link href="~/app/assets/app.css" rel="stylesheet" />
-
+    <link href="~/app/bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" />
 </head>
-<body>
+<body layout="row" ng-controller="mainController as vm">
     <script src="~/app/bower_components/angular/angular.min.js"></script>
     <script src="~/app/bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="~/app/bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="~/app/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="~/app/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+
     <script src="~/app/dist/controllers/mainController.js"></script>
     <script src="~/app/dist/controllers/dashboardController.js"></script>
     <script src="~/app/dist/boot.js"></script>
-    <div layout="row" ng-controller="mainController as vm">
-        <div ng-include="'app/pages/sidenav.html'" layout="vertical"></div>
-        <div layout="column" flex>
-            <div ng-include="'app/pages/contentheader.html'"></div>
-            <md-content flex>
-                @RenderBody()
-            </md-content>
-        </div>
+
+    <div ng-include="'app/pages/sidenav.html'" layout="vertical"></div>
+    <div layout="column" flex>
+        <div ng-include="'app/pages/contentheader.html'"></div>
+        <md-content flex id="content">
+            @RenderBody()
+        </md-content>
     </div>
 </body>
 </html>

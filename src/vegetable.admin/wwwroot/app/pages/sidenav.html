@@ -1,8 +1,15 @@
-﻿<md-sidenav class="md-sidenav-left" 
-            md-component-id="left" 
-            md-is-locked-open="$mdMedia('gt-sm')" 
-            md-whiteframe="4">
-    <md-toolbar>
-        <h1 class="md-toolbar-tools">Admin</h1>
-    </md-toolbar>
+﻿<md-sidenav class="md-sidenav-left site-sidenav"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-sm')"
+            md-whiteframe-z2>
+    <header class="nav-header">
+        <a>
+            <h1 class="docs-logotype md-heading">Admin</h1>
+        </a>
+    </header>
+    <md-content flex role="navigation">
+        <ul class="docs-menu" ng-repeat="item in vm.menuItems">
+            <li><md-button href="#" ng-click="vm.selectMenuItem(item)" ng-class="{'active': item === vm.selectedMenuItem}"><span>{{item}}</span></md-button></li>
+        </ul>
+    </md-content>
 </md-sidenav>
