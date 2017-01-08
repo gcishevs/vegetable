@@ -1,0 +1,67 @@
+﻿<md-content class="md-padding">
+    <div layout="column" layout-gt-xs="row">
+        <md-card flex flex-gt-xs="50">
+            <md-card-content>
+                <form name="userForm">
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>Title</label>
+                        <input md-maxlength="30" required name="name" ng-model="holder.title">
+
+                        <div class="hint">Enter the title for your personal page</div>
+
+                        <div ng-messages="userForm.name.$error">
+                            <div ng-message="required">Title is required.</div>
+                            <div ng-message="md-maxlength">The title has to be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>Description</label>
+                        <textarea ng-model="holder.description" md-maxlength="300" rows="5" required md-select-on-focus></textarea>
+                        <div class="hint">Enter the description for your personal page</div>
+
+                        <div ng-messages="userForm.name.$error">
+                            <div ng-message="required">Title is required.</div>
+                            <div ng-message="md-maxlength">The title has to be less than 300 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>Moniker</label>
+                        <input md-maxlength="15" required name="holder.moniker" ng-model="holder.moniker">
+                        <div class="hint">Enter the individual Id of your personal page</div>
+
+                        <div ng-messages="userForm.name.$error">
+                            <div ng-message="required">Moniker is required.</div>
+                            <div ng-message="md-maxlength">The Moniker has to be less than 15 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>Email:</label>
+                        <input required type="email" name="holder.email" ng-model="holder.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                        <div class="hint">Enter your email</div>
+
+                        <div ng-messages="userForm.email.$error">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Your email must be between 5 and 100 characters long and look like an e-mail address.
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm="">
+                        <label>Tags:</label>
+
+                        <md-chips ng-model="ctrl.selectedVegetables" md-autocomplete-snap
+                                  md-transform-chip="ctrl.transformChip($chip)"
+                                  md-require-match="ctrl.autocompleteDemoRequireMatch">
+                            <md-autocomplete md-selected-item="ctrl.selectedItem"
+                                             md-search-text="ctrl.searchText"
+                                             md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                             md-item-text="item.name"
+                                             placeholder="Search for a vegetable">
+                                <span md-highlight-text="ctrl.searchText">{{item.name}}</span>
+                            </md-autocomplete>
+                    </md-input-container>
+                </form>
+            </md-card-content>
+        </md-card>
+
+    </div>
+</md-content>

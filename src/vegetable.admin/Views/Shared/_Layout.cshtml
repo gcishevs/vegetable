@@ -16,7 +16,7 @@
     <script src="~/app/bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="~/app/bower_components/angular-material/angular-material.min.js"></script>
     <script src="~/app/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
-    <script src="~/app/bower_components/angular-route/angular-route.min.js"></script>>
+    <script src="~/app/bower_components/angular-route/angular-route.min.js"></script>
 
     <script src="~/app/dist/controllers/mainController.js"></script>
     <script src="~/app/dist/controllers/dashboardController.js"></script>
@@ -25,9 +25,9 @@
     <div ng-include="'app/pages/sidenav.html'" layout="vertical"></div>
     <div layout="column" flex>
         <div ng-include="'app/pages/contentheader.html'"></div>
-        <md-content flex id="content">
+        <md-content flex id="content" class="md-padding" layout="row">
             @RenderBody()
-            <div class="ng-view"></div>
+            <div class="ng-view" flex></div>
         </md-content>
     </div>
 </body>

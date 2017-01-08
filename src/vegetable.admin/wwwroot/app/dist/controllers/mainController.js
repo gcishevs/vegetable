@@ -22,9 +22,9 @@ var AdminApp;
                 sidenav.close();
             }
         };
+        MainController.$inject = ['$mdSidenav'];
         return MainController;
     }());
-    MainController.$inject = ['$mdSidenav'];
     AdminApp.MainController = MainController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=mainController.js.map
