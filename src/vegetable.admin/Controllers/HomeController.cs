@@ -8,10 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace vegetable.admin.Controllers
 {
-    public class ModulesController : Controller
+    public class HomeController : Controller
     {
         // GET: /<controller>/
-
         public IActionResult Index()
         {
             return View();

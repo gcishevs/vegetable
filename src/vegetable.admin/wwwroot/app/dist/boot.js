@@ -3,7 +3,9 @@ var AdminApp;
 (function (AdminApp) {
     angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute'])
         .controller('dashboardController', AdminApp.DashboardController)
+        .controller('basePersonalInfoController', AdminApp.BasePersonalInfoController)
         .controller('mainController', AdminApp.MainController)
+        .service('dataToolsService', AdminApp.DataToolsService)
         .config(function ($routeProvider) {
         $routeProvider
             .when("/", {
@@ -13,7 +15,9 @@ var AdminApp;
             templateUrl: "app/pages/home/home.html"
         })
             .when("/personalInfo", {
-            templateUrl: "app/pages/personal_info/personalInfo.html"
+            templateUrl: "app/pages/personal_info/personalInfo.html",
+            controller: "basePersonalInfoController",
+            controllerAs: "vm"
         })
             .otherwise({
             redirectTo: '/'

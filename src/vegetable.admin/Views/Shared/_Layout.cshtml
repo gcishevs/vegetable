@@ -11,16 +11,7 @@
     <link href="~/app/bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" />
 </head>
 <body layout="row" ng-controller="mainController as vm">
-    <script src="~/app/bower_components/angular/angular.min.js"></script>
-    <script src="~/app/bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="~/app/bower_components/angular-aria/angular-aria.min.js"></script>
-    <script src="~/app/bower_components/angular-material/angular-material.min.js"></script>
-    <script src="~/app/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
-    <script src="~/app/bower_components/angular-route/angular-route.min.js"></script>
-
-    <script src="~/app/dist/controllers/mainController.js"></script>
-    <script src="~/app/dist/controllers/dashboardController.js"></script>
-    <script src="~/app/dist/boot.js"></script>
+   
 
     <div ng-include="'app/pages/sidenav.html'" layout="vertical"></div>
     <div layout="column" flex>
@@ -30,5 +21,16 @@
             <div class="ng-view" flex></div>
         </md-content>
     </div>
+    <script src="~/app/bower_components/angular/angular.min.js"></script>
+    <script src="~/app/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="~/app/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="~/app/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="~/app/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="~/app/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="~/app/dist/services/DataToolsService.js"></script>
+    <script src="~/app/dist/controllers/mainController.js"></script>
+    <script src="~/app/dist/controllers/dashboardController.js"></script>
+    <script src="~/app/dist/controllers/basePersonalInfoController.js"></script>
+    <script src="~/app/dist/boot.js"></script>
 </body>
 </html>

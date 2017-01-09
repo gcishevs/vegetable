@@ -45,7 +45,7 @@ namespace vegetable.admin
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Modules}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=index}/{id?}");
 
                 routes.MapSpaFallbackRoute(
                    name: "spa-fallback",

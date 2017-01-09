@@ -1,11 +1,11 @@
 ﻿<md-content class="md-padding">
-    <div layout="column" layout-gt-xs="row">
+    <div layout="column" layout-gt-xs="row" >
         <md-card flex flex-gt-xs="50">
             <md-card-content>
                 <form name="userForm">
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Title</label>
-                        <input md-maxlength="30" required name="name" ng-model="holder.title">
+                        <input md-maxlength="30" required name="name" ng-model="vm.holder.title">
 
                         <div class="hint">Enter the title for your personal page</div>
 
@@ -26,7 +26,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Moniker</label>
-                        <input md-maxlength="15" required name="holder.moniker" ng-model="holder.moniker">
+                        <input md-maxlength="15" required name="vm.holder.moniker" ng-model="holder.moniker">
                         <div class="hint">Enter the individual Id of your personal page</div>
 
                         <div ng-messages="userForm.name.$error">
@@ -36,7 +36,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Email:</label>
-                        <input required type="email" name="holder.email" ng-model="holder.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                        <input required type="email" name="vm.holder.email" ng-model="holder.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
                         <div class="hint">Enter your email</div>
 
                         <div ng-messages="userForm.email.$error">
@@ -48,16 +48,13 @@
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Tags:</label>
 
-                        <md-chips ng-model="ctrl.selectedVegetables" md-autocomplete-snap
-                                  md-transform-chip="ctrl.transformChip($chip)"
-                                  md-require-match="ctrl.autocompleteDemoRequireMatch">
-                            <md-autocomplete md-selected-item="ctrl.selectedItem"
-                                             md-search-text="ctrl.searchText"
-                                             md-items="item in ctrl.querySearch(ctrl.searchText)"
-                                             md-item-text="item.name"
-                                             placeholder="Search for a vegetable">
-                                <span md-highlight-text="ctrl.searchText">{{item.name}}</span>
+                        <md-chips ng-init="vm.holder.tags = []" ng-model="vm.holder.tags" md-max-chips="5">
+                            <md-autocomplete ng-hide="vm.holder.tags.length > 5" 
+                                             md-search-text="vm.searchTagText"
+                                             md-items="item in vm.availableTabs | filter: vm.searchTagText" 
+                                             md-item-text="item">
                             </md-autocomplete>
+                        </md-chips>
                     </md-input-container>
                 </form>
             </md-card-content>
