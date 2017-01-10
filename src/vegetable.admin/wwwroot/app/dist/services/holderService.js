@@ -17,4 +17,4 @@ var AdminApp;
     }());
     AdminApp.HolderService = HolderService;
 })(AdminApp || (AdminApp = {}));
-//# sourceMappingURL=holderService.js.map
+//# sourceMappingURL=HolderService.js.map

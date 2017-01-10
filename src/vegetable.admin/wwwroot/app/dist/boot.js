@@ -1,9 +1,10 @@
 /// <reference path="_all.ts" />
 var AdminApp;
 (function (AdminApp) {
-    angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute'])
-        .controller('dashboardController', AdminApp.DashboardController)
-        .controller('basePersonalInfoController', AdminApp.BasePersonalInfoController)
+    angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessages'])
+        .controller('profileBaseController', AdminApp.ProfileBaseController)
+        .controller('profileMainController', AdminApp.ProfileMainController)
+        .controller('profileAddressesController', AdminApp.ProfileAddressesController)
         .controller('mainController', AdminApp.MainController)
         .service('dataToolsService', AdminApp.DataToolsService)
         .config(function ($routeProvider) {
@@ -15,9 +16,9 @@ var AdminApp;
             templateUrl: "app/pages/home/home.html"
         })
             .when("/personalInfo", {
-            templateUrl: "app/pages/personal_info/personalInfo.html",
-            controller: "basePersonalInfoController",
-            controllerAs: "vm"
+            templateUrl: "app/pages/personal_info/profilebase.html",
+            controller: "profileBaseController",
+            controllerAs: "pbase"
         })
             .otherwise({
             redirectTo: '/'

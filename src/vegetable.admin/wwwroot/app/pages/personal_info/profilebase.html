@@ -1,0 +1,18 @@
+﻿<md-tabs md-selected="0" md-dynamic-height="true" md-stretch-tabs="yes">
+    <md-tab id="bio">
+        <md-tab-label>Main Information</md-tab-label>
+        <md-tab-body>
+            <div ng-controller="profileMainController as pmain">
+                <div ng-include="'app/pages/personal_info/profilemain.html'"></div>
+            </div>
+        </md-tab-body>
+    </md-tab>
+    <md-tab id="addresses">
+        <md-tab-label>Address</md-tab-label>
+        <md-tab-body>
+            <div ng-controller="profileAddressesController as paddress">
+                <div ng-include="'app/pages/personal_info/paddresses.html'"></div>
+            </div>
+        </md-tab-body>
+    </md-tab>
+</md-tabs>
