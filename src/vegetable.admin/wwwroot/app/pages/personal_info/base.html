@@ -2,21 +2,21 @@
     <div layout="column" layout-gt-xs="row" >
         <md-card flex flex-gt-xs="50">
             <md-card-content>
-                <form name="userForm">
+                <form name="Holder" ng-submit="vm.submitBasePersonalInfo()">
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Title</label>
                         <input md-maxlength="30" required name="name" ng-model="vm.holder.title">
 
                         <div class="hint">Enter the title for your personal page</div>
 
-                        <div ng-messages="userForm.name.$error">
+                        <div ng-messages="vm.holder.title.$error">
                             <div ng-message="required">Title is required.</div>
                             <div ng-message="md-maxlength">The title has to be less than 30 characters long.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Description</label>
-                        <textarea ng-model="holder.description" md-maxlength="300" rows="5" required md-select-on-focus></textarea>
+                        <textarea ng-model="vm.holder.description" md-maxlength="300" rows="5" required md-select-on-focus></textarea>
                         <div class="hint">Enter the description for your personal page</div>
 
                         <div ng-messages="userForm.name.$error">
@@ -26,7 +26,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Moniker</label>
-                        <input md-maxlength="15" required name="vm.holder.moniker" ng-model="holder.moniker">
+                        <input md-maxlength="15" required name="moniker" ng-model="vm.holder.moniker">
                         <div class="hint">Enter the individual Id of your personal page</div>
 
                         <div ng-messages="userForm.name.$error">
@@ -36,7 +36,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Email:</label>
-                        <input required type="email" name="vm.holder.email" ng-model="holder.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                        <input required type="email" name="email" ng-model="vm.holder.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
                         <div class="hint">Enter your email</div>
 
                         <div ng-messages="userForm.email.$error">
@@ -48,14 +48,21 @@
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Tags:</label>
 
-                        <md-chips ng-init="vm.holder.tags = []" ng-model="vm.holder.tags" md-max-chips="5">
+                        <md-chips ng-init="vm.holder.tags=[]" ng-model="vm.holder.tags" md-max-chips="5">
                             <md-autocomplete ng-hide="vm.holder.tags.length > 5" 
                                              md-search-text="vm.searchTagText"
-                                             md-items="item in vm.availableTabs | filter: vm.searchTagText" 
+                                             md-items="item in vm.queryTags(vm.searchTagText)" 
                                              md-item-text="item">
-                            </md-autocomplete>
+                                <md-item-template>
+                                    <span md-highlight-text="vm.searchTagText">{{item}}</span>
+                                </md-item-template>
+                            </md-autocomplete>                           
                         </md-chips>
                     </md-input-container>
+
+                    <div>
+                        <md-button type="submit">Submit</md-button>
+                    </div>
                 </form>
             </md-card-content>
         </md-card>
