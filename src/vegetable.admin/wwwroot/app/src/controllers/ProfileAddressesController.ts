@@ -3,6 +3,8 @@ module AdminApp {
     export class ProfileAddressesController {
 
         fakeAddresses: Address[] = [];
+        map: any = null;
+        marker: any[] = [];
 
         constructor() {
             this.fakeAddresses = [
@@ -49,9 +51,13 @@ module AdminApp {
                     ]
                 }
             ]
+
+            this.map = {
+                center: [55.76, 37.64], // Москва
+                zoom: 10
+            };
+            this.marker = [57.18, 35.55];
+            
         }
-
-
-
     }
 }

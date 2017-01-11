@@ -13,7 +13,7 @@ var AdminApp;
         }
         ProfileMainController.prototype.queryTags = function (searchTag) {
             var results;
-            var allTags = this.availableTabs.data;
+            var allTags = this.availableTabs;
             if (!searchTag) {
                 results = allTags.slice(0, 5);
             }

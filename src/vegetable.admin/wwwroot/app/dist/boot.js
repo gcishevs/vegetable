@@ -1,7 +1,7 @@
 /// <reference path="_all.ts" />
 var AdminApp;
 (function (AdminApp) {
-    angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessages'])
+    angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessages', 'ymaps'])
         .controller('profileBaseController', AdminApp.ProfileBaseController)
         .controller('profileMainController', AdminApp.ProfileMainController)
         .controller('profileAddressesController', AdminApp.ProfileAddressesController)

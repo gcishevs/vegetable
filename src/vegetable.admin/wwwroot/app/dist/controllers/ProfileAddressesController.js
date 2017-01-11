@@ -4,6 +4,8 @@ var AdminApp;
     var ProfileAddressesController = (function () {
         function ProfileAddressesController() {
             this.fakeAddresses = [];
+            this.map = null;
+            this.marker = [];
             this.fakeAddresses = [
                 {
                     description: 'Главный офис',
@@ -46,6 +48,11 @@ var AdminApp;
                     ]
                 }
             ];
+            this.map = {
+                center: [55.76, 37.64],
+                zoom: 10
+            };
+            this.marker = [57.18, 35.55];
         }
         return ProfileAddressesController;
     }());
