@@ -19,11 +19,11 @@ var AdminApp;
                     phoneNumbers: [
                         {
                             number: '+1234567800',
-                            type: 1
+                            type: 2
                         },
                         {
                             number: '+3216548701',
-                            type: 2
+                            type: 1
                         }
                     ]
                 },
@@ -39,7 +39,7 @@ var AdminApp;
                     phoneNumbers: [
                         {
                             number: '+1111111111',
-                            type: 1
+                            type: 2
                         },
                         {
                             number: '+2222222222',

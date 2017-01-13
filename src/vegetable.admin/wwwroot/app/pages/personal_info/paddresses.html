@@ -1,30 +1,65 @@
 ﻿<md-content class="md-padding">
     <div layout="column" layout-gt-xs="row">
         <div flex flex-gt-xs="40">
-            <md-list flex>
-                <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
-                <md-list-item ng-repeat="address in paddress.fakeAddresses" >
-                    <md-card flex>
-                        <md-card-header>
-                            <md-card-header-text>
-                                <span class="md-title">{{address.description}}</span>
-                            </md-card-header-text>
-                        </md-card-header>
-                        <div layout="row" flex="nogrow" flex-gt-xs="auto" class="yamap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=20">
+            <md-toolbar md-scroll-shrink class="site-content-toolbar md-whiteframe-glow-z1">
+                <div class="md-toolbar-tools">
+                    <p class="md-body-2">You can add some addresses</p>
+                    <span flex></span>
+                    <md-button class="md-button md-raised" aria-label="Add Address">
+                        Add address
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <md-list flex>
+                    <md-list-item ng-repeat="address in paddress.fakeAddresses">
+                        <md-card flex>
+                            <md-card-header>
+                                <md-card-header-text>
+                                    <span class="md-title">{{address.description}}</span>
+                                </md-card-header-text>
+                            </md-card-header>
+                            <div layout="row" flex="nogrow" flex-gt-xs="auto" class="yamap" ng-init="coords=[55.21, 34.30];center=[55.21, 34.30];zoom=20">
                                 <yandex-map center="center" zoom="zoom" class="yamap">
                                     <ymap-marker coordinates="coords"></ymap-marker>
                                 </yandex-map>
-                        </div>
-                        <md-card-content>
-                            <div ng-include="'app/pages/personal_info/address/view/addressview.html'" layout="row"></div>
-                        </md-card-content>
-                        <md-card-actions layout="row" layout-align="start center">
-                            <md-button>Action 1</md-button>
-                            <md-button>Action 2</md-button>
-                        </md-card-actions>
-                    </md-card>
-                </md-list-item>
-            </md-list>
+                            </div>
+                            <md-card-content>
+                                <div layout="row" flex>
+                                    <div layout="column" show-gt-xs hide-xs flex-gt-xs="50">
+                                        <div layout="row" >
+                                            <div flex="10" layout="column"><md-icon md-svg-icon="app/assets/icons/svg/map-marker.svg"></md-icon></div>
+                                            <div ng-include="'app/pages/personal_info/address/view/addressview.html'" layout="row" flex class="addressview"></div>
+                                        </div>
+                                    </div>
+                                    <div flex-gt-xs="10"></div>
+                                    <div layout="column" flex-gt-xs="40">
+                                        <md-list class="md-dense" flex>
+                                            <md-list-item hide-gt-xs show-xs>
+                                                <md-icon md-svg-icon="app/assets/icons/svg/map-marker.svg"></md-icon>
+                                                <div ng-include="'app/pages/personal_info/address/view/addressview.html'" layout="row" flex class="addressview"></div>
+                                            </md-list-item>
+                                            <md-list-item class="md-2-line" ng-repeat="phone in address.phoneNumbers">
+                                                <md-icon md-svg-icon="app/assets/icons/svg/phone.svg" ng-if="phone.type == 2"></md-icon>
+                                                <md-icon md-svg-icon="app/assets/icons/svg/phone-classic.svg" ng-if="phone.type == 1"></md-icon>
+                                                <div class="md-list-item-text">
+                                                    <h3> {{ phone.number }} </h3>
+                                                    <p> cell </p>
+                                                </div>
+                                            </md-list-item>
+                                        </md-list>
+                                    </div>
+                                </div>
+
+                            </md-card-content>
+                            <md-card-actions layout="row" layout-align="start center">
+                                <md-button><md-icon md-svg-icon="app/assets/icons/svg/edit.svg"></md-icon></md-button>
+                                <md-button><md-icon md-svg-icon="app/assets/icons/svg/delete.svg"></md-icon></md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </md-list-item>
+                </md-list>
+            </md-content>
         </div>
     </div>
 </md-content>

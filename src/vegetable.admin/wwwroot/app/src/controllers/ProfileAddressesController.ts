@@ -21,11 +21,11 @@ module AdminApp {
                     [
                         {
                             number: '+1234567800',
-                            type: 1
+                            type: 2
                         },
                         {
                             number: '+3216548701',
-                            type: 2
+                            type: 1
                         }
                     ]
                 },
@@ -42,7 +42,7 @@ module AdminApp {
                     [
                         {
                             number: '+1111111111',
-                            type: 1
+                            type: 2
                         },
                         {
                             number: '+2222222222',

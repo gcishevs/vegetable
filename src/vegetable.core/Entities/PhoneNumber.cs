@@ -16,7 +16,7 @@ namespace vegetable.core.Entities
 
     public enum PhoneNumberType : short
     {
-        Home = 0,
+        Work = 0,
         Mobile = 1
     }
 }

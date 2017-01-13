@@ -132,3 +132,7 @@ ul li {
     flex: 1 1 100%;
 }*/
 
+.addressview md-content{
+    background-color:white;
+}
+
