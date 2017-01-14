@@ -58,6 +58,7 @@ declare namespace angular.material {
         controllerAs?: string;
         parent?: string|Element|JQuery; // default: root node
         onComplete?: Function;
+        fullscreen?: boolean;
     }
 
     interface MDDialogService {

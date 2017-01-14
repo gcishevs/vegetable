@@ -1,11 +1,11 @@
-﻿<md-content class="md-padding">
+﻿<!--<md-content class="md-padding" layout="column">-->
     <div layout="column" layout-gt-xs="row">
-        <div flex flex-gt-xs="40">
+        <div flex flex-gt-xs="40" layout="column">
             <md-toolbar md-scroll-shrink class="site-content-toolbar md-whiteframe-glow-z1">
                 <div class="md-toolbar-tools">
                     <p class="md-body-2">You can add some addresses</p>
                     <span flex></span>
-                    <md-button class="md-button md-raised" aria-label="Add Address">
+                    <md-button class="md-button md-raised" aria-label="Add Address" ng-click="paddress.showAddAddressDialog($event)">
                         Add address
                     </md-button>
                 </div>
@@ -53,8 +53,8 @@
 
                             </md-card-content>
                             <md-card-actions layout="row" layout-align="start center">
-                                <md-button><md-icon md-svg-icon="app/assets/icons/svg/edit.svg"></md-icon></md-button>
-                                <md-button><md-icon md-svg-icon="app/assets/icons/svg/delete.svg"></md-icon></md-button>
+                                <md-button ng-click="paddress.showEditAddressDialog($event, address)"><md-icon md-svg-icon="app/assets/icons/svg/edit.svg"></md-icon></md-button>
+                                <md-button ng-click="paddress.removeAddress($index)"><md-icon md-svg-icon="app/assets/icons/svg/delete.svg"></md-icon></md-button>
                             </md-card-actions>
                         </md-card>
                     </md-list-item>
@@ -62,4 +62,4 @@
             </md-content>
         </div>
     </div>
-</md-content>
+<!--</md-content>-->

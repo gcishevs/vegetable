@@ -2,7 +2,10 @@
 var AdminApp;
 (function (AdminApp) {
     var ProfileAddressesController = (function () {
-        function ProfileAddressesController() {
+        function ProfileAddressesController($mdDialog, mdDialogOption) {
+            this.$mdDialog = $mdDialog;
+            this.mdDialogOption = mdDialogOption;
+            this.newAddress = null;
             this.fakeAddresses = [];
             this.map = null;
             this.marker = [];
@@ -28,7 +31,7 @@ var AdminApp;
                     ]
                 },
                 {
-                    description: 'Загороднее отделение',
+                    description: 'Загородное отделение',
                     country: 'Россия',
                     state: 'Краснодарский край',
                     city: 'Станица Станичная',
@@ -54,8 +57,52 @@ var AdminApp;
             };
             this.marker = [57.18, 35.55];
         }
+        ProfileAddressesController.prototype.showAddAddressDialog = function (ev) {
+            var _this = this;
+            this.$mdDialog.show(this.createDialogOption(ev, null)).then(function (answer) {
+                _this.fakeAddresses.push(answer);
+            }, function () {
+            });
+        };
+        ProfileAddressesController.prototype.showEditAddressDialog = function (ev, curAddress) {
+            this.$mdDialog.show(this.createDialogOption(ev, curAddress))
+                .then(function (answer) {
+                curAddress.city = answer.city;
+                curAddress.state = answer.state;
+                curAddress.street = answer.street;
+                curAddress.postalCode = answer.postalCode;
+                curAddress.unit = answer.unit;
+                curAddress.description = answer.description;
+            }, function () {
+            });
+        };
+        ProfileAddressesController.prototype.submitNewAddress = function () {
+        };
+        ProfileAddressesController.prototype.cancelEditAddress = function () {
+            this.$mdDialog.cancel();
+        };
+        ;
+        ProfileAddressesController.prototype.createDialogOption = function (ev, currentAddress) {
+            var option = {
+                controller: 'editAddressController',
+                controllerAs: 'editAddress',
+                templateUrl: 'app/pages/personal_info/address/edit/editaddress.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                fullscreen: true,
+                clickOutsideToClose: true,
+                locals: {
+                    addressToEdit: currentAddress
+                }
+            };
+            return option;
+        };
+        ProfileAddressesController.prototype.removeAddress = function (index) {
+            this.fakeAddresses.splice(index, 1);
+        };
         return ProfileAddressesController;
     }());
+    ProfileAddressesController.$inject = ['$mdDialog'];
     AdminApp.ProfileAddressesController = ProfileAddressesController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=ProfileAddressesController.js.map

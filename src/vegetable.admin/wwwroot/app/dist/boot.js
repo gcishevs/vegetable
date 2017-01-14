@@ -5,6 +5,7 @@ var AdminApp;
         .controller('profileBaseController', AdminApp.ProfileBaseController)
         .controller('profileMainController', AdminApp.ProfileMainController)
         .controller('profileAddressesController', AdminApp.ProfileAddressesController)
+        .controller('editAddressController', AdminApp.EditAddressController)
         .controller('mainController', AdminApp.MainController)
         .service('dataToolsService', AdminApp.DataToolsService)
         .config(function ($routeProvider) {

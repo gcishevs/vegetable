@@ -2,11 +2,14 @@
 module AdminApp {
     export class ProfileAddressesController {
 
+        newAddress: Address = null;
         fakeAddresses: Address[] = [];
         map: any = null;
         marker: any[] = [];
 
-        constructor() {
+        static $inject = ['$mdDialog'];
+
+        constructor(private $mdDialog: ng.material.MDDialogService, private mdDialogOption: ng.material.MDDialogOptions) {
             this.fakeAddresses = [
                 {
                     description: 'Главный офис',
@@ -30,7 +33,7 @@ module AdminApp {
                     ]
                 },
                 {
-                    description: 'Загороднее отделение',
+                    description: 'Загородное отделение',
                     country: 'Россия',
                     state: 'Краснодарский край',
                     city: 'Станица Станичная',
@@ -50,7 +53,7 @@ module AdminApp {
                         }
                     ]
                 }
-            ]
+            ]        
 
             this.map = {
                 center: [55.76, 37.64], // Москва
@@ -58,6 +61,57 @@ module AdminApp {
             };
             this.marker = [57.18, 35.55];
             
+        }
+
+        showAddAddressDialog(ev: MouseEvent): void {
+
+            this.$mdDialog.show(this.createDialogOption(ev, null)).then((answer) => {
+                this.fakeAddresses.push(answer);                    
+                }, function () {
+                    
+                });
+        }
+
+        showEditAddressDialog(ev: MouseEvent, curAddress: Address): void {    
+            this.$mdDialog.show(this.createDialogOption(ev, curAddress))
+                .then((answer) => {
+                    curAddress.city = answer.city;
+                    curAddress.state = answer.state;
+                    curAddress.street = answer.street;
+                    curAddress.postalCode = answer.postalCode;
+                    curAddress.unit = answer.unit;
+                    curAddress.description = answer.description;
+                }, function () {
+
+                });
+        }
+
+        submitNewAddress(): void {
+        }
+
+        cancelEditAddress(): void {
+            this.$mdDialog.cancel();
+        };
+
+        createDialogOption(ev: MouseEvent, currentAddress: Address): ng.material.MDDialogOptions {
+            var option: ng.material.MDDialogOptions =
+                {
+                    controller: 'editAddressController',
+                    controllerAs: 'editAddress',
+                    templateUrl: 'app/pages/personal_info/address/edit/editaddress.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    fullscreen: true,
+                    clickOutsideToClose: true,
+                    locals: {
+                        addressToEdit: currentAddress
+                    }
+                };
+            return option;
+        }
+
+        removeAddress(index: number) {
+            this.fakeAddresses.splice(index, 1);
         }
     }
 }

@@ -27,4 +27,4 @@ var AdminApp;
     MainController.$inject = ['$mdSidenav'];
     AdminApp.MainController = MainController;
 })(AdminApp || (AdminApp = {}));
-//# sourceMappingURL=mainController.js.map
+//# sourceMappingURL=MainController.js.map
