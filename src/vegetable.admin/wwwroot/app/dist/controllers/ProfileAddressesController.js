@@ -100,9 +100,9 @@ var AdminApp;
         ProfileAddressesController.prototype.removeAddress = function (index) {
             this.fakeAddresses.splice(index, 1);
         };
+        ProfileAddressesController.$inject = ['$mdDialog'];
         return ProfileAddressesController;
     }());
-    ProfileAddressesController.$inject = ['$mdDialog'];
     AdminApp.ProfileAddressesController = ProfileAddressesController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=ProfileAddressesController.js.map

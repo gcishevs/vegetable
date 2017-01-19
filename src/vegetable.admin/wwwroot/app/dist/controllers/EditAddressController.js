@@ -42,9 +42,9 @@ var AdminApp;
             this.$mdDialog.cancel();
         };
         ;
+        EditAddressController.$inject = ['$mdDialog', 'addressToEdit'];
         return EditAddressController;
     }());
-    EditAddressController.$inject = ['$mdDialog', 'addressToEdit'];
     AdminApp.EditAddressController = EditAddressController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=EditAddressController.js.map

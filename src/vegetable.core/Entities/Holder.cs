@@ -1,4 +1,4 @@
-﻿
+﻿using Nest;
 using System;
 using System.Collections.Generic;
 
@@ -12,13 +12,18 @@ namespace vegetable.core.Entities
 
         public string Description { get; set; }
 
+        [Text]
         public string Moniker { get; set; }
 
+        [Nested]
         public IEnumerable<Tag> Tags { get; set; }
 
         public Address Address { get; set; }
 
-        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }
-              
+        [Nested]
+        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }     
+        
+        [Date(Name ="@timestamp")]
+        public DateTime TimeStamp { get; set; }         
     }
 }

@@ -34,7 +34,21 @@ namespace vegetable.web
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // IoC
-            services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(Configuration["Database:Connection"]));
+            services.AddSingleton<IHolderDataProvider>(h =>
+            {
+                var useElastic = false;
+                bool.TryParse(Configuration["ElasticSearch:UseElastic"], out useElastic);
+
+                if (useElastic)
+                {
+                    return new SqlHolderDataProvider(Configuration["Database:Connection"]);
+                }
+                else
+                {
+                    return new ElasticSearchHolderDataProvider(Configuration["ElasticSearch:ElasticSearchUri"], Configuration["ElasticSearch:ElasticSearchIndex"]);
+                }
+            });
+
             services.AddSingleton<IHolderData, HolderData>();
         }
 
