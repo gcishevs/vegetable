@@ -26,7 +26,7 @@ var AdminApp;
                     _this.cacheService.holderCache.put(cacheKey, success.data);
                     return defer.promise;
                 }, function (error) {
-                    _this.toastMessagingService.SendFail(error);
+                    _this.toastMessagingService.SendFail("!I Cannot to load this Holder! Sorry");
                     defer.reject(error);
                 });
             }
@@ -44,4 +44,4 @@ var AdminApp;
     }());
     AdminApp.HolderService = HolderService;
 })(AdminApp || (AdminApp = {}));
-//# sourceMappingURL=holderService.js.map
+//# sourceMappingURL=HolderService.js.map

@@ -37,4 +37,4 @@ var AdminApp;
     }());
     AdminApp.MainController = MainController;
 })(AdminApp || (AdminApp = {}));
-//# sourceMappingURL=mainController.js.map
+//# sourceMappingURL=MainController.js.map

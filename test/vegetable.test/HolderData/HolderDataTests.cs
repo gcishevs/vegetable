@@ -60,11 +60,13 @@ namespace vegetable.test.HolderData
 
             var testHolder = new Holder
             {
-                HolderId = holderId,
+                Id = holderId,
                 Moniker = moniker,
                 Description = "This is test moniker",
                 Title = "Test moniker",
                 TimeStamp = DateTime.UtcNow,
+                Country = "USA",
+                Email = "mock@gmail.com",
                 Tags = new List<Tag>
                 {
                     new Tag { Id = 1, Name = "First Tag" },
@@ -72,19 +74,20 @@ namespace vegetable.test.HolderData
                 },
                 SocialNetworks = new List<SocialNetwork>
                 {
-                    new SocialNetwork { SocialNetworkId = Guid.NewGuid(), Type = SocialNetworkTypes.Facebook, Url = "http://test" }
+                    new SocialNetwork { Id = Guid.NewGuid(), Type = SocialNetworkTypes.Facebook, Url = "http://test" }
                 },
-                Address = new Address
+                Addresses = new Address[]
                 {
-                    AddressId = new Guid(),
-                    Country = "USA",
+                    new Address() {
+                    Id = new Guid(),
                     State = "TX",
                     City = "Dallas",
                     PostalCode = "12345-123",
                     Street = "Mock way",
                     Unit = "55",
-                    PhoneNumbers = new PhoneNumber[] { new PhoneNumber { Number = "9876543210" } },
-                    Email = "mock@gmail.com"
+                    PhoneNumbers = new PhoneNumber[] { new PhoneNumber { Number = "9876543210" } }
+                    }
+
                 }
             };
 
@@ -111,7 +114,7 @@ namespace vegetable.test.HolderData
 
             _elasticSearchProvider.AddHolder(new Holder()
             {
-                HolderId = holderId,
+                Id = holderId,
                 Moniker = moniker
             });
 
@@ -133,7 +136,7 @@ namespace vegetable.test.HolderData
 
             _elasticSearchProvider.AddHolder(new Holder()
             {
-                HolderId = holderId,
+                Id = holderId,
                 Moniker = moniker
             });
 
@@ -155,7 +158,7 @@ namespace vegetable.test.HolderData
 
             _elasticSearchProvider.AddHolder(new Holder
             {
-                HolderId = holderId,
+                Id = holderId,
                 Moniker = moniker,
                 Description = "This is test moniker",
                 Title = "Test moniker",
@@ -163,7 +166,7 @@ namespace vegetable.test.HolderData
 
             var updatedHolder = new Holder
             {
-                HolderId = holderId,
+                Id = holderId,
                 Moniker = moniker,
                 Description = "This is test moniker" + " updated",
                 Title = "Test moniker" + " updated",
@@ -191,9 +194,9 @@ namespace vegetable.test.HolderData
 
                 _provider.AddHolder(holder);
             }
-            catch 
+            catch
             { }
         }
-       
+
     }
 }

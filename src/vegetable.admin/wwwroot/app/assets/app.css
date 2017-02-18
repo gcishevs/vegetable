@@ -163,4 +163,14 @@ md-toast.md-success-toast-theme span
     box-shadow:none;
 }
 
+md-toast.md-fail-toast-theme,
+md-toast.md-fail-toast-theme .md-toast-content,
+md-toast.md-fail-toast-theme span
+{
+    color: white;
+    background-color: Red;
+    text-align:center;
+    box-shadow:none;
+}
+
 

@@ -34,7 +34,7 @@ namespace vegetable.web
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
-            var connectionString = Configuration["Database:Connection"];
+           
             // IoC
             services.AddSingleton<IHolderDataProvider>(h =>
             {
@@ -43,7 +43,8 @@ namespace vegetable.web
 
                 if (useElastic)
                 {
-                    return new SqlHolderDataProvider(Configuration["Database:Connection"]);
+                    var connectionString = Configuration["Database:Connection"];
+                    return new SqlHolderDataProvider(connectionString, new SqlLogDataRepository(connectionString));
                 }
                 else
                 {

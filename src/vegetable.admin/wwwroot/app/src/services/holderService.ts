@@ -35,7 +35,7 @@ module AdminApp {
                         return defer.promise;
                     },
                     (error) => {
-                        this.toastMessagingService.SendFail(error);
+                        this.toastMessagingService.SendFail("!I Cannot to load this Holder! Sorry");
                         defer.reject(error);
                     }
                     );

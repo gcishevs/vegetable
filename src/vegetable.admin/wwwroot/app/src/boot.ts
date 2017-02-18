@@ -56,7 +56,6 @@ module AdminApp {
                     return localStorage.getItem('id_token');
                 }
             });
-                });
         })
         .config((CacheFactoryProvider) => {
             angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });

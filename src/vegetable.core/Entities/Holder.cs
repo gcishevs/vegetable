@@ -25,8 +25,6 @@ namespace vegetable.core.Entities
 
         public IEnumerable<Address> Addresses { get; set; }
 
-        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }
-
         [MaxLength(20)]
         public string Country { get; set; }
 

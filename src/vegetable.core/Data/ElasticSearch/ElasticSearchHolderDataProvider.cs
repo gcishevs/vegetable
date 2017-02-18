@@ -17,7 +17,7 @@ namespace vegetable.core.Data
 
         public void AddHolder(Holder holder)
         {
-            _client.Index(holder, a => a.Id(holder.HolderId)
+            _client.Index(holder, a => a.Id(holder.Id)
                                         .Refresh(Elasticsearch.Net.Refresh.True));
         }
 
@@ -43,7 +43,7 @@ namespace vegetable.core.Data
                 dq => dq
                 .Query(q => q
                     .Term(t => t
-                        .Field(f => f.HolderId)
+                        .Field(f => f.Id)
                         .Value(holderId)
                     )
                 )
@@ -58,7 +58,7 @@ namespace vegetable.core.Data
                 s => s
                 .Query(q => q
                     .Term(t => t
-                        .Field(f => f.HolderId)
+                        .Field(f => f.Id)
                         .Value(holderId)
                     )
                 )
@@ -82,6 +82,18 @@ namespace vegetable.core.Data
 
             return result.Hits.Select(h => h.Source).FirstOrDefault();
         }
+
+        public void UpdateHolder(Holder holderData)
+        {
+            _client.Update<Holder, Holder>
+            (
+                holderData.Id,
+                u => u
+                .Doc(holderData)
+                .Refresh(Elasticsearch.Net.Refresh.True)
+            );
+        }
+
 
         public void UpdateHolder(Guid holderId, Holder holderData)
         {
