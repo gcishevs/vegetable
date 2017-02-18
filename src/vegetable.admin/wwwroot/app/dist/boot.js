@@ -1,20 +1,32 @@
 /// <reference path="_all.ts" />
 var AdminApp;
 (function (AdminApp) {
-    angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessages', 'ymaps'])
+    angular.module('adminApp', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessages', 'ymaps', 'auth0.lock', 'angular-jwt'])
         .controller('profileBaseController', AdminApp.ProfileBaseController)
         .controller('profileMainController', AdminApp.ProfileMainController)
         .controller('profileAddressesController', AdminApp.ProfileAddressesController)
         .controller('editAddressController', AdminApp.EditAddressController)
         .controller('mainController', AdminApp.MainController)
+        .controller('homeController', AdminApp.HomeController)
         .service('dataToolsService', AdminApp.DataToolsService)
-        .config(function ($routeProvider) {
+        .service('authService', AdminApp.AuthService)
+        .run(function ($rootScope, authService, lock, authManager) {
+        $rootScope.authService = authService;
+        authService.RegisterAuthenticationListener();
+        lock.interceptHash();
+        authManager.checkAuthOnRefresh();
+    })
+        .config(function ($routeProvider, lockProvider, jwtOptionsProvider) {
         $routeProvider
             .when("/", {
-            templateUrl: "app/pages/home/home.html"
+            templateUrl: "app/pages/home/home.html",
+            controller: "homeController",
+            controllerAs: "home"
         })
             .when("/home", {
-            templateUrl: "app/pages/home/home.html"
+            templateUrl: "app/pages/home/home.html",
+            controller: "homeController",
+            controllerAs: "home"
         })
             .when("/personalInfo", {
             templateUrl: "app/pages/personal_info/profilebase.html",
@@ -23,6 +35,16 @@ var AdminApp;
         })
             .otherwise({
             redirectTo: '/'
+        });
+        lockProvider.init({
+            clientID: 'KpF5kduqFqXVHykbcCDDMYhUI0VPboP3',
+            domain: 'vegetableproj.eu.auth0.com'
+        });
+        // Configuration for angular-jwt
+        jwtOptionsProvider.config({
+            tokenGetter: function () {
+                return localStorage.getItem('id_token');
+            }
         });
     });
 })(AdminApp || (AdminApp = {}));
