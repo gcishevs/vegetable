@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nest;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,6 +28,7 @@ namespace vegetable.core.Entities
         [MaxLength(50)]
         public string Unit { get; set; }
 
+        [Nested]
         public IEnumerable<PhoneNumber> PhoneNumbers { get; set; }
 
         [MaxLength(50)]

@@ -1,4 +1,4 @@
-﻿
+﻿using Nest;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,5 +30,10 @@ namespace vegetable.core.Entities
         [MaxLength(20)]
         public string Country { get; set; }
 
+        [Nested]
+        public IEnumerable<SocialNetwork> SocialNetworks { get; set; }     
+        
+        [Date(Name ="@timestamp")]
+        public DateTime TimeStamp { get; set; }         
     }
 }

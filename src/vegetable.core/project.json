@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
@@ -10,6 +10,8 @@
     "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
     "System.Runtime": "4.3.0",
     "System.Data.Common": "4.3.0"
+    "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
+    "NEST": "5.0.0-rc4"
   },
 
   "frameworks": {
