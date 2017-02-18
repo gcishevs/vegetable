@@ -1,14 +1,14 @@
 var AdminApp;
 (function (AdminApp) {
     var HolderInfo = (function () {
-        function HolderInfo(title, description, moniker, tags, email, addresses, socialNetworks) {
+        function HolderInfo(holderId, title, description, moniker, tags, email, addresses) {
+            this.holderId = holderId;
             this.title = title;
             this.description = description;
             this.moniker = moniker;
             this.tags = tags;
             this.email = email;
             this.addresses = addresses;
-            this.socialNetworks = socialNetworks;
         }
         return HolderInfo;
     }());

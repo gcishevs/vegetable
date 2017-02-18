@@ -2,48 +2,48 @@
     <div layout="column" layout-gt-xs="row">
         <md-card flex flex-gt-xs="50">
             <md-card-content>
-                <form name="profileMainForm" ng-submit="pbase.submitHolderInfo()">
+                <form name="profileMainForm" ng-submit="pmain.submitMainInfo(pbase.holder)" ng-init="pmain.initMainInfoForm(pbase.holder)" ng-cloak>
                     <md-input-container class="md-block" flex-gt-sm="">
-                        <label>Title</label>
-                        <input md-maxlength="30" required name="title" ng-model="pbase.holder.title">
-                        <div class="hint">Enter the title for your personal page</div>
+                        <label>!!Title</label>
+                        <input md-maxlength="30" required name="title" ng-model="pmain.holderMainInfo.title">
+                        <div class="hint">!!Enter the title for your personal page</div>
                         <div ng-messages="profileMainForm.title.$error">
-                            <div ng-message="required">Title is required.</div>
-                            <div ng-message="md-maxlength">The title has to be less than 30 characters long.</div>
+                            <div ng-message="required">!!Title is required.</div>
+                            <div ng-message="md-maxlength">!!The title has to be less than 30 characters long.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
-                        <label>Description</label>
-                        <textarea ng-model="pbase.holder.description" name="description" md-maxlength="300" rows="5" required md-select-on-focus></textarea>
-                        <div class="hint">Enter the description for your personal page</div>
+                        <label>!!Description</label>
+                        <textarea ng-model="pmain.holderMainInfo.description" name="description" md-maxlength="300" rows="5" required md-select-on-focus></textarea>
+                        <div class="hint">!!Enter the description for your personal page</div>
                         <div ng-messages="profileMainForm.description.$error">
-                            <div ng-message="required">Title is required.</div>
-                            <div ng-message="md-maxlength">The title has to be less than 300 characters long.</div>
+                            <div ng-message="required">!!Title is required.</div>
+                            <div ng-message="md-maxlength">!!The title has to be less than 300 characters long.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
-                        <label>Moniker</label>
-                        <input md-maxlength="15" required name="moniker" ng-model="pbase.holder.moniker">
-                        <div class="hint">Enter the individual Id of your personal page</div>
+                        <label>!!Moniker</label>
+                        <input md-maxlength="15" required name="moniker" ng-model="pmain.holderMainInfo.moniker">
+                        <div class="hint">!!Enter the individual Id of your personal page</div>
                         <div ng-messages="profileMainForm.moniker.$error">
-                            <div ng-message="required">Moniker is required.</div>
-                            <div ng-message="md-maxlength">The Moniker has to be less than 15 characters long.</div>
+                            <div ng-message="required">!!Moniker is required.</div>
+                            <div ng-message="md-maxlength">!!The Moniker has to be less than 15 characters long.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
                         <label>Email:</label>
-                        <input required type="email" name="email" ng-model="pbase.holder.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
-                        <div class="hint">Enter your email</div>
+                        <input required type="email" name="email" ng-model="pmain.holderMainInfo.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+                        <div class="hint">!!Enter your email</div>
                         <div ng-messages="profileMainForm.email.$error">
                             <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                Your email must be between 5 and 100 characters long and look like an e-mail address.
+                                !!Your email must be between 5 and 100 characters long and look like an e-mail address.
                             </div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-sm="">
-                        <label>Tags:</label>
-                        <md-chips ng-init="pbase.holder.tags=[]" ng-model="pbase.holder.tags" md-max-chips="5">
-                            <md-autocomplete ng-hide="pbase.holder.tags.length > 5"
+                        <label>!!Tags:</label>
+                        <md-chips ng-model="pmain.holderMainInfo.tags" md-max-chips="5">
+                            <md-autocomplete ng-hide="pmain.holderMainInfo.tags.length > 5"
                                              md-search-text="pmain.searchTagText"
                                              md-items="item in pmain.queryTags(pbase.searchTagText)"
                                              md-item-text="item">
@@ -51,6 +51,9 @@
                                     <span md-highlight-text="pmain.searchTagText">{{item}}</span>
                                 </md-item-template>
                             </md-autocomplete>
+                            <md-chip-template>
+                                <strong>{{$chip.name}}</strong>
+                            </md-chip-template>
                         </md-chips>
                     </md-input-container>
                     <div>

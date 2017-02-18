@@ -2,15 +2,18 @@
 var AdminApp;
 (function (AdminApp) {
     var MainController = (function () {
-        function MainController($mdSidenav) {
+        function MainController($mdSidenav, holderService) {
             this.$mdSidenav = $mdSidenav;
+            this.holderService = holderService;
             this.menuItems = [];
             this.selectedMenuItem = null;
+            this.isHolderLoaded = false;
             this.menuItems = [
                 { name: 'name', displayName: 'Home', url: '#!' },
                 { name: 'personalInfo', displayName: 'Personal Info', url: '#!personalInfo' }
             ];
             this.selectedMenuItem = this.menuItems[0];
+            this.loadHolder();
         }
         MainController.prototype.toggleSideNav = function () {
             this.$mdSidenav('left').toggle();
@@ -22,9 +25,16 @@ var AdminApp;
                 sidenav.close();
             }
         };
+        MainController.prototype.loadHolder = function () {
+            var _this = this;
+            this.holderService.GetCurrentHolder()
+                .then(function (success) {
+                _this.isHolderLoaded = true;
+            });
+        };
+        MainController.$inject = ['$mdSidenav', 'holderService'];
         return MainController;
     }());
-    MainController.$inject = ['$mdSidenav'];
     AdminApp.MainController = MainController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=MainController.js.map

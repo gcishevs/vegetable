@@ -1,7 +1,7 @@
 var AdminApp;
 (function (AdminApp) {
     var Address = (function () {
-        function Address(description, country, state, city, postalCode, street, unit, isPrimary, phoneNumbers) {
+        function Address(description, country, state, city, postalCode, street, unit, phoneNumbers, points) {
             this.description = description;
             this.country = country;
             this.state = state;
@@ -9,8 +9,8 @@ var AdminApp;
             this.postalCode = postalCode;
             this.street = street;
             this.unit = unit;
-            this.isPrimary = isPrimary;
             this.phoneNumbers = phoneNumbers;
+            this.points = points;
         }
         return Address;
     }());

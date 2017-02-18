@@ -35,41 +35,43 @@ namespace vegetable.core.Services
                 {
                     Title = "Mock Salon",
                     Description = "We are super team. We mock any data...",
-                    Moniker = "mock",
+                    Moniker = "mock2",
+                    Email = "mock@gmail.com",
                     Tags = new Tag[]
                     {
                         new Tag { Name = "mock"},
                         new Tag { Name = "fake"}
                     },
-
-                    Address = new Address
+                    Country = "Россия",
+                    Addresses = new Address[] { new Address
                     {
-                        AddressId = new Guid(),
-                        Country = "USA",
-                        State = "TX",
-                        City = "Dallas",
-                        PostalCode = "12345-123",
-                        Street = "Mock way",
-                        Unit = "55",
-                        PhoneNumbers = new PhoneNumber[] { new PhoneNumber { Number = "9876543210" } },
-                        Email = "mock@gmail.com"
-                    },
+                        Id = new Guid(),                        
+                        State = "Краснодарский край",
+                        City = "Краснодар",
+                        PostalCode = "12345123",
+                        Street = "Промышленная",
+                        Unit = "33",
+                        Points = "45.03974400147349,38.99748299999999", 
+                        Description = "Главный офис",
+                        PhoneNumbers = new PhoneNumber[] { new PhoneNumber { Number = "9876543210", Type = PhoneNumberType.Classic } }
+                        
+                    }},
                     SocialNetworks = new SocialNetwork[] {
 
                         new SocialNetwork {
-                            SocialNetworkId = new Guid(),
+                            Id = new Guid(),
                             Type = SocialNetworkTypes.VK,
                             Url = "https://vk.com/mock"
                         },
 
                         new SocialNetwork {
-                            SocialNetworkId = new Guid(),
+                            Id = new Guid(),
                             Type = SocialNetworkTypes.Twitter,
                             Url = "https://twitter.com/mock"
                         },
 
                         new SocialNetwork {
-                            SocialNetworkId = new Guid(),
+                            Id = new Guid(),
                             Type = SocialNetworkTypes.Facebook,
                             Url = "https://facebook.com/mock"
                         }

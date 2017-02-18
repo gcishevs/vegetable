@@ -34,7 +34,7 @@ namespace vegetable.test.HolderData
 
             Assert.NotNull(result);
             Assert.Equal(Moniker, result.Moniker);
-            Assert.NotNull(result.Address);
+            Assert.NotNull(result.Addresses);
             Assert.NotNull(result.SocialNetworks);
             Assert.NotNull(result.Tags);
 
@@ -50,10 +50,11 @@ namespace vegetable.test.HolderData
         {
             try
             {
-                _provider = new SqlHolderDataProvider("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = BaseInfo");
+                var connectionString = "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = BaseInfo";
+                _provider = new SqlHolderDataProvider(connectionString, new SqlLogDataRepository(connectionString));
                 var holderDataService = new MockHolderData();
                 var holder = holderDataService.GetHolderData(Moniker);
-                holder.HolderId = TestHolderId;
+                holder.Id = TestHolderId;
 
                 _provider.AddHolder(holder);
             }

@@ -33,8 +33,10 @@ namespace vegetable.web
             // Allow to access the current HTTP context in a safe way 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+
+            var connectionString = Configuration["Database:Connection"];
             // IoC
-            services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(Configuration["Database:Connection"]));
+            services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(connectionString, new SqlLogDataRepository(connectionString)));
             services.AddSingleton<IHolderData, HolderData>();
         }
 

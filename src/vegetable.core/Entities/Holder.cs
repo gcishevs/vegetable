@@ -1,24 +1,34 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace vegetable.core.Entities
 {
-    public class Holder
+    public class Holder: IEntity
     {
-        public Guid HolderId { get; set; }
+        public Guid Id { get; set; }
 
+        [MaxLength(50)]
         public string Title { get; set; }
 
+        [MaxLength(500)]
         public string Description { get; set; }
 
+        [MaxLength(20)]
         public string Moniker { get; set; }
+
+        [MaxLength(50)]
+        public string Email { get; set; }
 
         public IEnumerable<Tag> Tags { get; set; }
 
-        public Address Address { get; set; }
+        public IEnumerable<Address> Addresses { get; set; }
 
         public IEnumerable<SocialNetwork> SocialNetworks { get; set; }
-              
+
+        [MaxLength(20)]
+        public string Country { get; set; }
+
     }
 }

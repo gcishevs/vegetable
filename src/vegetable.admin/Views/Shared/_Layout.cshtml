@@ -11,14 +11,13 @@
     <link href="~/app/bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet" />
 </head>
 <body layout="row" ng-controller="mainController as vm">
-   
-
     <div ng-include="'app/pages/sidenav.html'" layout="vertical"></div>
     <div layout="column" flex>
         <div ng-include="'app/pages/contentheader.html'"></div>
         <md-content flex id="content" class="md-padding" layout="row">
             @RenderBody()
-            <div class="ng-view" flex></div>
+            <md-progress-circular md-mode="indeterminate" ng-show="!vm.isHolderLoaded"></md-progress-circular>
+            <div class="ng-view" flex ng-if="vm.isHolderLoaded"></div>
         </md-content>
     </div>
     <script src="~/app/bower_components/angular/angular.min.js"></script>
@@ -29,13 +28,17 @@
     <script src="~/app/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
     <script src="~/app/bower_components/angular-route/angular-route.min.js"></script>
     <script src="~/app/bower_components/angular-ymaps/angular-ymaps.js"></script>
-
+    <script src="~/app/bower_components/angular-cache/dist/angular-cache.js"></script>
+    <script src="~/app/dist/services/CacheService.js"></script>
+    <script src="~/app/dist/services/holderService.js"></script>
     <script src="~/app/dist/services/DataToolsService.js"></script>
+    <script src="~/app/dist/services/YandexGeoService.js"></script>
+    <script src="~/app/dist/services/ToastMessagingService.js"></script>
     <script src="~/app/dist/controllers/MainController.js"></script>
     <script src="~/app/dist/controllers/EditAddressController.js"></script>
+    <script src="~/app/dist/controllers/ProfileBaseController.js"></script>
     <script src="~/app/dist/controllers/ProfileMainController.js"></script>
     <script src="~/app/dist/controllers/ProfileAddressesController.js"></script>
-    <script src="~/app/dist/controllers/ProfileBaseController.js"></script>    
     <script src="~/app/dist/boot.js"></script>
 </body>
 </html>
