@@ -119,7 +119,9 @@ angular.module('ymaps', [])
             $scope.markers.remove(marker);
         };
         self.map = new ymaps.Map($element[0], {
-            center   : $scope.center || [0, 0],
+            center   : $scope.center.split(",", 2).reverse().map(function (x) { 
+                return parseFloat(x); 
+            }) || [0, 0],
             zoom     : $scope.zoom || 0,
             behaviors: config.mapBehaviors
         });
@@ -198,15 +200,25 @@ angular.module('ymaps', [])
         },
         link: function ($scope, elm, attr, mapCtrl) {
             var marker;
-            function pickMarker() {
-                var coord = [
-                    parseFloat($scope.coordinates[0]),
-                    parseFloat($scope.coordinates[1])
+            var coordinates = $scope.coordinates;
+            var points = coordinates.split(",");
+            function pickMarker(values) {
+                var newVal = [];
+                if (!Array.isArray(values)) {
+                    newVal = values.split(",");
+                }
+                else {
+                    newVal = values;
+                }
+                var coord = [                
+                    parseFloat(newVal[0] || points[0]),
+                    parseFloat(newVal[1] || points[1])
                 ];
                 if (marker) {
                     mapCtrl.removeMarker(marker);
                 }
-                marker = mapCtrl.addMarker(coord, angular.extend({iconContent: $scope.index}, $scope.properties), $scope.options);
+                marker = mapCtrl.addMarker(coord, angular.extend({ iconContent: $scope.index }, $scope.properties), $scope.options);
+                $scope.coordinates = coord.join(",");
             }
 
             $scope.$watch("index", function (newVal) {
@@ -216,7 +228,7 @@ angular.module('ymaps', [])
             });
             $scope.$watch("coordinates", function (newVal) {
                 if (newVal) {
-                    pickMarker();
+                    pickMarker(newVal);
                 }
             }, true);
             $scope.$on('$destroy', function () {

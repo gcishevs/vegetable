@@ -8,8 +8,8 @@
             public postalCode: string,
             public street: string,
             public unit: string,
-            public isPrimary: boolean,
-            public phoneNumbers: PhoneNumber[]
+            public phoneNumbers: PhoneNumber[],
+            public points: string
         ) { }
     }
 }

@@ -2,66 +2,97 @@
     <md-content>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <span flex>Add address</span>
+                <span flex>!!Add address</span>
                 <md-button class="md-icon-button" ng-click="editAddress.cancelEditAddress()">
                     <md-icon md-svg-src="app/assets/icons/svg/close.svg" aria-label="Close dialog"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
-        <form name="editAddressForm" ng-submit="editAddress.submitNewAddress()">
+        <form name="editAddressForm" ng-submit="editAddress.submitNewAddress(editAddressForm)">
             <md-input-container class="md-block" flex-gt-sm="">
-                <label>Address name</label>
-                <input md-maxlength="30" name="description" ng-model="editAddress.newAddress.description">
-                <div class="hint">Enter address name</div>
+                <label>!!Address name</label>
+                <input md-maxlength="30" name="description" ng-model="editAddress.currentAddress.description">
+                <div class="hint">!!Enter address name</div>
                 <div ng-messages="editAddressForm.description.$error">
-                    <div ng-message="md-maxlength">The title has to be less than 30 characters long.</div>
+                    <div ng-message="md-maxlength">!!The title has to be less than 30 characters long.</div>
                 </div>
             </md-input-container>
             <div layout-gt-sm="row">
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Region</label>
-                    <input md-maxlength="30" required name="region" ng-model="editAddress.newAddress.state">
-                    <div class="hint">Enter region</div>
+                    <input md-maxlength="30" required name="region" ng-model="editAddress.currentAddress.state" changePoints>
+                    <div class="hint">!!Enter region</div>
                     <div ng-messages="editAddressForm.region.$error">
-                        <div ng-message="required">Region is required.</div>
-                        <div ng-message="md-maxlength">The region has to be less than 30 characters long.</div>
+                        <div ng-message="required">!!Region is required.</div>
+                        <div ng-message="md-maxlength">!!The region has to be less than 30 characters long.</div>
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>City</label>
-                    <input md-maxlength="30" required name="city" ng-model="editAddress.newAddress.city">
-                    <div class="hint">Enter city</div>
+                    <input md-maxlength="30" required name="city" ng-model="editAddress.currentAddress.city" changePoints>
+                    <div class="hint">!!Enter city</div>
                     <div ng-messages="editAddressForm.city.$error">
-                        <div ng-message="required">City is required.</div>
-                        <div ng-message="md-maxlength">The city has to be less than 30 characters long.</div>
+                        <div ng-message="required">!!City is required.</div>
+                        <div ng-message="md-maxlength">!!The city has to be less than 30 characters long.</div>
                     </div>
                 </md-input-container>
             </div>
             <md-input-container class="md-block" flex-gt-sm="">
                 <label>Street</label>
-                <input md-maxlength="30" required name="street" ng-model="editAddress.newAddress.street">
+                <input md-maxlength="30" required name="street" ng-model="editAddress.currentAddress.street" changePoints>
                 <div class="hint">Enter Street</div>
                 <div ng-messages="editAddressForm.street.$error">
-                    <div ng-message="required">Street is required.</div>
-                    <div ng-message="md-maxlength">The Street has to be less than 30 characters long.</div>
+                    <div ng-message="required">!!Street is required.</div>
+                    <div ng-message="md-maxlength">!!The Street has to be less than 30 characters long.</div>
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm="">
                 <label>Unit</label>
-                <input md-maxlength="30" name="unit" ng-model="editAddress.newAddress.unit">
-                <div class="hint">Enter unit</div>
+                <input md-maxlength="30" name="unit" ng-model="editAddress.currentAddress.unit" changePoints>
+                <div class="hint">!!Enter unit</div>
                 <div ng-messages="editAddressForm.unit.$error">
-                    <div ng-message="md-maxlength">The Unit has to be less than 30 characters long.</div>
+                    <div ng-message="md-maxlength">!!The Unit has to be less than 30 characters long.</div>
                 </div>
             </md-input-container>
+
             <md-input-container class="md-block" flex-gt-sm="">
                 <label>Postal Code</label>
-                <input md-maxlength="30" name="postal" ng-model="editAddress.newAddress.postalCode">
-                <div class="hint">Enter unit</div>
+                <input md-maxlength="30" name="postal" ng-model="editAddress.currentAddress.postalCode">
+                <div class="hint">!!Enter unit</div>
                 <div ng-messages="editAddressForm.postal.$error">
-                    <div ng-message="md-maxlength">The Unit has to be less than 30 characters long.</div>
+                    <div ng-message="md-maxlength">!!The Unit has to be less than 30 characters long.</div>
                 </div>
             </md-input-container>
+
+            <md-toolbar class="site-content-toolbar md-whiteframe-glow-z1">
+                <div class="md-toolbar-tools">
+                    <p class="md-body-1">!!Phone numbers</p>
+                    <span flex></span>
+                    <md-button class="md-button md-raised" aria-label="Add phone number" ng-click="editAddress.addNewPhoneNumber()">
+                        !!Add new
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <div layout="row" ng-repeat="phone in editAddress.currentAddress.phoneNumbers">
+                <md-input-container>
+                    <md-select ng-model="phone.type" md-selected="phone.type" ng-model-options="{trackBy: '$value.type'}">
+                        <md-option ng-repeat="phoneType in editAddress.phoneTypes" ng-value="phoneType.type">
+                            {{phoneType.displayName}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm="">
+                    <input md-maxlength="30" name="phoneNumber" ng-model="phone.number" required>
+                    <div ng-messages="editAddressForm.phoneNumber.$error">
+                        <div ng-message="md-maxlength">!!The Unit has to be less than 30 characters long.</div>
+                        <div ng-message="required">!!You need to put number</div>
+                    </div>
+                </md-input-container>
+                <md-button ng-click="editAddress.removeCurrentPhone($index)"><md-icon md-svg-icon="app/assets/icons/svg/delete.svg"></md-icon></md-button>
+            </div>
+            <md-content ng-hide="editAddress.currentAddress.phoneNumbers.length > 0">
+                <p class="phonehint">!!You can add one or more phone numbers linked to this address</p>
+            </md-content>
             <md-dialog-actions layout="row">
                 <md-button type="submit" ng-click="answer('not useful')">
                     Add

@@ -1,13 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace vegetable.core.Entities
 {
-    public class SocialNetwork
+    public class SocialNetwork: IEntity
     {
-        public Guid SocialNetworkId { get; set; }
+        public Guid Id { get; set; }
 
         public SocialNetworkTypes Type { get; set; }
 
+        [MaxLength(100)]
         public string Url { get; set; }
     }
 

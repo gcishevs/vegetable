@@ -1,11 +1,10 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
       "type": "platform"
     },
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview2-final",
@@ -23,7 +22,8 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Microsoft.AspNetCore.SpaServices": "1.0.0-beta-000021",
-    "jquery.TypeScript.DefinitelyTyped": "3.1.2"
+    "jquery.TypeScript.DefinitelyTyped": "3.1.2",
+    "vegetable.core": "1.0.0-*"
   },
 
   "tools": {

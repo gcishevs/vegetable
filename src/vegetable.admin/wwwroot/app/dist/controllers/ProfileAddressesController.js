@@ -2,69 +2,30 @@
 var AdminApp;
 (function (AdminApp) {
     var ProfileAddressesController = (function () {
-        function ProfileAddressesController($mdDialog, mdDialogOption) {
+        function ProfileAddressesController($mdDialog, holderService, mdDialogOption) {
+            var _this = this;
             this.$mdDialog = $mdDialog;
+            this.holderService = holderService;
             this.mdDialogOption = mdDialogOption;
-            this.newAddress = null;
-            this.fakeAddresses = [];
-            this.map = null;
-            this.marker = [];
-            this.fakeAddresses = [
-                {
-                    description: 'Главный офис',
-                    country: 'Россия',
-                    state: 'Краснодарский край',
-                    city: 'Краснодар',
-                    postalCode: '350000',
-                    street: 'ул.Уличная',
-                    unit: 'дом 100, кв. 100',
-                    isPrimary: true,
-                    phoneNumbers: [
-                        {
-                            number: '+1234567800',
-                            type: 2
-                        },
-                        {
-                            number: '+3216548701',
-                            type: 1
-                        }
-                    ]
-                },
-                {
-                    description: 'Загородное отделение',
-                    country: 'Россия',
-                    state: 'Краснодарский край',
-                    city: 'Станица Станичная',
-                    postalCode: '351234',
-                    street: 'ул.Загородноуличная',
-                    unit: 'дом 100',
-                    isPrimary: false,
-                    phoneNumbers: [
-                        {
-                            number: '+1111111111',
-                            type: 2
-                        },
-                        {
-                            number: '+2222222222',
-                            type: 2
-                        }
-                    ]
-                }
-            ];
-            this.map = {
-                center: [55.76, 37.64],
-                zoom: 10
-            };
-            this.marker = [57.18, 35.55];
+            this.currentAddress = null;
+            this.holderAddresses = [];
+            this.holderService.GetCurrentHolder()
+                .then(function (success) {
+                _this.currentHolder = success;
+                _this.holderAddresses = _this.currentHolder.addresses;
+            });
         }
         ProfileAddressesController.prototype.showAddAddressDialog = function (ev) {
             var _this = this;
             this.$mdDialog.show(this.createDialogOption(ev, null)).then(function (answer) {
-                _this.fakeAddresses.push(answer);
+                _this.holderAddresses.push(answer);
+                _this.currentHolder.addresses = _this.holderAddresses;
+                _this.holderService.SaveHolder(_this.currentHolder);
             }, function () {
             });
         };
         ProfileAddressesController.prototype.showEditAddressDialog = function (ev, curAddress) {
+            var _this = this;
             this.$mdDialog.show(this.createDialogOption(ev, curAddress))
                 .then(function (answer) {
                 curAddress.city = answer.city;
@@ -73,10 +34,11 @@ var AdminApp;
                 curAddress.postalCode = answer.postalCode;
                 curAddress.unit = answer.unit;
                 curAddress.description = answer.description;
+                curAddress.points = answer.points;
+                curAddress.phoneNumbers = answer.phoneNumbers;
+                _this.holderService.SaveHolder(_this.currentHolder);
             }, function () {
             });
-        };
-        ProfileAddressesController.prototype.submitNewAddress = function () {
         };
         ProfileAddressesController.prototype.cancelEditAddress = function () {
             this.$mdDialog.cancel();
@@ -97,10 +59,16 @@ var AdminApp;
             };
             return option;
         };
-        ProfileAddressesController.prototype.removeAddress = function (index) {
-            this.fakeAddresses.splice(index, 1);
+        ProfileAddressesController.prototype.processCoordinatePoints = function (points) {
+            var result = points.split(",");
+            return result;
         };
-        ProfileAddressesController.$inject = ['$mdDialog'];
+        ProfileAddressesController.prototype.removeAddress = function (index) {
+            this.holderAddresses.splice(index, 1);
+            this.currentHolder.addresses = this.holderAddresses;
+            this.holderService.SaveHolder(this.currentHolder);
+        };
+        ProfileAddressesController.$inject = ['$mdDialog', 'holderService'];
         return ProfileAddressesController;
     }());
     AdminApp.ProfileAddressesController = ProfileAddressesController;

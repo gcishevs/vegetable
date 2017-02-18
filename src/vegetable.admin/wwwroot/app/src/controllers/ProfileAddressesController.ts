@@ -2,77 +2,33 @@
 module AdminApp {
     export class ProfileAddressesController {
 
-        newAddress: Address = null;
-        fakeAddresses: Address[] = [];
-        map: any = null;
-        marker: any[] = [];
+        currentAddress: Address = null;
+        holderAddresses: Address[] = [];
+        currentHolder: HolderInfo;
 
-        static $inject = ['$mdDialog'];
+        static $inject = ['$mdDialog', 'holderService'];
 
-        constructor(private $mdDialog: ng.material.MDDialogService, private mdDialogOption: ng.material.MDDialogOptions) {
-            this.fakeAddresses = [
-                {
-                    description: 'Главный офис',
-                    country: 'Россия',
-                    state: 'Краснодарский край',
-                    city: 'Краснодар',
-                    postalCode: '350000',
-                    street: 'ул.Уличная',
-                    unit: 'дом 100, кв. 100',
-                    isPrimary: true,
-                    phoneNumbers: 
-                    [
-                        {
-                            number: '+1234567800',
-                            type: 2
-                        },
-                        {
-                            number: '+3216548701',
-                            type: 1
-                        }
-                    ]
-                },
-                {
-                    description: 'Загородное отделение',
-                    country: 'Россия',
-                    state: 'Краснодарский край',
-                    city: 'Станица Станичная',
-                    postalCode: '351234',
-                    street: 'ул.Загородноуличная',
-                    unit: 'дом 100',
-                    isPrimary: false,
-                    phoneNumbers:
-                    [
-                        {
-                            number: '+1111111111',
-                            type: 2
-                        },
-                        {
-                            number: '+2222222222',
-                            type: 2
-                        }
-                    ]
-                }
-            ]        
-
-            this.map = {
-                center: [55.76, 37.64], // Москва
-                zoom: 10
-            };
-            this.marker = [57.18, 35.55];
-            
+        constructor(private $mdDialog: ng.material.MDDialogService,
+            private holderService: IHolderService,
+            private mdDialogOption: ng.material.MDDialogOptions) {
+            this.holderService.GetCurrentHolder()
+                .then((success) => {
+                    this.currentHolder = success;
+                    this.holderAddresses = this.currentHolder.addresses;
+                })
         }
 
         showAddAddressDialog(ev: MouseEvent): void {
-
             this.$mdDialog.show(this.createDialogOption(ev, null)).then((answer) => {
-                this.fakeAddresses.push(answer);                    
-                }, function () {
-                    
-                });
+                this.holderAddresses.push(answer);
+                this.currentHolder.addresses = this.holderAddresses;
+                this.holderService.SaveHolder(this.currentHolder);
+            }, function () {
+
+            });
         }
 
-        showEditAddressDialog(ev: MouseEvent, curAddress: Address): void {    
+        showEditAddressDialog(ev: MouseEvent, curAddress: Address): void {
             this.$mdDialog.show(this.createDialogOption(ev, curAddress))
                 .then((answer) => {
                     curAddress.city = answer.city;
@@ -81,12 +37,12 @@ module AdminApp {
                     curAddress.postalCode = answer.postalCode;
                     curAddress.unit = answer.unit;
                     curAddress.description = answer.description;
+                    curAddress.points = answer.points;
+                    curAddress.phoneNumbers = answer.phoneNumbers;
+                    this.holderService.SaveHolder(this.currentHolder);
                 }, function () {
 
                 });
-        }
-
-        submitNewAddress(): void {
         }
 
         cancelEditAddress(): void {
@@ -110,8 +66,16 @@ module AdminApp {
             return option;
         }
 
+        private processCoordinatePoints(points: string): string[] {
+            var result = points.split(",");
+            return result;
+        }
+
         removeAddress(index: number) {
-            this.fakeAddresses.splice(index, 1);
+            this.holderAddresses.splice(index, 1);
+            this.currentHolder.addresses = this.holderAddresses;
+            this.holderService.SaveHolder(this.currentHolder);
+
         }
     }
 }

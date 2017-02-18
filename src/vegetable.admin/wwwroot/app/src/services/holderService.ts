@@ -3,24 +3,50 @@
 module AdminApp {
 
     export interface IHolderService {
-        GetAll(successCallback: Function);
+        GetCurrentHolder(): ng.IPromise<HolderInfo>;
+        SaveHolder(holder: HolderInfo): void;
     }
+    export class HolderService implements IHolderService {
 
-    export class HolderService {
+        static $inject = ['$http', '$mdToast', 'cacheService', '$q', 'toastMessagingService'];
 
-        http: ng.IHttpService;
-        location: ng.ILocationService;
-
-        constructor($http: ng.IHttpService, $location: ng.ILocationService) {
-            this.http = $http;
-            this.location = $location;
+        constructor(private $http: ng.IHttpService,
+            private $mdToast: ng.material.MDToastService,
+            private cacheService: CacheService,
+            private $q: ng.IQService,
+            private toastMessagingService: IToastMessagingService) {
         }
 
-        GetAll(successCallback: Function) {
-            this.http.get(this.location.absUrl()).success((data, status) => {
-                successCallback(data);
-            }).error(error => {
-                successCallback(error);
+        GetCurrentHolder(): ng.IPromise<any> {
+            var defer = this.$q.defer();
+            var cacheKey: string = 'currentHolder';
+            var existingValue: HolderInfo = this.cacheService.holderCache.get(cacheKey);
+
+            if (existingValue) {
+                defer.resolve(existingValue);
+                return defer.promise;
+            }
+            else {
+                return this.$http.get("/api/holder")
+                    .then((success) => {
+                        this.$mdToast.show(this.$mdToast.simple().content('Loaded!'));
+                        defer.resolve(success.data);
+                        this.cacheService.holderCache.put(cacheKey, success.data)
+                        return defer.promise;
+                    },
+                    (error) => {
+                        this.toastMessagingService.SendFail(error);
+                        defer.reject(error);
+                    }
+                    );
+            }
+        }
+
+        SaveHolder(holder: HolderInfo): void {
+            this.$http.post('/api/holder', holder).then((success) => {
+                this.toastMessagingService.SendSuccess("!!The changes have been saved!");
+            }, (error) => {
+                this.toastMessagingService.SendFail(error);
             });
         }
     }
