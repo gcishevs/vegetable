@@ -45,13 +45,13 @@
                         <div class="row">
                             <label class="col-sm-3 col-form-label">E-MAIL</label>
                             <div class="col-sm-9">
-                                <p class="form-control-static mb-0">@Model.Address.Email</p>
+                                <p class="form-control-static mb-0">@Model.Email</p>
                             </div>
                         </div>
                         <div class="row">
                             <label class="col-sm-3 col-form-label">PHONE</label>
                             <div class="col-sm-9">
-                                <p class="form-control-static mb-0">@Model.Address.PhoneNumbers.FirstOrDefault().Number</p>
+                                <p class="form-control-static mb-0">@Model.Addresses.FirstOrDefault().PhoneNumbers.FirstOrDefault().Number</p>
                             </div>
                         </div>
                         <div class="row">
@@ -63,7 +63,7 @@
                         <div class="row">
                             <label class="col-sm-3 col-form-label">ADDRESS</label>
                             <div class="col-sm-9">
-                                <p class="form-control-static mb-0">@Model.Address.PostalCode, @Model.Address.Country, @Model.Address.State, @Model.Address.City, @Model.Address.Street @Model.Address.Unit</p>
+                                <p class="form-control-static mb-0">@Model.Addresses.FirstOrDefault().PostalCode, @Model.Addresses.FirstOrDefault().State, @Model.Addresses.FirstOrDefault().City, @Model.Addresses.FirstOrDefault().Street @Model.Addresses.FirstOrDefault().Unit</p>
                                 <p><span class="pws-tick"></span><a class="first after" href="#">Show on map</a></p>
                             </div>
                         </div>

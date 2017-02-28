@@ -43,12 +43,12 @@ namespace vegetable.web
 
                 if (useElastic)
                 {
-                    var connectionString = Configuration["Database:Connection"];
-                    return new SqlHolderDataProvider(connectionString, new SqlLogDataRepository(connectionString));
+                    return new ElasticSearchHolderDataProvider(Configuration["ElasticSearch:ElasticSearchUri"], Configuration["ElasticSearch:ElasticSearchIndex"]);
                 }
                 else
                 {
-                    return new ElasticSearchHolderDataProvider(Configuration["ElasticSearch:ElasticSearchUri"], Configuration["ElasticSearch:ElasticSearchIndex"]);
+                    var connectionString = Configuration["Database:Connection"];
+                    return new SqlHolderDataProvider(connectionString, new SqlLogDataRepository(connectionString));                   
                 }
             });
 
