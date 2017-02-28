@@ -1,32 +1,39 @@
-﻿using System;
+﻿using Nest;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace vegetable.core.Entities
 {
-    public class Address
+    public class Address : IEntity
     {
-        public Guid AddressId { get; set; }
+        public Guid Id { get; set; }
 
-        public string Country { get; set; }
+        [MaxLength(50)]
+        public string Description { get; set; }
 
+        [MaxLength(50)]
         public string State { get; set; }
 
+        [MaxLength(30)]
         public string City { get; set; }
 
+        [MaxLength(10)]
         public string PostalCode { get; set; }
 
+        [MaxLength(50)]
         public string Street { get; set; }
-        
+
+        [MaxLength(50)]
         public string Unit { get; set; }
 
+        [Nested]
         public IEnumerable<PhoneNumber> PhoneNumbers { get; set; }
 
-        public string Email { get; set; }
+        [MaxLength(50)]
+        public string Points { get; set; }
 
-        public Guid HolderId { get; set; }
-
-        [ForeignKey("HolderId")]
-        public virtual Holder Holder { get; set; }
+        //public Holder Holder { get; set; }
     }
 }

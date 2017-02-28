@@ -24,6 +24,10 @@ namespace vegetable.core.Data
 
         public DbSet<Holder> Holders { get; set; }
 
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<PhoneNumber> PhoneNumbers { get; set; }
+
         public DbSet<Country> Countries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
@@ -31,6 +35,12 @@ namespace vegetable.core.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Address>().HasOne(p => p.Holder).
+            //    WithMany(b => b.Addresses);
+
+            modelBuilder.Entity<Holder>().HasMany(p => p.Addresses).WithOne();
+            modelBuilder.Entity<Address>().HasMany(p => p.PhoneNumbers).WithOne();
+
             modelBuilder.Entity<Country>().Property(p => p.CountryCode).HasColumnType("varchar(3)");
             modelBuilder.Entity<Country>(b =>
             {

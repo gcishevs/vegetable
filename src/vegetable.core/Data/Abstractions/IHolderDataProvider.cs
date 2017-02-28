@@ -19,5 +19,7 @@ namespace vegetable.core.Data
         void DeleteHolder(string moniker);
 
         void UpdateHolder(Guid holderId, Holder holderData);
+
+        void UpdateHolder(Holder holderData);
     }
 }

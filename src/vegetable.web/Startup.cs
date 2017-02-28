@@ -33,8 +33,25 @@ namespace vegetable.web
             // Allow to access the current HTTP context in a safe way 
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+
+           
             // IoC
-            services.AddSingleton<IHolderDataProvider>(h => new SqlHolderDataProvider(Configuration["Database:Connection"]));
+            services.AddSingleton<IHolderDataProvider>(h =>
+            {
+                var useElastic = false;
+                bool.TryParse(Configuration["ElasticSearch:UseElastic"], out useElastic);
+
+                if (useElastic)
+                {
+                    var connectionString = Configuration["Database:Connection"];
+                    return new SqlHolderDataProvider(connectionString, new SqlLogDataRepository(connectionString));
+                }
+                else
+                {
+                    return new ElasticSearchHolderDataProvider(Configuration["ElasticSearch:ElasticSearchUri"], Configuration["ElasticSearch:ElasticSearchIndex"]);
+                }
+            });
+
             services.AddSingleton<IHolderData, HolderData>();
         }
 

@@ -1,0 +1,14 @@
+﻿<md-content class="md-padding md-body-1" show-gt-xs hide-xs>
+    <div layout="column">
+        <div layout="row" layout-wrap><div flex><span>{{address.state + '. ' + address.city}}</span></div></div>
+        <div layout="row" layout-wrap><div flex><span>{{address.street +' '+ address.unit}}</span></div></div>
+        <div layout="row" layout-wrap><span>{{address.postalCode}}</span></div>
+    </div>
+</md-content>
+<md-content class="md-body-1" show-xs hide-gt-xs>
+    <div layout="column">
+        <div layout="row" layout-wrap><div flex><span>{{address.state + '. ' + address.city}}</span></div></div>
+        <div layout="row" layout-wrap><div flex><span>{{address.street +' '+ address.unit}}</span></div></div>
+        <div layout="row" layout-wrap><span>{{address.postalCode}}</span></div>
+    </div>
+</md-content>

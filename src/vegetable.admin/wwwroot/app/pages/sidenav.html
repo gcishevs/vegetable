@@ -1,0 +1,15 @@
+﻿<md-sidenav class="md-sidenav-left site-sidenav"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-sm')"
+            md-whiteframe-z2>
+    <header class="nav-header">
+        <a>
+            <h1 class="docs-logotype md-heading">!!Admin</h1>
+        </a>
+    </header>
+    <md-content flex role="navigation">
+        <ul class="docs-menu" ng-repeat="item in vm.menuItems">
+            <li ng-class="{'active': item === vm.selectedMenuItem}"><md-button href="{{item.url}}" ng-click="vm.selectMenuItem(item)"><span>{{item.displayName}}</span></md-button></li>
+        </ul>
+    </md-content>
+</md-sidenav>

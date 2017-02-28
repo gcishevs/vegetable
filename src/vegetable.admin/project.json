@@ -4,33 +4,30 @@
       "version": "1.0.1",
       "type": "platform"
     },
-    "Microsoft.AspNetCore.AngularServices": "1.0.0-*",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
+    "Microsoft.AspNetCore.Routing": "1.0.1",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "Microsoft.Extensions.Configuration.CommandLine": "1.0.0",
     "Microsoft.Extensions.Logging": "1.1.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-    "vegetable.core": {
-      "target": "project"
-    },
-    "Microsoft.Extensions.Caching.Memory": "1.1.0"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
+    "Microsoft.AspNetCore.SpaServices": "1.0.0-beta-000021",
+    "jquery.TypeScript.DefinitelyTyped": "3.1.2",
+    "vegetable.core": "1.0.0-*"
   },
 
   "tools": {
-    "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final",
-    "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
   },
 
   "frameworks": {
@@ -55,25 +52,12 @@
 
   "publishOptions": {
     "include": [
-      "appsettings.json",
-      "ClientApp/dist",
-      "node_modules",
-      "Views",
-      "web.config",
-      "wwwroot"
+      "wwwroot",
+      "web.config"
     ]
   },
 
   "scripts": {
-    "prepublish": [
-      "npm install",
-      "node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod",
-      "node node_modules/webpack/bin/webpack.js --env.prod"
-    ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
-  },
-
-  "tooling": {
-    "defaultNamespace": "vegetable.admin"
   }
 }
