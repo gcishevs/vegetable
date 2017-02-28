@@ -1,5 +1,0 @@
-﻿$(function () {
-
-   // $('.carousel').carousel('pause')
-})
-

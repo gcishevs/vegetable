@@ -1,0 +1,47 @@
+﻿
+<div class="pws-wizard-container">
+    <div class="pws-navigation-container" *ngIf="showNavigation">
+        <div class="btn-group" role="group" aria-label="Navigation" style="width:100%">
+            <button type="button" class="btn btn-lg col-xs-6 pws-btn-navigation" href="#carousel-wizard" data-slide="prev">Previous</button>
+            <button type="button" class="btn btn-lg col-xs-6 pws-btn-navigation" href="#carousel-wizard" data-slide="next">Next</button>
+        </div>
+
+        <div id="mainDivSections" class="main-vertical-component clearfix">
+            <div class="stepsCheckout">
+                <div class="row labelSteps">
+                    <div class="col-xs-4 margin ">Services:</div>
+                    <div class="col-xs-4 margin ">Date And Time:</div>
+                    <div class="col-xs-4 margin medium">Confirmation</div>
+                </div>
+                <div class="row bolasSteps">
+                    <div class="col-xs-4 medium1"><div class="flechaSteps"></div></div>
+                    <div class="col-xs-4 "><div class="flechaSteps paso2"></div></div>
+                    <div class="col-xs-4"><div class="flechaSteps paso3"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="carousel-wizard" class="carousel slide" data-pause="true">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="pws-carousel-content" style="padding-top:50%">
+                    <h3 style="display:inline;"><a id="book" href="#carousel-wizard" data-slide="next" (click)="startBooking()">Book Online</a></h3>
+                    <section id="arrow" style="display:inline">
+                        <a><span></span></a>
+                    </section>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="pws-carousel-content">
+                    <pws-services></pws-services>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="pws-carousel-content">
+                    <pws-calendar></pws-calendar>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

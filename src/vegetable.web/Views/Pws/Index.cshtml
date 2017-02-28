@@ -4,16 +4,34 @@
     ViewData["Title"] = "Personal Web Site";
 }
 
+@section scripts{
+    <!-- Polyfill(s) for older browsers -->
+    <script src="~/lib/core-js/shim.min.js"></script>
+
+    <script src="~/lib/zone.js/zone.js"></script>
+    <script src="~/lib/reflect-metadata/Reflect.js"></script>
+    <script src="~/lib/systemjs/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+
+
+    <script>
+        System.import('app').catch(function (err) {
+            console.error(err);
+        });
+    </script>
+
+}
+
 @if (Model != null)
 {
     <div class="row">
         <div class="col-md-6 pws-content pws-vertical-center-container">
             <div class="pws-vertical-center-items">
                 <div>
-                    @*<img src="~/images/bread.jpg" alt="..." class="rounded-circle pws-head-img">*@
-                    <div class="pws-title first after">
+                   <div class="pws-title first after">
                         <span class="pws-tick"></span>
-                        <div class="display-4"><a class="first after pws-title" href="#">@Model.Title</a></div>
+                        <div class="display-4"><a class="first after pws-title" href="#carousel-example-generic" data-slide="next">@Model.Title</a></div>
                         @foreach (var tag in Model.Tags)
                         {
                             <span>#@tag.Name.ToLower()</span>
@@ -21,10 +39,9 @@
                     </div>
                     <br>
                     <br>
-
                     <h6>@Model.Description</h6>
                     <br>
-                    <div>
+                    <div class="hidden-sm-down">
                         <div class="row">
                             <label class="col-sm-3 col-form-label">E-MAIL</label>
                             <div class="col-sm-9">
@@ -51,173 +68,13 @@
                             </div>
                         </div>
                     </div>
-
-                    @*<table class="table">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">E-MAIL</th>
-                                    <td>@Model.Address.Email</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">PHONE</th>
-                                    <td>@Model.Address.PhoneNumbers.FirstOrDefault().Number</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">WORKING HOURS</th>
-                                    <td>10.00-18.00</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">ADDRESS</th>
-                                    <td>@Model.Address.PostalCode, @Model.Address.Country, @Model.Address.State, @Model.Address.City, @Model.Address.Street @Model.Address.Unit</td>
-                                </tr>
-
-                            </tbody>
-                        </table>*@
-                    @*<table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <a href="#" class="text-danger"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-danger"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-danger"><i class="fa fa-vk fa-lg" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-danger"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>*@
-                    @*<div id="map" style="height: 400px"></div>*@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 pws-book pws-vertical-center-container">
-            <div class="pws-vertical-center-items">
-
-                <div id="carousel-example-generic" class="carousel slide" data-pause="true">
-                    @*<ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><span>test</span></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"><span>test2</span></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"><div>test3</div></li>
-                        </ol>*@
-
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active" style="height:300px;">
-                            <div>
-                                <h3><span class="pws-tick"></span><a id="book" class="first after" href="#carousel-example-generic" data-slide="next">Book Online</a></h3>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="height:300px;">
-                            <div>Select service you want to book:</div>
-                            <div class="custom-controls-stacked">
-                                <label class="custom-control custom-radio">
-                                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">Toggle this custom radio</span>
-                                </label>
-                                <label class="custom-control custom-radio">
-                                    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
-                                    <span class="custom-control-indicator"></span>
-                                    <span class="custom-control-description">Or toggle this other custom radio</span>
-                                </label>
-                            </div>
-
-                            <div class="pws-wizard-navigation">
-                                <a class="" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    Previous
-                                </a>
-                                <a class="" href="#carousel-example-generic" role="button" data-slide="next">
-                                    Next
-                                </a>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="height:300px;">
-                            <div>Third sdfsdf sdfsdf sdfsdf sdfsdfds</div>
-
-                            <div class="pws-wizard-navigation">
-                                <a class="" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    Previous
-                                </a>
-                                <a class="" href="#carousel-example-generic" role="button" data-slide="next">
-                                    Next
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                @******************** CALENDAR START **********************@
-                @*<div class="section-calendar">
-                        <div class="section-box">
-                            <div class="calendar-busy">
-                                <div class="calendar-today">
-                                    <div class="valign-outer">
-                                        <div class="valign-middle">
-                                            <div class="valign-inner">
-                                                <div class="date">
-                                                    <span class="day">9</span>
-                                                    <span class="month">Dec</span>
-                                                </div>
-                                                <div class="week-day">Friday</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="calendar-cont">
-                                    <div class="calendar-header">
-                                        <div class="calendar-nav">
-                                            <span class="active-date"><span class="active-month">February</span><span class="active-year">2017</span></span>
-                                            <a class="calendar-prev ripple-centered" title="Prev"><i class="rsicon fa fa-angle-left" aria-hidden="true"></i></a>
-                                            <a class="calendar-next ripple-centered" title="Next"><i class="rsicon fa fa-angle-right" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" value="2016, 01, 21&amp;2016, 01, 22&amp;2016, 02, 05&amp;2016, 03, 01&amp;2016, 04, 13&amp;2016, 04, 19&amp;2016, 05, 02&amp;2016, 05, 18" class="busy_days_to_js">
-                                    <table class="calendar-body">
-                                        <thead class="calendar-thead"><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead>
-                                        <tbody class="calendar-tbody"><tr><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-current-month"><span class="">1</span></td><td class="calendar-current-month"><span class="">2</span></td><td class="calendar-current-month"><span class="">3</span></td><td class="calendar-current-month"><span class="">4</span></td></tr><tr><td class="calendar-current-month"><span class="">5</span></td><td class="calendar-current-month"><span class="">6</span></td><td class="calendar-current-month"><span class="">7</span></td><td class="calendar-current-month"><span class="">8</span></td><td class="calendar-current-month"><span class="">9</span></td><td class="calendar-current-month"><span class="">10</span></td><td class="calendar-current-month"><span class="">11</span></td></tr><tr><td class="calendar-current-month"><span class="">12</span></td><td class="calendar-current-month"><span class="">13</span></td><td class="calendar-current-month"><span class="">14</span></td><td class="calendar-current-month"><span class="">15</span></td><td class="calendar-current-month"><span class="">16</span></td><td class="calendar-current-month"><span class="">17</span></td><td class="calendar-current-month"><span class="">18</span></td></tr><tr><td class="calendar-current-month"><span class="">19</span></td><td class="calendar-current-month"><span class="">20</span></td><td class="calendar-current-month"><span class="">21</span></td><td class="calendar-current-month"><span class="">22</span></td><td class="calendar-current-month"><span class="">23</span></td><td class="calendar-current-month"><span class="">24</span></td><td class="calendar-current-month"><span class="">25</span></td></tr><tr><td class="calendar-current-month"><span class="">26</span></td><td class="calendar-current-month"><span class="">27</span></td><td class="calendar-current-month"><span class="">28</span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td></tr><tr><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td><td class="calendar-other-month"><span></span></td></tr></tbody>
-                                    </table>
-                                    <div class="calendar-busy-note">Sorry. I'm not available on those days</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
-
-                @******************** CALENDAR END **********************@
-            </div>
-        </div>
+        <pws-app></pws-app>
     </div>
 }
 else
 {
     <div class="text-danger">Sorry, this site doesn't exist.</div>
 }
-
-
-@*<script type="text/javascript">
-        //ymaps.ready(init);
-        //var myMap,
-        //    myPlacemark;
-
-        //function init() {
-        //    myMap = new ymaps.Map("map", {
-        //        center: [55.76, 37.64],
-        //        zoom: 7
-        //    });
-
-        //    myPlacemark = new ymaps.Placemark([55.76, 37.64], {
-        //        hintContent: 'Москва!',
-        //        balloonContent: 'Столица России'
-        //    });
-
-        //    myMap.geoObjects.add(myPlacemark);
-    //}
-
-
-    </script>*@

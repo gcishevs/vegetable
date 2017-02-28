@@ -1,0 +1,58 @@
+﻿<label>SELECT DATE AND TIME:</label>
+<div class="section-calendar">
+    <div class="section-box">
+        <div class="calendar-busy">
+            <div class="calendar-today">
+                <div class="valign-outer">
+                    <div class="valign-middle">
+                        <div class="valign-inner">
+                            <div class="date">
+                                <span class="day">{{date}}</span>
+                                <span class="month">{{monthShort}}</span>
+                            </div>
+                            <div class="week-day">{{weekDay}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-cont">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <span class="active-date"><span class="active-month">{{monthFull}}</span><span class="active-year">{{year}}</span></span>
+                        <a class="calendar-prev ripple-centered" (click)="previousMonth()" title="Prev"><i class="rsicon fa fa-angle-left" aria-hidden="true"></i></a>
+                        <a class="calendar-next ripple-centered" (click)="nextMonth()" title="Next"><i class="rsicon fa fa-angle-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <table class="calendar-body">
+                    <thead class="calendar-thead">
+                        <tr>
+                            <th *ngFor="let weekDay of weekArray">{{weekDay.substring(0, 3)}}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="calendar-tbody">
+                        <tr>
+                            <td *ngFor="let day of calendar.firstWeek" class="calendar-current-month"><span>{{day}}</span></td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let day of calendar.secondWeek" class="calendar-current-month"><span>{{day}}</span></td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let day of calendar.thirdWeek" class="calendar-current-month"><span>{{day}}</span></td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let day of calendar.fourthWeek" class="calendar-current-month"><span>{{day}}</span></td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let day of calendar.fifthWeek" class="calendar-current-month"><span>{{day}}</span></td>
+                        </tr>
+                        <tr>
+                            <td *ngFor="let day of calendar.sixthWeek" class="calendar-current-month"><span>{{day}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="calendar-busy-note">Sorry. I'm not available on those days</div>
+            </div>
+        </div>
+    </div>
+</div>

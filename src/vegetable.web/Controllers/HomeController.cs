@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace vegetable.web.Controllers
 {
@@ -16,11 +12,6 @@ namespace vegetable.web.Controllers
         public IActionResult Error()
         {
             return View();
-        }
-
-        public IActionResult Test()
-        {
-            return View("Test");
         }
     }
 }

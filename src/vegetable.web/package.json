@@ -1,0 +1,40 @@
+{
+  "name": "vegetable.wew",
+  "version": "1.0.0",
+  "author": "GC",
+  "description": "Package for the vegetable web application",
+  "scripts": {
+    "start": "",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "lint": "tslint ./app/**/*.ts -t verbose",
+    "typings": "typings",
+    "postinstall": "typings install"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.27",
+    "zone.js": "^0.6.23"
+  },
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-bower-files": "^0.2.7",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^2.0.1",
+    "tslint": "^3.7.4",
+    "typescript": "^2.0.2",
+    "typings": "^1.0.4"
+  },
+  "repository": {}
+}
