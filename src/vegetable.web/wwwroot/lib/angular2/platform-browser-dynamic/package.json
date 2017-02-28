@@ -1,7 +1,15 @@
 {
   "_args": [
     [
-      "@angular/platform-browser-dynamic@2.0.0",
+      {
+        "raw": "@angular/platform-browser-dynamic@2.0.0",
+        "scope": "@angular",
+        "escapedName": "@angular%2fplatform-browser-dynamic",
+        "name": "@angular/platform-browser-dynamic",
+        "rawSpec": "2.0.0",
+        "spec": "2.0.0",
+        "type": "version"
+      },
       "D:\\projects\\vegetable\\src\\vegetable.web"
     ]
   ],
@@ -15,16 +23,17 @@
     "tmp": "tmp/platform-browser-dynamic-2.0.0.tgz_1473906758552_0.013343805447220802"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular"
+    "name": "angular",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.9.2",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular/platform-browser-dynamic",
     "raw": "@angular/platform-browser-dynamic@2.0.0",
-    "rawSpec": "2.0.0",
     "scope": "@angular",
+    "escapedName": "@angular%2fplatform-browser-dynamic",
+    "name": "@angular/platform-browser-dynamic",
+    "rawSpec": "2.0.0",
     "spec": "2.0.0",
     "type": "version"
   },
@@ -51,7 +60,6 @@
     "tarball": "https://registry.npmjs.org/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.0.0.tgz"
   },
   "homepage": "https://github.com/angular/angular#readme",
-  "installable": true,
   "license": "MIT",
   "main": "bundles/platform-browser-dynamic.umd.js",
   "maintainers": [
@@ -64,11 +72,12 @@
   "name": "@angular/platform-browser-dynamic",
   "optionalDependencies": {},
   "peerDependencies": {
+    "@angular/core": "^2.0.0",
     "@angular/common": "^2.0.0",
     "@angular/compiler": "^2.0.0",
-    "@angular/core": "^2.0.0",
     "@angular/platform-browser": "^2.0.0"
   },
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angular/angular.git"

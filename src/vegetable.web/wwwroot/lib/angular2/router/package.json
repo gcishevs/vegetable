@@ -1,7 +1,15 @@
 {
   "_args": [
     [
-      "@angular/router@3.0.0",
+      {
+        "raw": "@angular/router@3.0.0",
+        "scope": "@angular",
+        "escapedName": "@angular%2frouter",
+        "name": "@angular/router",
+        "rawSpec": "3.0.0",
+        "spec": "3.0.0",
+        "type": "version"
+      },
       "D:\\projects\\vegetable\\src\\vegetable.web"
     ]
   ],
@@ -15,16 +23,17 @@
     "tmp": "tmp/router-3.0.0.tgz_1473906772743_0.2897986536845565"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular"
+    "name": "angular",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.9.2",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular/router",
     "raw": "@angular/router@3.0.0",
-    "rawSpec": "3.0.0",
     "scope": "@angular",
+    "escapedName": "@angular%2frouter",
+    "name": "@angular/router",
+    "rawSpec": "3.0.0",
     "spec": "3.0.0",
     "type": "version"
   },
@@ -51,10 +60,9 @@
     "tarball": "https://registry.npmjs.org/@angular/router/-/router-3.0.0.tgz"
   },
   "homepage": "https://github.com/angular/angular/blob/master/modules/%40angular/router/README.md",
-  "installable": true,
   "keywords": [
-    "angular",
     "angular2",
+    "angular",
     "router"
   ],
   "license": "MIT",
@@ -69,11 +77,12 @@
   "name": "@angular/router",
   "optionalDependencies": {},
   "peerDependencies": {
-    "@angular/common": "^2.0.0",
     "@angular/core": "^2.0.0",
+    "@angular/common": "^2.0.0",
     "@angular/platform-browser": "^2.0.0",
     "rxjs": "5.0.0-beta.12"
   },
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angular/angular.git"

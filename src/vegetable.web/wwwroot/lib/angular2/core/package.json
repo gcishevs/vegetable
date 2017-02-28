@@ -1,7 +1,15 @@
 {
   "_args": [
     [
-      "@angular/core@2.0.0",
+      {
+        "raw": "@angular/core@2.0.0",
+        "scope": "@angular",
+        "escapedName": "@angular%2fcore",
+        "name": "@angular/core",
+        "rawSpec": "2.0.0",
+        "spec": "2.0.0",
+        "type": "version"
+      },
       "D:\\projects\\vegetable\\src\\vegetable.web"
     ]
   ],
@@ -15,16 +23,17 @@
     "tmp": "tmp/core-2.0.0.tgz_1473906742970_0.10008056554943323"
   },
   "_npmUser": {
-    "email": "angular-core+npm@google.com",
-    "name": "angular"
+    "name": "angular",
+    "email": "angular-core+npm@google.com"
   },
   "_npmVersion": "3.9.2",
   "_phantomChildren": {},
   "_requested": {
-    "name": "@angular/core",
     "raw": "@angular/core@2.0.0",
-    "rawSpec": "2.0.0",
     "scope": "@angular",
+    "escapedName": "@angular%2fcore",
+    "name": "@angular/core",
+    "rawSpec": "2.0.0",
     "spec": "2.0.0",
     "type": "version"
   },
@@ -51,7 +60,6 @@
     "tarball": "https://registry.npmjs.org/@angular/core/-/core-2.0.0.tgz"
   },
   "homepage": "https://github.com/angular/angular#readme",
-  "installable": true,
   "license": "MIT",
   "main": "bundles/core.umd.js",
   "maintainers": [
@@ -67,6 +75,7 @@
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.21"
   },
+  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/angular/angular.git"
