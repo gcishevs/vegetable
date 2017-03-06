@@ -48,6 +48,12 @@
     width: 50%;
 }
 
+.btn-group > .pws-btn-navigation:focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 1px rgba(14, 14, 14, 0.5);
+    box-shadow: 0 0 0 1px rgba(14, 14, 14, 0.5);
+}
+
 /* Navigation */
 
 .stepsCheckout {
@@ -67,6 +73,11 @@
     font-size: 11px;
 }
 
+.stepsCheckout .col-xs-4.medium {
+    color: #333;
+    font-size: 12px;
+}
+
 .margin {
     padding-left: 1.3em;
 }
@@ -80,7 +91,7 @@
     height: 33px;
     position: relative;
     top: -17px;
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/00_check.png);
+    background-image: url('../images/00_check.png');
     background-size: 100%;
     margin: 0 auto;
 }
@@ -90,15 +101,15 @@
 }
 
 .medium1 .flechaSteps {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/01_b.png);
+    background-image: url('../images/01_b.png');
 }
 
 .medium2 .flechaSteps {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/02_b.png);
+    background-image: url('../images/02_b.png');
 }
 
 .medium3 .flechaSteps {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/03_b.png);
+    background-image: url('../images/03_b.png');
 }
 
 .medium1 .flechaSteps, .medium2 .flechaSteps, .medium3 .flechaSteps, .medium4 .flechaSteps {
@@ -108,15 +119,15 @@
 }
 
 .flechaSteps.paso1 {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/01_a.png);
+    background-image: url('../images/01_a.png');
 }
 
 .flechaSteps.paso2 {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/02_a.png);
+    background-image: url('../images/02_a.png');
 }
 
 .flechaSteps.paso3 {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/03_a.png);
+    background-image: url('../images/03_a.png');
 }
 
 

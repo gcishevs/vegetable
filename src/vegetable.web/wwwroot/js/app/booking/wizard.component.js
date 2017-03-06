@@ -11,8 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var WizardComponent = (function () {
     function WizardComponent() {
+        this.currentStep = 1;
         this.showNavigation = false;
     }
+    WizardComponent.prototype.prevStep = function () {
+        this.currentStep--;
+    };
+    WizardComponent.prototype.nextStep = function () {
+        this.currentStep++;
+    };
+    WizardComponent.prototype.setClass = function (step) {
+        if (step == this.currentStep)
+            return 'medium' + step;
+        return '';
+    };
+    WizardComponent.prototype.setIconClass = function (step) {
+        if (step <= this.currentStep)
+            return '';
+        return 'paso' + step;
+    };
+    WizardComponent.prototype.setLabelClass = function (step) {
+        if (step == this.currentStep)
+            return 'medium';
+        return '';
+    };
     WizardComponent.prototype.startBooking = function () {
         this.showNavigation = true;
     };
