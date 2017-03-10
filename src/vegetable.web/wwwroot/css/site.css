@@ -1,5 +1,6 @@
 ﻿body {
     padding-top: 5px;
+    font-size: 14px;
 }
 
 .pws-navigation-container{
@@ -50,8 +51,6 @@
 
 .btn-group > .pws-btn-navigation:focus {
     outline: 0;
-    -webkit-box-shadow: 0 0 0 1px rgba(14, 14, 14, 0.5);
-    box-shadow: 0 0 0 1px rgba(14, 14, 14, 0.5);
 }
 
 /* Navigation */
