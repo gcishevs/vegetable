@@ -10,17 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
 var calendar_component_1 = require('./booking/calendar.component');
 var services_component_1 = require('./booking/services.component');
 var wizard_component_1 = require('./booking/wizard.component');
+var booking_service_1 = require('./booking/booking.service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent, calendar_component_1.CalendarComponent, services_component_1.ServicesComponent, wizard_component_1.WizardComponent],
+            providers: [booking_service_1.BookingService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

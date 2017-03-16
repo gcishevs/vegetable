@@ -9,15 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var booking_service_1 = require('./booking.service');
 var ServicesComponent = (function () {
-    function ServicesComponent() {
+    function ServicesComponent(_bookingService) {
+        this._bookingService = _bookingService;
     }
+    ServicesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._bookingService.getServices()
+            .subscribe(function (services) { return _this.services = services; }, function (error) { return _this.errorMessage = error; });
+    };
     ServicesComponent = __decorate([
         core_1.Component({
             selector: 'pws-services',
             templateUrl: 'js/app/booking/services.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [booking_service_1.BookingService])
     ], ServicesComponent);
     return ServicesComponent;
 }());
