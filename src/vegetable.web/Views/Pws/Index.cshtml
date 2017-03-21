@@ -25,53 +25,64 @@
 
 @if (Model != null)
 {
-    <div class="row">
-        <div class="col-md-6 pws-content pws-vertical-center-container">
-            <div class="pws-vertical-center-items">
-                <div>
-                   <div class="pws-title first after">
-                        <span class="pws-tick"></span>
-                        <div class="display-4"><a class="first after pws-title" href="#carousel-example-generic" data-slide="next">@Model.Title</a></div>
-                        @foreach (var tag in Model.Tags)
-                        {
-                            <span>#@tag.Name.ToLower()</span>
-                        }
-                    </div>
-                    <br>
-                    <br>
-                    <h6>@Model.Description</h6>
-                    <br>
-                    <div class="hidden-sm-down">
-                        <div class="row">
-                            <label class="col-sm-3 col-form-label">E-MAIL</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static mb-0">@Model.Email</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-3 col-form-label">PHONE</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static mb-0">@Model.Addresses.FirstOrDefault().PhoneNumbers.FirstOrDefault().Number</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-3 col-form-label">WORKING HOURS</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static mb-0">10.00-18.00</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-sm-3 col-form-label">ADDRESS</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-static mb-0">@Model.Addresses.FirstOrDefault().PostalCode, @Model.Addresses.FirstOrDefault().State, @Model.Addresses.FirstOrDefault().City, @Model.Addresses.FirstOrDefault().Street @Model.Addresses.FirstOrDefault().Unit</p>
-                                <p><span class="pws-tick"></span><a class="first after" href="#">Show on map</a></p>
-                            </div>
+
+    <div uk-height-viewport class="uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+        <div>
+            <div>
+                <div class="uk-heading-primary">@Model.Title</div>
+                @foreach (var tag in Model.Tags)
+                {
+                    <span>#@tag.Name.ToLower()</span>
+                }
+            </div>
+            <br>
+            <br>
+            <h4>@Model.Description</h4>
+            <br>
+            <div class="uk-visible@s">
+
+                <form class="uk-form-horizontal uk-margin-large">
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label">E-MAIL</label>
+                        <div class="uk-form-controls">
+                            <p>@Model.Email</p>
                         </div>
                     </div>
-                </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label">PHONE</label>
+                        <div class="uk-form-controls">
+                            <p>@Model.Addresses.FirstOrDefault().PhoneNumbers.FirstOrDefault().Number</p>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label">WORKING HOURS</label>
+                        <div class="uk-form-controls">
+                            <p>10.00-18.00</p>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label">ADDRESS</label>
+                        <div class="uk-form-controls">
+                            <p>@Model.Addresses.FirstOrDefault().PostalCode, @Model.Addresses.FirstOrDefault().State, @Model.Addresses.FirstOrDefault().City, @Model.Addresses.FirstOrDefault().Street @Model.Addresses.FirstOrDefault().Unit</p>
+                            <button class="uk-button uk-button-text">Show on Map</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <pws-app></pws-app>
+        <div>
+            <a class="uk-button uk-button-default" href="#wizard" uk-toggle>Book Online</a>
+        </div>
+    </div>
+
+    <div id="wizard" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-full" type="button" uk-close></button>
+            <pws-app></pws-app>
+        </div>
+
+        
     </div>
 }
 else
