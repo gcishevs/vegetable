@@ -12,7 +12,6 @@ var core_1 = require('@angular/core');
 var WizardComponent = (function () {
     function WizardComponent() {
         this.currentStep = 1;
-        this.showNavigation = false;
     }
     WizardComponent.prototype.prevStep = function () {
         this.currentStep--;
@@ -22,21 +21,8 @@ var WizardComponent = (function () {
     };
     WizardComponent.prototype.setClass = function (step) {
         if (step == this.currentStep)
-            return 'medium' + step;
+            return 'uk-open';
         return '';
-    };
-    WizardComponent.prototype.setIconClass = function (step) {
-        if (step <= this.currentStep)
-            return '';
-        return 'paso' + step;
-    };
-    WizardComponent.prototype.setLabelClass = function (step) {
-        if (step == this.currentStep)
-            return 'medium';
-        return '';
-    };
-    WizardComponent.prototype.startBooking = function () {
-        this.showNavigation = true;
     };
     WizardComponent = __decorate([
         core_1.Component({

@@ -1,8 +1,10 @@
-﻿<label class="">SELECT SERVICE YOU WANT TO BOOK:</label>
-<div class="custom-controls-stacked" style="padding-left: 10px; padding-top:5px;" *ngFor="let service of services">
-    <label class="custom-control custom-radio">
-        <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">{{service}}</span>
-    </label>
+﻿<h3 class="uk-text-center">Services</h3>
+<div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport="offset-top: true; offset-bottom: 100px;">
+    <div>
+        
+        <div class="uk-form-label">Select Service To Book:</div>
+        <div class="uk-form-controls" *ngFor="let service of services">
+            <label><input class="uk-radio" type="radio" name="radio1"> {{service}}</label><br>
+        </div>
+    </div>
 </div>

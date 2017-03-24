@@ -26,7 +26,7 @@
 @if (Model != null)
 {
 
-    <div uk-height-viewport class="uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+    <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport>
         <div>
             <div>
                 <div class="uk-heading-primary">@Model.Title</div>
@@ -73,17 +73,18 @@
         </div>
         <div>
             <a class="uk-button uk-button-default" href="#wizard" uk-toggle>Book Online</a>
-        </div>
+         </div>
+       
+
     </div>
 
     <div id="wizard" class="uk-modal-full" uk-modal>
-        <div class="uk-modal-dialog">
-            <button class="uk-modal-close-full" type="button" uk-close></button>
+        <div class="uk-modal-dialog uk-background-secondary" uk-height-viewport>
             <pws-app></pws-app>
         </div>
-
-        
     </div>
+
+   
 }
 else
 {

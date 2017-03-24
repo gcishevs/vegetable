@@ -7,8 +7,7 @@
 
 export class WizardComponent {
     currentStep: number = 1;
-    showNavigation: boolean = false;
-
+    
     prevStep(): void {
         this.currentStep--;
     }
@@ -18,22 +17,7 @@ export class WizardComponent {
     }
 
     setClass(step: number): string {
-        if (step == this.currentStep) return 'medium' + step;
+        if (step == this.currentStep) return 'uk-open';
         return '';
-    }
-
-    setIconClass(step: number): string {
-        if (step <= this.currentStep) return '';
-        return 'paso' + step;
-    }
-
-    setLabelClass(step: number): string {
-        if (step == this.currentStep) return 'medium';
-        return '';
-    }
-
-
-    startBooking(): void {
-        this.showNavigation = true;
     }
 }
