@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var WizardComponent = (function () {
     function WizardComponent() {
-        this.currentStep = 1;
+        this.currentStep = 0;
     }
     WizardComponent.prototype.prevStep = function () {
         this.currentStep--;

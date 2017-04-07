@@ -1,10 +1,5 @@
-﻿<h3 class="uk-text-center">Services</h3>
-<div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport="offset-top: true; offset-bottom: 100px;">
-    <div>
-        
-        <div class="uk-form-label">Select Service To Book:</div>
-        <div class="uk-form-controls" *ngFor="let service of services">
-            <label><input class="uk-radio" type="radio" name="radio1"> {{service}}</label><br>
-        </div>
+﻿<div class="uk-text-center">
+    <div class="" *ngFor="let service of services">
+        <button class="uk-button uk-button-text pws-service">{{service}}</button>       
     </div>
 </div>

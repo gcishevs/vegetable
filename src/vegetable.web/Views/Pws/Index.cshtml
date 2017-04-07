@@ -26,7 +26,7 @@
 @if (Model != null)
 {
 
-    <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport>
+    <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle pws-container" uk-height-viewport>
         <div>
             <div>
                 <div class="uk-heading-primary">@Model.Title</div>
@@ -73,10 +73,10 @@
         </div>
         <div>
             <a class="uk-button uk-button-default" href="#wizard" uk-toggle>Book Online</a>
-         </div>
+        </div>
 
-       
-       
+
+
 
     </div>
 
@@ -87,12 +87,34 @@
     </div>
 
     <div id="wizard" class="uk-modal-full" uk-modal>
-        <div class="uk-modal-dialog uk-background-secondary" uk-height-viewport>
+        <div class="uk-modal-dialog" uk-height-viewport>
+           
+
+            @*<ul uk-accordion>
+                    <li class="uk-open">
+                        <h3 class="uk-accordion-title">Item 1</h3>
+                        <div class="uk-accordion-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="uk-accordion-title">Item 2</h3>
+                        <div class="uk-accordion-content">
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h3 class="uk-accordion-title">Item 3</h3>
+                        <div class="uk-accordion-content">
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                        </div>
+                    </li>
+                </ul>*@
             <pws-app></pws-app>
         </div>
     </div>
 
-   
+
 }
 else
 {

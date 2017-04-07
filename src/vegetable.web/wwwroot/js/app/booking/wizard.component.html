@@ -1,43 +1,31 @@
-﻿<div class="">
-    <div class="" style="border-bottom: 0;">
-        <div uk-sticky>
-            <span class="uk-margin-left uk-dark" uk-icon="icon: arrow-right"></span>Mock Salon :: Reservation
-            <button class="uk-modal-close-default uk-margin-right uk-dark" type="button" uk-close></button>
-        </div>
-
-    </div>
-    <div class="">
-        <div uk-grid>
-            <div class="uk-card uk-card-default uk-card-body uk-width-1-6" uk-sticky="offset: 300;">
-                <div><a href="#" class="uk-icon-link" uk-icon="icon: menu"></a></div>
-            </div>
-        </div>
-        <div class="">
-            <div class="uk-heading-primary uk-text-center">Mock Salon</div>
-        </div>        
-    </div>
-
-    <div class="uk-clearfix" style="border-top: 0; position: fixed; bottom: 10px; left: 10px; right:10px; z-index: 2000">
-        <div class="uk-card uk-card-default uk-card-body uk-clearfix">
-            <div class="uk-float-right">
-                <div class=""><a uk-slidenav-previous (click)="prevStep()"></a> | <a uk-slidenav-next (click)="nextStep()"></a></div>
-            </div>
-            <div class="uk-float-left">
-                <div class="">{{currentStep}} - 3</div>
-            </div>
-        </div>
+﻿<div class="" style="border-bottom: 0;">
+    <div uk-sticky>
+        <span class="uk-margin-left uk-dark" uk-icon="icon: arrow-right"></span>Mock Salon :: Reservation
+        <button class="uk-modal-close-default uk-margin-right uk-dark" type="button" uk-close></button>
     </div>
 </div>
 
-
-<div id="services" class="" uk-offcanvas style="display: block; z-index:0;" [ngClass]="setClass(1)">
-    <div class="uk-background-default uk-offcanvas-bar-light uk-offcanvas-bar-animation uk-offcanvas-slide" style="width: 100vw;">
-        <pws-services></pws-services>
-    </div>
-</div>
-
-<div id="calendar" uk-offcanvas style="display: block; z-index:0;" [ngClass]="setClass(2)">
-    <div class="uk-background-default uk-offcanvas-bar-light uk-offcanvas-bar-animation uk-offcanvas-slide" style="width: 100vw;">
-        <pws-calendar></pws-calendar>
+<div uk-grid class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport="offset-top: true; offset-bottom: 100px;">
+    <div class="uk-width-1-2">
+        <ul uk-accordion>
+            <li class="uk-open">
+                <h4 class="uk-accordion-title pws-accordion-title">Select Service to Book</h4>
+                <div class="uk-accordion-content">
+                    <pws-services></pws-services>
+                </div>
+            </li>
+            <li>
+                <h4 class="uk-accordion-title pws-accordion-title">Select Date and Time</h4>
+                <div class="uk-accordion-content">
+                    <pws-calendar></pws-calendar>
+                </div>
+            </li>
+            <li>
+                <h4 class="uk-accordion-title pws-accordion-title">Confirmation</h4>
+                <div class="uk-accordion-content">
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

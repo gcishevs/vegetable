@@ -17,3 +17,17 @@
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
 }
+
+
+.pws-accordion-title {
+    border-bottom: 1px solid #2c2e2f;     
+}
+
+h4.pws-accordion-title{
+     font-size: 16px;   
+}
+
+.pws-container {
+   background-image: url('../images/grace-menu-lemon.jpg');
+   background-repeat:no-repeat;
+}

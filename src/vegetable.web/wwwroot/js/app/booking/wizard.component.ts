@@ -6,7 +6,7 @@
 })
 
 export class WizardComponent {
-    currentStep: number = 1;
+    currentStep: number = 0;
     
     prevStep(): void {
         this.currentStep--;
