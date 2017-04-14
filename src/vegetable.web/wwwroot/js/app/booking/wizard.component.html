@@ -6,22 +6,23 @@
 </div>
 
 <div uk-grid class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport="offset-top: true; offset-bottom: 100px;">
-    <div class="uk-width-1-2">
-        <ul uk-accordion>
-            <li class="uk-open">
-                <h4 class="uk-accordion-title pws-accordion-title">Select Service to Book</h4>
+    <div class="uk-width-1-2@s uk-width-5-6">
+
+        <ul uk-accordion="collapsible: false">
+            <li id="step1Container" class="uk-open">
+                <h4 id="step1Title" class="uk-accordion-title pws-accordion-title">Select Service to Book</h4>
                 <div class="uk-accordion-content">
                     <pws-services></pws-services>
                 </div>
             </li>
-            <li>
-                <h4 class="uk-accordion-title pws-accordion-title">Select Date and Time</h4>
+            <li id="step2Container" class="pws-disabled">
+                <h4 id="step2Title" class="uk-accordion-title pws-accordion-title uk-disabled">Select Date and Time</h4>
                 <div class="uk-accordion-content">
                     <pws-calendar></pws-calendar>
                 </div>
             </li>
-            <li>
-                <h4 class="uk-accordion-title pws-accordion-title">Confirmation</h4>
+            <li id="step3Container" class="pws-disabled">
+                <h4 id="step3Title" class="uk-accordion-title pws-accordion-title uk-disabled">Confirmation</h4>
                 <div class="uk-accordion-content">
                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
                 </div>
@@ -29,3 +30,4 @@
         </ul>
     </div>
 </div>
+

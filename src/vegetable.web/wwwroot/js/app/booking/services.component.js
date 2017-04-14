@@ -19,6 +19,11 @@ var ServicesComponent = (function () {
         this._bookingService.getServices()
             .subscribe(function (services) { return _this.services = services; }, function (error) { return _this.errorMessage = error; });
     };
+    ServicesComponent.prototype.nextStep = function () {
+        $('#step2Title').trigger('click');
+        $('#step2Title').removeClass('uk-disabled');
+        $('#step2Container').removeClass('pws-disabled');
+    };
     ServicesComponent = __decorate([
         core_1.Component({
             selector: 'pws-services',

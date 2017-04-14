@@ -2,6 +2,8 @@
 
 import { BookingService } from './booking.service';
 
+declare var $: any;
+
 
 @Component({
     selector: 'pws-services',
@@ -20,6 +22,12 @@ export class ServicesComponent {
             .subscribe(services => this.services = services,
                        error => this.errorMessage = <any> error)
     }
+
+    nextStep(): void {
+        $('#step2Title').trigger('click');
+        $('#step2Title').removeClass('uk-disabled');
+        $('#step2Container').removeClass('pws-disabled');
+   }
 
 
 }
