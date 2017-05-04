@@ -24,6 +24,12 @@ var WizardComponent = (function () {
             return 'uk-open';
         return '';
     };
+    WizardComponent.prototype.onServiceClicked = function (message) {
+        this.service = message;
+    };
+    WizardComponent.prototype.resetService = function () {
+        this.service = "";
+    };
     WizardComponent = __decorate([
         core_1.Component({
             selector: 'pws-wizard',

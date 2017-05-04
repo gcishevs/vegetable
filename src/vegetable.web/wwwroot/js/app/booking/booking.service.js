@@ -19,9 +19,19 @@ var BookingService = (function () {
     function BookingService(_http) {
         this._http = _http;
         this._servicesUrl = 'api/booking/services';
+        this._timeAvailabilityUrl = 'api/booking/timeAvailabilty';
     }
     BookingService.prototype.getServices = function () {
         return this._http.get(this._servicesUrl)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    BookingService.prototype.getMonthAvailableTime = function (service, year, month) {
+        var params = new http_1.URLSearchParams();
+        params.set('service', service);
+        params.set('year', year.toString());
+        params.set('month', month.toString());
+        return this._http.get(this._timeAvailabilityUrl, { search: params })
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };

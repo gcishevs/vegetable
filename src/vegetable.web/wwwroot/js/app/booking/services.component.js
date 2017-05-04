@@ -13,17 +13,24 @@ var booking_service_1 = require('./booking.service');
 var ServicesComponent = (function () {
     function ServicesComponent(_bookingService) {
         this._bookingService = _bookingService;
+        this.serviceClicked = new core_1.EventEmitter();
     }
     ServicesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._bookingService.getServices()
             .subscribe(function (services) { return _this.services = services; }, function (error) { return _this.errorMessage = error; });
     };
-    ServicesComponent.prototype.nextStep = function () {
+    ServicesComponent.prototype.nextStep = function (service) {
+        this.selectedService = service;
+        this.serviceClicked.emit(service);
         $('#step2Title').trigger('click');
         $('#step2Title').removeClass('uk-disabled');
         $('#step2Container').removeClass('pws-disabled');
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], ServicesComponent.prototype, "serviceClicked", void 0);
     ServicesComponent = __decorate([
         core_1.Component({
             selector: 'pws-services',

@@ -1,24 +1,30 @@
 ﻿<div class="" style="border-bottom: 0;">
     <div uk-sticky>
         <span class="uk-margin-left uk-dark" uk-icon="icon: arrow-right"></span>Mock Salon :: Reservation
-        <button class="uk-modal-close-default uk-margin-right uk-dark" type="button" uk-close></button>
+        <button class="uk-modal-close-default uk-close-large uk-margin-right uk-dark" type="button" uk-close></button>
     </div>
 </div>
 
 <div uk-grid class="uk-flex uk-flex-column uk-flex-center uk-flex-middle" uk-height-viewport="offset-top: true; offset-bottom: 100px;">
     <div class="uk-width-1-2@s uk-width-5-6">
 
+
         <ul uk-accordion="collapsible: false">
             <li id="step1Container" class="uk-open">
-                <h4 id="step1Title" class="uk-accordion-title pws-accordion-title">Select Service to Book</h4>
+                
+                
+                <h4 id="step1Title" class="uk-accordion-title pws-accordion-title" (click)="resetService()">{{ !service ? 'Select Service to Book' : service }}
+                                    <button class="uk-button uk-button-link uk-float-right">{{ service ? 'change' : '' }}</button>
+                </h4>
+
                 <div class="uk-accordion-content">
-                    <pws-services></pws-services>
+                    <pws-services (serviceClicked)='onServiceClicked($event)'></pws-services>
                 </div>
             </li>
             <li id="step2Container" class="pws-disabled">
                 <h4 id="step2Title" class="uk-accordion-title pws-accordion-title uk-disabled">Select Date and Time</h4>
                 <div class="uk-accordion-content">
-                    <pws-calendar></pws-calendar>
+                    <pws-calendar [service]='service'></pws-calendar>
                 </div>
             </li>
             <li id="step3Container" class="pws-disabled">

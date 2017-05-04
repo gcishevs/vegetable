@@ -26,6 +26,7 @@ var CalendarComponent = (function () {
         this.weekDay = this.weekArray[moment(this.year + "-" + (this.month + 1) + "-" + this.date, "YYYY-MM-DD").day()];
     }
     CalendarComponent.prototype.ngOnInit = function () {
+        this.fillCalendar();
     };
     CalendarComponent.prototype.ngOnChanges = function (changes) {
         if (changes["service"] && this.service) {
@@ -35,7 +36,7 @@ var CalendarComponent = (function () {
     CalendarComponent.prototype.getMonthAvailabilityTime = function () {
         var _this = this;
         this._bookingService.getMonthAvailableTime(this.service, this.year, this.month)
-            .subscribe(function (times) { return _this.times = times; }, function (error) { return _this.errorMessage = error; }, function () { return _this.fillCalendar(); });
+            .subscribe(function (times) { return _this.times = times; }, function (error) { return _this.errorMessage = error; });
     };
     CalendarComponent.prototype.initMonthYear = function () {
         this.monthFull = this._monthsArray[this.month];
@@ -64,27 +65,12 @@ var CalendarComponent = (function () {
         }
     };
     CalendarComponent.prototype.clearCalendar = function () {
-        this.calendar = { firstWeek: [], secondWeek: [], thirdWeek: [], fourthWeek: [], fifthWeek: [], sixthWeek: [] };
-    };
-    CalendarComponent.prototype.getAvailability = function (day) {
-        var result = this.times[day].availableTime.length * 100 / +this.times[day].count;
-        var classT = '';
-        if (result === 0) {
-            classT = 'busy-unavailable';
-        }
-        else if (result >= 25 && result < 50) {
-            classT = 'busy-qr';
-        }
-        else if (result >= 50 && result < 75) {
-            classT = 'busy-half';
-        }
-        else if (result >= 75 && result < 100) {
-            classT = 'busy-thqr';
-        }
-        else {
-            classT = '';
-        }
-        return classT;
+        this.calendar.firstWeek.length = 0;
+        this.calendar.secondWeek.length = 0;
+        this.calendar.thirdWeek.length = 0;
+        this.calendar.fourthWeek.length = 0;
+        this.calendar.fifthWeek.length = 0;
+        this.calendar.sixthWeek.length = 0;
     };
     CalendarComponent.prototype.nextMonth = function () {
         if (this.month == 11) {
@@ -111,7 +97,7 @@ var CalendarComponent = (function () {
     CalendarComponent.prototype.daySelected = function (day) {
         this.selectedDate = moment(this.year + "-" + (this.month + 1) + "-" + day, "YYYY-MM-DD");
         this.selectedDateUI = this.weekArray[this.selectedDate.day()] + ', ' + this.monthFull + ' ' + day + ', ' + this.year;
-        this.availableTime = this.times[day.toString()].availableTime;
+        this.availableTime = this.times[day.toString()];
     };
     __decorate([
         core_1.Input(), 
