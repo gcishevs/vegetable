@@ -30,16 +30,22 @@ button.pws-service {
     opacity: .3;
 }
 
-td.calendar-current-month.pws-calendar-day {
+td.calendar-current-month.pws-calendar-day span {
     border: 1px solid #ffffff;
+    border-radius: 20px;
 }
 
-td.calendar-current-month.pws-calendar-day:hover {
+td.calendar-current-month.pws-calendar-day span:hover {
         border: 1px solid #1e87f0;
         cursor: pointer;
 }
 
-.busy-half {
+td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
+    border: 1px solid #ffffff;
+        cursor: not-allowed;
+}
+
+/*.busy-half {
     background-image: linear-gradient( to right, #cacaca 50%, #ffffff 50%);
 }
 
@@ -49,10 +55,11 @@ td.calendar-current-month.pws-calendar-day:hover {
 
 .busy-thqr {
     background-image: linear-gradient( to right, #cacaca 75%, #ffffff 25%);
-}
+}*/
 
 .busy-unavailable{
-    background-image: linear-gradient( to right, #cacaca 25%, #cacaca 75%);
+    /*border: 1px solid #f0506e ;*/
+    background-image: linear-gradient(transparent 10px,#cc1f1f 10px,#cc1f1f 15px,transparent 15px)
 }
 
 

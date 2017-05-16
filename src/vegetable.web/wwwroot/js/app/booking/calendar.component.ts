@@ -1,8 +1,11 @@
 ﻿import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { BookingService } from './booking.service';
 import { Calendar } from './calendar';
+import { DateTimeCustom } from './dateTimeCustom';
+import { CalendarAvailability } from './calendarAvailability';
 import { ITimeResult } from './timeResult';
 declare var moment: any;
+declare var $: any;
 
 @Component({
     selector: 'pws-calendar',
@@ -11,6 +14,7 @@ declare var moment: any;
 
 export class CalendarComponent implements OnInit, OnChanges {
     @Input() service: string;
+    @Output() dateTimeSelected: EventEmitter<DateTimeCustom> = new EventEmitter<DateTimeCustom>();
 
     private _monthsArray: string[];
     private _monthsShortArray: string[];
@@ -27,10 +31,12 @@ export class CalendarComponent implements OnInit, OnChanges {
     selectedDateUI: string;
     availableTime: string[];
     errorMessage: string;
+    selectedTime: string;
 
     times: { [id: string]: ITimeResult; } = {};
 
     calendar: Calendar = { firstWeek: [], secondWeek: [], thirdWeek: [], fourthWeek: [], fifthWeek: [], sixthWeek: [] }
+    calendarAvailability: CalendarAvailability = { firstWeekClasses: [], secondWeekClasses: [], thirdWeekClasses: [], fourthWeekClasses: [], fifthWeekClasses: [], sixthWeekClasses: [] }
 
 
     constructor(private _bookingService: BookingService) {
@@ -73,21 +79,22 @@ export class CalendarComponent implements OnInit, OnChanges {
 
         var daysInWeek: number = 7;
         var monthShift: number = daysInWeek - this._startOfMonth;
-             
-        this.fillWeek(this._startOfMonth, 1, monthShift, this.calendar.firstWeek);
-        this.fillWeek(0, (monthShift + 1), (monthShift + daysInWeek), this.calendar.secondWeek)
-        this.fillWeek(0, (monthShift + 1 + daysInWeek), (monthShift + 2 * daysInWeek), this.calendar.thirdWeek)
-        this.fillWeek(0, (monthShift + 1 + 2 * daysInWeek), (monthShift + 3 * daysInWeek), this.calendar.fourthWeek)
-        this.fillWeek(0, (monthShift + 1 + 3 * daysInWeek), (monthShift + 4 * daysInWeek), this.calendar.fifthWeek)
-        this.fillWeek(0, (monthShift + 1 + 4 * daysInWeek), (monthShift + 5 * daysInWeek), this.calendar.sixthWeek)
+
+        this.fillWeek(this._startOfMonth, 1, monthShift, this.calendar.firstWeek, this.calendarAvailability.firstWeekClasses);
+        this.fillWeek(0, (monthShift + 1), (monthShift + daysInWeek), this.calendar.secondWeek, this.calendarAvailability.secondWeekClasses)
+        this.fillWeek(0, (monthShift + 1 + daysInWeek), (monthShift + 2 * daysInWeek), this.calendar.thirdWeek, this.calendarAvailability.thirdWeekClasses)
+        this.fillWeek(0, (monthShift + 1 + 2 * daysInWeek), (monthShift + 3 * daysInWeek), this.calendar.fourthWeek, this.calendarAvailability.fourthWeekClasses)
+        this.fillWeek(0, (monthShift + 1 + 3 * daysInWeek), (monthShift + 4 * daysInWeek), this.calendar.fifthWeek, this.calendarAvailability.fifthWeekClasses)
+        this.fillWeek(0, (monthShift + 1 + 4 * daysInWeek), (monthShift + 5 * daysInWeek), this.calendar.sixthWeek, this.calendarAvailability.sixthWeekClasses)
     }
 
-    private fillWeek(firstDay: number, start: number, end: number, week: number[]): void {
+    private fillWeek(firstDay: number, start: number, end: number, week: number[], classes: string[]): void {
         for (var i = start; i <= end; i++) {
             if (i > this._daysInMonth) {
                 return;
             }
-            week[firstDay] = i;      
+            week[firstDay] = i;
+            classes[i] = this.getAvailability(i);      
             firstDay++;
         }
 
@@ -137,5 +144,16 @@ export class CalendarComponent implements OnInit, OnChanges {
         this.selectedDate = moment(this.year + "-" + (this.month + 1) + "-" + day, "YYYY-MM-DD");
         this.selectedDateUI = this.weekArray[this.selectedDate.day()] + ', ' + this.monthFull + ' ' + day + ', ' + this.year;
         this.availableTime = this.times[day.toString()].availableTime;
+    }
+
+    nextStep(time: string): void {
+        this.selectedTime = time;
+        var dateTime = new DateTimeCustom();
+        dateTime.date = this.selectedDateUI;
+        dateTime.time = time;
+        this.dateTimeSelected.emit(dateTime);
+        $('#step3Title').trigger('click');
+        $('#step3Title').removeClass('uk-disabled');
+        $('#step3Container').removeClass('pws-disabled');
     }
 }

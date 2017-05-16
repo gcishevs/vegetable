@@ -22,15 +22,17 @@
                 </div>
             </li>
             <li id="step2Container" class="pws-disabled">
-                <h4 id="step2Title" class="uk-accordion-title pws-accordion-title uk-disabled">Select Date and Time</h4>
+                <h4 id="step2Title" class="uk-accordion-title pws-accordion-title uk-disabled" (click)="resetDateTime()">{{ !dateTime ? 'Select Date and Time' : dateTime.date + ' | ' + dateTime.time }}
+                                    <button class="uk-button uk-button-link uk-float-right">{{ dateTime ? 'change' : '' }}</button>
+                </h4>
                 <div class="uk-accordion-content">
-                    <pws-calendar [service]='service'></pws-calendar>
+                    <pws-calendar [service]='service' (dateTimeSelected)='onDateTimeSelected($event)'></pws-calendar>
                 </div>
             </li>
             <li id="step3Container" class="pws-disabled">
                 <h4 id="step3Title" class="uk-accordion-title pws-accordion-title uk-disabled">Confirmation</h4>
                 <div class="uk-accordion-content">
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+                    <pws-confirmation></pws-confirmation>
                 </div>
             </li>
         </ul>

@@ -1,4 +1,5 @@
 ﻿import { Component } from '@angular/core';
+import { DateTimeCustom } from './dateTimeCustom';
 
 declare var $: any;
 
@@ -10,6 +11,7 @@ declare var $: any;
 export class WizardComponent {
     currentStep: number = 0;
     service: string;
+    dateTime: DateTimeCustom; 
 
     constructor() {
     }
@@ -31,8 +33,16 @@ export class WizardComponent {
         this.service = message;
     }
 
+    onDateTimeSelected(message: DateTimeCustom): void {
+        this.dateTime = message;
+    }
+    
     resetService(): void{
         this.service = "";
+    }
+
+    resetDateTime(): void {
+        this.dateTime = null;
     }
 
 }

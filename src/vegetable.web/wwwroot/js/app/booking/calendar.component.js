@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var booking_service_1 = require('./booking.service');
+var dateTimeCustom_1 = require('./dateTimeCustom');
 var CalendarComponent = (function () {
     function CalendarComponent(_bookingService) {
         this._bookingService = _bookingService;
+        this.dateTimeSelected = new core_1.EventEmitter();
         this.times = {};
         this.calendar = { firstWeek: [], secondWeek: [], thirdWeek: [], fourthWeek: [], fifthWeek: [], sixthWeek: [] };
+        this.calendarAvailability = { firstWeekClasses: [], secondWeekClasses: [], thirdWeekClasses: [], fourthWeekClasses: [], fifthWeekClasses: [], sixthWeekClasses: [] };
         moment.locale('en');
         this._monthsArray = moment.months();
         this._monthsShortArray = moment.monthsShort();
@@ -47,19 +50,20 @@ var CalendarComponent = (function () {
         this.initMonthYear();
         var daysInWeek = 7;
         var monthShift = daysInWeek - this._startOfMonth;
-        this.fillWeek(this._startOfMonth, 1, monthShift, this.calendar.firstWeek);
-        this.fillWeek(0, (monthShift + 1), (monthShift + daysInWeek), this.calendar.secondWeek);
-        this.fillWeek(0, (monthShift + 1 + daysInWeek), (monthShift + 2 * daysInWeek), this.calendar.thirdWeek);
-        this.fillWeek(0, (monthShift + 1 + 2 * daysInWeek), (monthShift + 3 * daysInWeek), this.calendar.fourthWeek);
-        this.fillWeek(0, (monthShift + 1 + 3 * daysInWeek), (monthShift + 4 * daysInWeek), this.calendar.fifthWeek);
-        this.fillWeek(0, (monthShift + 1 + 4 * daysInWeek), (monthShift + 5 * daysInWeek), this.calendar.sixthWeek);
+        this.fillWeek(this._startOfMonth, 1, monthShift, this.calendar.firstWeek, this.calendarAvailability.firstWeekClasses);
+        this.fillWeek(0, (monthShift + 1), (monthShift + daysInWeek), this.calendar.secondWeek, this.calendarAvailability.secondWeekClasses);
+        this.fillWeek(0, (monthShift + 1 + daysInWeek), (monthShift + 2 * daysInWeek), this.calendar.thirdWeek, this.calendarAvailability.thirdWeekClasses);
+        this.fillWeek(0, (monthShift + 1 + 2 * daysInWeek), (monthShift + 3 * daysInWeek), this.calendar.fourthWeek, this.calendarAvailability.fourthWeekClasses);
+        this.fillWeek(0, (monthShift + 1 + 3 * daysInWeek), (monthShift + 4 * daysInWeek), this.calendar.fifthWeek, this.calendarAvailability.fifthWeekClasses);
+        this.fillWeek(0, (monthShift + 1 + 4 * daysInWeek), (monthShift + 5 * daysInWeek), this.calendar.sixthWeek, this.calendarAvailability.sixthWeekClasses);
     };
-    CalendarComponent.prototype.fillWeek = function (firstDay, start, end, week) {
+    CalendarComponent.prototype.fillWeek = function (firstDay, start, end, week, classes) {
         for (var i = start; i <= end; i++) {
             if (i > this._daysInMonth) {
                 return;
             }
             week[firstDay] = i;
+            classes[i] = this.getAvailability(i);
             firstDay++;
         }
     };
@@ -113,10 +117,24 @@ var CalendarComponent = (function () {
         this.selectedDateUI = this.weekArray[this.selectedDate.day()] + ', ' + this.monthFull + ' ' + day + ', ' + this.year;
         this.availableTime = this.times[day.toString()].availableTime;
     };
+    CalendarComponent.prototype.nextStep = function (time) {
+        this.selectedTime = time;
+        var dateTime = new dateTimeCustom_1.DateTimeCustom();
+        dateTime.date = this.selectedDateUI;
+        dateTime.time = time;
+        this.dateTimeSelected.emit(dateTime);
+        $('#step3Title').trigger('click');
+        $('#step3Title').removeClass('uk-disabled');
+        $('#step3Container').removeClass('pws-disabled');
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
     ], CalendarComponent.prototype, "service", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], CalendarComponent.prototype, "dateTimeSelected", void 0);
     CalendarComponent = __decorate([
         core_1.Component({
             selector: 'pws-calendar',

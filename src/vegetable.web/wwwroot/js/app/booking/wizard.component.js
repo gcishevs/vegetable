@@ -27,8 +27,14 @@ var WizardComponent = (function () {
     WizardComponent.prototype.onServiceClicked = function (message) {
         this.service = message;
     };
+    WizardComponent.prototype.onDateTimeSelected = function (message) {
+        this.dateTime = message;
+    };
     WizardComponent.prototype.resetService = function () {
         this.service = "";
+    };
+    WizardComponent.prototype.resetDateTime = function () {
+        this.dateTime = null;
     };
     WizardComponent = __decorate([
         core_1.Component({

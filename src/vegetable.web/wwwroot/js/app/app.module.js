@@ -15,6 +15,7 @@ var app_component_1 = require('./app.component');
 var calendar_component_1 = require('./booking/calendar.component');
 var services_component_1 = require('./booking/services.component');
 var wizard_component_1 = require('./booking/wizard.component');
+var confirmation_component_1 = require('./booking/confirmation.component');
 var booking_service_1 = require('./booking/booking.service');
 var AppModule = (function () {
     function AppModule() {
@@ -22,7 +23,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, calendar_component_1.CalendarComponent, services_component_1.ServicesComponent, wizard_component_1.WizardComponent],
+            declarations: [app_component_1.AppComponent, calendar_component_1.CalendarComponent, services_component_1.ServicesComponent, confirmation_component_1.ConfirmationComponent, wizard_component_1.WizardComponent],
             providers: [booking_service_1.BookingService],
             bootstrap: [app_component_1.AppComponent]
         }), 

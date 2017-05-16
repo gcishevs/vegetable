@@ -20,9 +20,9 @@ namespace vegetable.web.Controllers.Api
             return Ok(new Dictionary<string, TimeResult>{
                 { "1", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
                 { "2", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
-                { "3", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
+                { "3", new TimeResult() {count = "5", availableTime = new string[] { } } },
                 { "4", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
-                { "5", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
+                { "5", new TimeResult() {count = "5", availableTime = new string[] { } } },
                 { "6", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "6.15-17.00" } } },
                 { "7", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
                 { "8", new TimeResult() {count = "5", availableTime = new string[] {"8.00-8.30", "9.00-9.39", "10.15-11.00", "15.15-17.00" } } },
