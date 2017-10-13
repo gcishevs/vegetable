@@ -11,7 +11,7 @@ declare var $: any;
 export class WizardComponent {
     currentStep: number = 0;
     service: string;
-    dateTime: DateTimeCustom; 
+    dateTime: DateTimeCustom = { date: '', time: '' }; 
 
     constructor() {
     }
@@ -39,10 +39,17 @@ export class WizardComponent {
     
     resetService(): void{
         this.service = "";
+        this.dateTime = { date: '', time: '' };
+        $('#step2Title').addClass('uk-disabled');
+        $('#step2Container').addClass('pws-disabled');
+        $('#step3Title').addClass('uk-disabled');
+        $('#step3Container').addClass('pws-disabled');
     }
 
     resetDateTime(): void {
-        this.dateTime = null;
+        this.dateTime = { date: '', time: '' };
+        $('#step3Title').addClass('uk-disabled');
+        $('#step3Container').addClass('pws-disabled');
     }
 
 }

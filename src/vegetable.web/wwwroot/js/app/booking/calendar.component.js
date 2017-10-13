@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var booking_service_1 = require('./booking.service');
-var dateTimeCustom_1 = require('./dateTimeCustom');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var booking_service_1 = require("./booking.service");
+var dateTimeCustom_1 = require("./dateTimeCustom");
 var CalendarComponent = (function () {
     function CalendarComponent(_bookingService) {
         this._bookingService = _bookingService;
@@ -32,6 +33,9 @@ var CalendarComponent = (function () {
     };
     CalendarComponent.prototype.ngOnChanges = function (changes) {
         if (changes["service"] && this.service) {
+            this.selectedDateUI = "";
+            this.selectedTime = "";
+            this.availableTime = [];
             this.getMonthAvailabilityTime();
         }
     };
@@ -116,6 +120,7 @@ var CalendarComponent = (function () {
         this.selectedDate = moment(this.year + "-" + (this.month + 1) + "-" + day, "YYYY-MM-DD");
         this.selectedDateUI = this.weekArray[this.selectedDate.day()] + ', ' + this.monthFull + ' ' + day + ', ' + this.year;
         this.availableTime = this.times[day.toString()].availableTime;
+        $('#time-select').prop('selectedIndex', 0);
     };
     CalendarComponent.prototype.nextStep = function (time) {
         this.selectedTime = time;
@@ -127,22 +132,22 @@ var CalendarComponent = (function () {
         $('#step3Title').removeClass('uk-disabled');
         $('#step3Container').removeClass('pws-disabled');
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], CalendarComponent.prototype, "service", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', core_1.EventEmitter)
-    ], CalendarComponent.prototype, "dateTimeSelected", void 0);
-    CalendarComponent = __decorate([
-        core_1.Component({
-            selector: 'pws-calendar',
-            templateUrl: 'js/app/booking/calendar.component.html'
-        }), 
-        __metadata('design:paramtypes', [booking_service_1.BookingService])
-    ], CalendarComponent);
     return CalendarComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], CalendarComponent.prototype, "service", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], CalendarComponent.prototype, "dateTimeSelected", void 0);
+CalendarComponent = __decorate([
+    core_1.Component({
+        selector: 'pws-calendar',
+        templateUrl: 'js/app/booking/calendar.component.html'
+    }),
+    __metadata("design:paramtypes", [booking_service_1.BookingService])
+], CalendarComponent);
 exports.CalendarComponent = CalendarComponent;
 //# sourceMappingURL=calendar.component.js.map

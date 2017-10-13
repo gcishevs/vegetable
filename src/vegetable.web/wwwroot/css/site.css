@@ -3,7 +3,7 @@
 }
 
 .uk-open > .pws-accordion-title {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 600;
     text-align: center;
 }
@@ -35,15 +35,25 @@ td.calendar-current-month.pws-calendar-day span {
     border-radius: 20px;
 }
 
-td.calendar-current-month.pws-calendar-day span:hover {
+    td.calendar-current-month.pws-calendar-day span:hover {
         border: 1px solid #1e87f0;
         cursor: pointer;
+    }
+
+    td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
+        border: 1px solid #ffffff;
+        cursor: not-allowed;
+    }
+
+button.pws-calendar-button {
+    border: none;
+    border-bottom: 1px solid #b2b2b2;
 }
 
-td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
-    border: 1px solid #ffffff;
-        cursor: not-allowed;
-}
+/*button.pws-calendar-button:hover{
+    border-bottom: 1px solid #b2b2b2;
+}*/
+
 
 /*.busy-half {
     background-image: linear-gradient( to right, #cacaca 50%, #ffffff 50%);
@@ -57,9 +67,10 @@ td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
     background-image: linear-gradient( to right, #cacaca 75%, #ffffff 25%);
 }*/
 
-.busy-unavailable{
+.busy-unavailable {
     /*border: 1px solid #f0506e ;*/
-    background-image: linear-gradient(transparent 10px,#cc1f1f 10px,#cc1f1f 15px,transparent 15px)
+    /*background-image: linear-gradient(transparent 10px,#cc1f1f 10px,#cc1f1f 15px,transparent 15px);*/
+    color: rgba(204, 31, 31, 0.3);
 }
 
 
@@ -211,7 +222,7 @@ td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
     float: left;
     padding: 0 25px;
     position: relative;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.1;
 }
 
@@ -306,7 +317,7 @@ td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
     .calendar-busy .calendar-body th {
         color: #757575;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 600;
         line-height: 1;
         text-transform: uppercase;
         padding: 13px 5px;
@@ -326,7 +337,7 @@ td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
 
 .calendar-busy .calendar-body td {
     color: #000;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
     padding: 5px 0;
 }
@@ -365,10 +376,10 @@ td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
         width: 14px;
         height: 14px;
         margin: 18px 0;
-        background-color: #cacaca;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
+        background-color: rgba(204, 31, 31, 0.15);
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
     }
 
 
@@ -400,7 +411,7 @@ td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
     }
 
     .calendar-busy .calendar-body td {
-        font-size: 14px;
+        font-size: 12px;
     }
 
         .calendar-busy .calendar-body td span {

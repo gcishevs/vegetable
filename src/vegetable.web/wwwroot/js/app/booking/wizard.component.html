@@ -13,8 +13,8 @@
             <li id="step1Container" class="uk-open">
                 
                 
-                <h4 id="step1Title" class="uk-accordion-title pws-accordion-title" (click)="resetService()">{{ !service ? 'Select Service to Book' : service }}
-                                    <button class="uk-button uk-button-link uk-float-right">{{ service ? 'change' : '' }}</button>
+                <h4 id="step1Title" class="uk-accordion-title pws-accordion-title" (click)="resetService()">{{ !service ? 'Select Service to Book' : '' }}
+                    <button class="uk-button uk-button-link uk-float-left">{{ service ? service : '' }}</button><button class="uk-button uk-button-link uk-float-right">{{ service ? 'change' : '' }}</button>
                 </h4>
 
                 <div class="uk-accordion-content">
@@ -22,8 +22,8 @@
                 </div>
             </li>
             <li id="step2Container" class="pws-disabled">
-                <h4 id="step2Title" class="uk-accordion-title pws-accordion-title uk-disabled" (click)="resetDateTime()">{{ !dateTime ? 'Select Date and Time' : dateTime.date + ' | ' + dateTime.time }}
-                                    <button class="uk-button uk-button-link uk-float-right">{{ dateTime ? 'change' : '' }}</button>
+                <h4 id="step2Title" class="uk-accordion-title pws-accordion-title uk-disabled" (click)="resetDateTime()">{{ !dateTime.date ? 'Select Date and Time' : '' }}
+                    <button class="uk-button uk-button-link uk-float-left">{{ dateTime.date ? dateTime.date + ' | ' + dateTime.time : '' }}</button><button class="uk-button uk-button-link uk-float-right">{{ dateTime.date ? 'change' : '' }}</button>
                 </h4>
                 <div class="uk-accordion-content">
                     <pws-calendar [service]='service' (dateTimeSelected)='onDateTimeSelected($event)'></pws-calendar>
@@ -32,7 +32,7 @@
             <li id="step3Container" class="pws-disabled">
                 <h4 id="step3Title" class="uk-accordion-title pws-accordion-title uk-disabled">Confirmation</h4>
                 <div class="uk-accordion-content">
-                    <pws-confirmation></pws-confirmation>
+                    <pws-confirmation [service]='service' [dateTime]='dateTime'></pws-confirmation>
                 </div>
             </li>
         </ul>

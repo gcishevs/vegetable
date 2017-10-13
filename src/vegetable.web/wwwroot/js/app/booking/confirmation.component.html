@@ -1,20 +1,61 @@
 ﻿<form class="uk-grid-small" uk-grid>
     <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="First Name">
+        <input class="uk-input" type="text" placeholder="First Name" [(ngModel)]="customer.firstName" name="firstName">
     </div>
     <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="Last Name">
+        <input class="uk-input" type="text" placeholder="Last Name" [(ngModel)]="customer.lastName" name="lastName">
     </div>
     <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="Email">
+        <input class="uk-input" type="text" placeholder="Email" [(ngModel)]="customer.email" name="email">
     </div>
     <div class="uk-width-1-2@s">
-        <input class="uk-input" type="text" placeholder="Phone Number">
+        <input class="uk-input" type="text" placeholder="Phone Number" [(ngModel)]="customer.phoneNumber" name="phoneNumber">
     </div>
 
     <div class="uk-flex uk-flex-center uk-width-1-1">
-        <button class="uk-button uk-button-primary">Book</button>
+        <button class="uk-button uk-button-primary" uk-toggle="target: #modal-confirmation" (click)="book()">Book</button>
     </div>
-
-
 </form>
+
+
+
+<div id="modal-confirmation" uk-modal="stack: true">
+    <div class="uk-modal-dialog">
+        <div class="uk-modal-header">
+            <h3 class="">Thank you, {{customer.firstName}}! Your booking has been completed.</h3>
+        </div>
+        <div class="uk-modal-body">
+            <!--<div class="uk-text-large uk-text-bold">Service: {{service}}</div>
+            <div class="uk-text-large uk-text-bold">Time: {{dateTime.date + ' | ' + dateTime.time }}</div>
+            <div class="uk-text-large uk-text-bold">Address: street Heroes 56</div>-->
+
+            <form class="uk-form-horizontal uk-margin-large">
+
+                <div class="uk-margin">
+                    <label class="uk-form-label">SERVICE:</label>
+                    <div class="uk-form-controls">
+                        <p>{{service}}</p>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label">TIME:</label>
+                    <div class="uk-form-controls">
+                        <p>{{dateTime.date + ' | ' + dateTime.time }}</p>
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label class="uk-form-label">ADDRESS:</label>
+                    <div class="uk-form-controls">
+                        <p>street Heroes 56</p>                        
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Book One More Service</button>
+            <button class="uk-button uk-button-link" type="button">Go to Home page</button>
+        </div>
+    </div>
+</div>

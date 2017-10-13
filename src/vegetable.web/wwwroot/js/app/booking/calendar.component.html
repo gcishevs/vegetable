@@ -1,75 +1,65 @@
 ﻿<form class="uk-grid-small" uk-grid>
-
     <div class="uk-button-group uk-width-2-3@s">
         
-        <button class="uk-button uk-button-default uk-width-5-6" uk-toggle="target: #pws-calendar">{{selectedDateUI ? selectedDateUI : 'Select Date' }}</button>
-        <button class="uk-button uk-button-default uk-width-1-6" uk-toggle="target: #pws-calendar">
+        <button class="uk-button uk-button-default uk-width-5-6 pws-calendar-button" uk-toggle="target: #pws-calendar">{{selectedDateUI ? selectedDateUI : 'Select Date' }}</button>
+        <button class="uk-button uk-button-default uk-width-1-6 pws-calendar-button" uk-toggle="target: #pws-calendar">
             <span class="uk-icon" uk-icon="icon: calendar"></span>
-        </button>
-       
+        </button>       
     </div>
-
-
-    <!--<div class="uk-inline uk-width-2-3@s">
-        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: calendar"></span>
-        <button class="uk-button uk-button-default" uk-toggle="target: #pws-calendar" placeholder="Date">{{selectedDateUI}}</button>
-        
-    </div>-->
-    <div id="pws-calendar" uk-modal="stack: true">
-        <div class="uk-modal-dialog uk-modal-body">
-            <div class="section-calendar">
-                <div class="section-box">
-                    <div class="calendar-busy">
-                        <div class="calendar-cont">
-                            <div class="calendar-header">
-                                <div class="calendar-nav">
-                                    <span class="active-date"><span class="active-month">{{monthFull}}</span><span class="active-year">{{year}}</span></span>
-                                    <a class="calendar-prev ripple-centered" (click)="previousMonth()" title="Prev" uk-icon="icon: chevron-left"></a>
-
-                                    <a class="calendar-next ripple-centered" (click)="nextMonth()" title="Next" uk-icon="icon: chevron-right"></a>
-                                </div>
-                            </div>
-                            <table class="calendar-body">
-                                <thead class="calendar-thead">
-                                    <tr>
-                                        <th *ngFor="let weekDay of weekArray">{{weekDay.substring(0, 3)}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="calendar-tbody">
-                                    <tr>
-                                        <td *ngFor="let day of calendar.firstWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td *ngFor="let day of calendar.secondWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td *ngFor="let day of calendar.thirdWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td *ngFor="let day of calendar.fourthWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td *ngFor="let day of calendar.fifthWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td *ngFor="let day of calendar.sixthWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="calendar-busy-note">Sorry. I'm not available on those days</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    
-    <div class="uk-width-1-3@s">
-        <select class="uk-select" id="form-stacked-select" placeholder="Time" (change)="nextStep($event.target.value)">
+     <div class="uk-width-1-3@s">
+        <select class="uk-select" id="time-select" placeholder="Select Time" (change)="nextStep($event.target.value)">
             <option>Time</option>
             <option *ngFor="let time of availableTime">{{time}}</option>
         </select>
-    </div>
-   
+    </div>   
 </form>
+
+<div id="pws-calendar" uk-modal="stack: true">
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="section-calendar">
+            <div class="section-box">
+                <div class="calendar-busy">
+                    <div class="calendar-cont">
+                        <div class="calendar-header">
+                            <div class="calendar-nav">
+                                <span class="active-date"><span class="active-month">{{monthFull}}</span><span class="active-year">{{year}}</span></span>
+                                <a class="calendar-prev ripple-centered" (click)="previousMonth()" title="Prev" uk-icon="icon: chevron-left; ratio: 1.2"></a>
+
+                                <a class="calendar-next ripple-centered" (click)="nextMonth()" title="Next" uk-icon="icon: chevron-right; ratio: 1.2"></a>
+                            </div>
+                        </div>
+                        <table class="calendar-body">
+                            <thead class="calendar-thead">
+                                <tr>
+                                    <th *ngFor="let weekDay of weekArray">{{weekDay.substring(0, 3)}}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="calendar-tbody">
+                                <tr>
+                                    <td *ngFor="let day of calendar.firstWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let day of calendar.secondWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let day of calendar.thirdWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let day of calendar.fourthWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let day of calendar.fifthWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let day of calendar.sixthWeek" class="calendar-current-month pws-calendar-day uk-modal-close"><span class="{{calendarAvailability.firstWeekClasses[day]}}" (click)="daySelected(day)">{{day}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="calendar-busy-note">Sorry, we are not available on those days</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

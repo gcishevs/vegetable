@@ -1,5 +1,6 @@
 "use strict";
-var root_1 = require('../util/root');
+Object.defineProperty(exports, "__esModule", { value: true });
+var root_1 = require("../util/root");
 /**
  * @param PromiseCtor
  * @return {Promise<T>}

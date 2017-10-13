@@ -1,5 +1,6 @@
 "use strict";
-var root_1 = require('./root');
+Object.defineProperty(exports, "__esModule", { value: true });
+var root_1 = require("./root");
 var Object = root_1.root.Object;
 if (typeof Object.assign != 'function') {
     (function () {

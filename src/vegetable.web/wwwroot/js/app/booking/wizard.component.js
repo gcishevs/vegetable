@@ -8,10 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 var WizardComponent = (function () {
     function WizardComponent() {
         this.currentStep = 0;
+        this.dateTime = { date: '', time: '' };
     }
     WizardComponent.prototype.prevStep = function () {
         this.currentStep--;
@@ -32,18 +34,25 @@ var WizardComponent = (function () {
     };
     WizardComponent.prototype.resetService = function () {
         this.service = "";
+        this.dateTime = { date: '', time: '' };
+        $('#step2Title').addClass('uk-disabled');
+        $('#step2Container').addClass('pws-disabled');
+        $('#step3Title').addClass('uk-disabled');
+        $('#step3Container').addClass('pws-disabled');
     };
     WizardComponent.prototype.resetDateTime = function () {
-        this.dateTime = null;
+        this.dateTime = { date: '', time: '' };
+        $('#step3Title').addClass('uk-disabled');
+        $('#step3Container').addClass('pws-disabled');
     };
-    WizardComponent = __decorate([
-        core_1.Component({
-            selector: 'pws-wizard',
-            templateUrl: 'js/app/booking/wizard.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], WizardComponent);
     return WizardComponent;
 }());
+WizardComponent = __decorate([
+    core_1.Component({
+        selector: 'pws-wizard',
+        templateUrl: 'js/app/booking/wizard.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], WizardComponent);
 exports.WizardComponent = WizardComponent;
 //# sourceMappingURL=wizard.component.js.map

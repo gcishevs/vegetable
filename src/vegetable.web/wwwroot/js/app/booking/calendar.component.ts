@@ -52,10 +52,13 @@ export class CalendarComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-    }
+    }    
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes["service"] && this.service) {           
+        if (changes["service"] && this.service) {   
+            this.selectedDateUI = "";
+            this.selectedTime = "";
+            this.availableTime = [];                            
             this.getMonthAvailabilityTime();
         }
     }
@@ -144,6 +147,7 @@ export class CalendarComponent implements OnInit, OnChanges {
         this.selectedDate = moment(this.year + "-" + (this.month + 1) + "-" + day, "YYYY-MM-DD");
         this.selectedDateUI = this.weekArray[this.selectedDate.day()] + ', ' + this.monthFull + ' ' + day + ', ' + this.year;
         this.availableTime = this.times[day.toString()].availableTime;
+        $('#time-select').prop('selectedIndex', 0);
     }
 
     nextStep(time: string): void {

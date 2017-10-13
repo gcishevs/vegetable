@@ -1,5 +1,6 @@
 "use strict";
-var reduce_1 = require('./reduce');
+Object.defineProperty(exports, "__esModule", { value: true });
+var reduce_1 = require("./reduce");
 /**
  * The Max operator operates on an Observable that emits numbers (or items that can be evaluated as numbers),
  * and when source Observable completes it emits a single item: the item with the largest number.

@@ -1,4 +1,6 @@
-﻿import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+﻿import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Customer } from './customer';
+import { DateTimeCustom } from './dateTimeCustom';
 
 import { BookingService } from './booking.service';
 
@@ -10,10 +12,20 @@ declare var $: any;
     templateUrl: 'js/app/booking/confirmation.component.html'
 })
 
-export class ConfirmationComponent {
+export class ConfirmationComponent implements OnInit {
 
+     @Input() service: string;
+     @Input() dateTime: DateTimeCustom = { date: '', time: '' };
+        
+     customer: Customer = { firstName: '', lastName: '', email: '', phoneNumber: '' };
+    
     constructor(private _bookingService: BookingService) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.dateTime = { date: '', time: '' };
+    }
+
+    book(): void {}
+
 
 }
