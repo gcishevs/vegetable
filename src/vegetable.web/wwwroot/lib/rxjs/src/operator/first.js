@@ -56,7 +56,7 @@ var EmptyError_1 = require("../util/EmptyError");
  * - `index`: the "index" of the value from the source.
  * @param {R} [defaultValue] The default value emitted in case no valid value
  * was found on the source.
- * @return {Observable<T|R>} an Observable of the first item that matches the
+ * @return {Observable<T|R>} An Observable of the first item that matches the
  * condition.
  * @method first
  * @owner Observable
@@ -73,7 +73,7 @@ var FirstOperator = (function () {
         this.source = source;
     }
     FirstOperator.prototype.call = function (observer, source) {
-        return source._subscribe(new FirstSubscriber(observer, this.predicate, this.resultSelector, this.defaultValue, this.source));
+        return source.subscribe(new FirstSubscriber(observer, this.predicate, this.resultSelector, this.defaultValue, this.source));
     };
     return FirstOperator;
 }());
@@ -92,6 +92,7 @@ var FirstSubscriber = (function (_super) {
         _this.source = source;
         _this.index = 0;
         _this.hasCompleted = false;
+        _this._emitted = false;
         return _this;
     }
     FirstSubscriber.prototype._next = function (value) {
@@ -136,9 +137,12 @@ var FirstSubscriber = (function (_super) {
     };
     FirstSubscriber.prototype._emitFinal = function (value) {
         var destination = this.destination;
-        destination.next(value);
-        destination.complete();
-        this.hasCompleted = true;
+        if (!this._emitted) {
+            this._emitted = true;
+            destination.next(value);
+            destination.complete();
+            this.hasCompleted = true;
+        }
     };
     FirstSubscriber.prototype._complete = function () {
         var destination = this.destination;

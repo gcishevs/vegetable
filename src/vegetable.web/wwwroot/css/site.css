@@ -73,6 +73,14 @@ button.pws-calendar-button {
     color: rgba(204, 31, 31, 0.3);
 }
 
+.pws-modal{
+    background: none !important;
+}
+
+.pws-modal-dialog {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
 
 
 /***  calendar start  ***/

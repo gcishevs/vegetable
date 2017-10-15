@@ -24,7 +24,7 @@ var ToArrayOperator = (function () {
     function ToArrayOperator() {
     }
     ToArrayOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new ToArraySubscriber(subscriber));
+        return source.subscribe(new ToArraySubscriber(subscriber));
     };
     return ToArrayOperator;
 }());

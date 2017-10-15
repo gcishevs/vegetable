@@ -18,44 +18,15 @@
 </form>
 
 
+<div id="modal-confirmation" class="pws-modal" uk-modal="stack: true; bg-close: false">
+    <div class="pws-modal-dialog uk-modal-dialog uk-modal-body">
+        <p><b>Thank you, {{customer.firstName}}! Your booking has been completed. Confirmation email was sent to {{customer.email}}</b></p>
+        <span uk-icon="icon: check; ratio: 0.8"></span> {{service}} <br/>
+        <span uk-icon="icon: clock; ratio: 0.8"></span> {{dateTime.date + ' | ' + dateTime.time }} <br />
+        <span uk-icon="icon: location; ratio: 0.8"></span> street Heroes 56
 
-<div id="modal-confirmation" uk-modal="stack: true">
-    <div class="uk-modal-dialog">
-        <div class="uk-modal-header">
-            <h3 class="">Thank you, {{customer.firstName}}! Your booking has been completed.</h3>
-        </div>
-        <div class="uk-modal-body">
-            <!--<div class="uk-text-large uk-text-bold">Service: {{service}}</div>
-            <div class="uk-text-large uk-text-bold">Time: {{dateTime.date + ' | ' + dateTime.time }}</div>
-            <div class="uk-text-large uk-text-bold">Address: street Heroes 56</div>-->
-
-            <form class="uk-form-horizontal uk-margin-large">
-
-                <div class="uk-margin">
-                    <label class="uk-form-label">SERVICE:</label>
-                    <div class="uk-form-controls">
-                        <p>{{service}}</p>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label class="uk-form-label">TIME:</label>
-                    <div class="uk-form-controls">
-                        <p>{{dateTime.date + ' | ' + dateTime.time }}</p>
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label class="uk-form-label">ADDRESS:</label>
-                    <div class="uk-form-controls">
-                        <p>street Heroes 56</p>                        
-                    </div>
-                </div>
-            </form>
-
-
-        </div>
-        <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Book One More Service</button>
-            <button class="uk-button uk-button-link" type="button">Go to Home page</button>
-        </div>
+        <p class="uk-text-right">            
+            <button class="uk-button uk-button-text" type="button" onClick="window.location.reload()">Go to Home page</button>
+        </p>
     </div>
 </div>

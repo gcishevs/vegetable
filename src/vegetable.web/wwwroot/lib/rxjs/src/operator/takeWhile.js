@@ -56,7 +56,7 @@ var TakeWhileOperator = (function () {
         this.predicate = predicate;
     }
     TakeWhileOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new TakeWhileSubscriber(subscriber, this.predicate));
+        return source.subscribe(new TakeWhileSubscriber(subscriber, this.predicate));
     };
     return TakeWhileOperator;
 }());

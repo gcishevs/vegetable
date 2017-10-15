@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Subscriber_1 = require("../Subscriber");
+/* tslint:enable:max-line-length */
 /**
  * Applies an accumulator function over the source Observable, and returns the
  * accumulated result when the source completes, given an optional seed value.
@@ -47,26 +48,36 @@ var Subscriber_1 = require("../Subscriber");
  * @see {@link mergeScan}
  * @see {@link scan}
  *
- * @param {function(acc: R, value: T): R} accumulator The accumulator function
+ * @param {function(acc: R, value: T, index: number): R} accumulator The accumulator function
  * called on each source value.
  * @param {R} [seed] The initial accumulation value.
- * @return {Observable<R>} An observable of the accumulated values.
  * @return {Observable<R>} An Observable that emits a single value that is the
  * result of accumulating the values emitted by the source Observable.
  * @method reduce
  * @owner Observable
  */
 function reduce(accumulator, seed) {
-    return this.lift(new ReduceOperator(accumulator, seed));
+    var hasSeed = false;
+    // providing a seed of `undefined` *should* be valid and trigger
+    // hasSeed! so don't use `seed !== undefined` checks!
+    // For this reason, we have to check it here at the original call site
+    // otherwise inside Operator/Subscriber we won't know if `undefined`
+    // means they didn't provide anything or if they literally provided `undefined`
+    if (arguments.length >= 2) {
+        hasSeed = true;
+    }
+    return this.lift(new ReduceOperator(accumulator, seed, hasSeed));
 }
 exports.reduce = reduce;
 var ReduceOperator = (function () {
-    function ReduceOperator(accumulator, seed) {
+    function ReduceOperator(accumulator, seed, hasSeed) {
+        if (hasSeed === void 0) { hasSeed = false; }
         this.accumulator = accumulator;
         this.seed = seed;
+        this.hasSeed = hasSeed;
     }
     ReduceOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new ReduceSubscriber(subscriber, this.accumulator, this.seed));
+        return source.subscribe(new ReduceSubscriber(subscriber, this.accumulator, this.seed, this.hasSeed));
     };
     return ReduceOperator;
 }());
@@ -78,13 +89,16 @@ exports.ReduceOperator = ReduceOperator;
  */
 var ReduceSubscriber = (function (_super) {
     __extends(ReduceSubscriber, _super);
-    function ReduceSubscriber(destination, accumulator, seed) {
+    function ReduceSubscriber(destination, accumulator, seed, hasSeed) {
         var _this = _super.call(this, destination) || this;
         _this.accumulator = accumulator;
+        _this.hasSeed = hasSeed;
+        _this.index = 0;
         _this.hasValue = false;
         _this.acc = seed;
-        _this.accumulator = accumulator;
-        _this.hasSeed = typeof seed !== 'undefined';
+        if (!_this.hasSeed) {
+            _this.index++;
+        }
         return _this;
     }
     ReduceSubscriber.prototype._next = function (value) {
@@ -99,7 +113,7 @@ var ReduceSubscriber = (function (_super) {
     ReduceSubscriber.prototype._tryReduce = function (value) {
         var result;
         try {
-            result = this.accumulator(this.acc, value);
+            result = this.accumulator(this.acc, value, this.index++);
         }
         catch (err) {
             this.destination.error(err);
