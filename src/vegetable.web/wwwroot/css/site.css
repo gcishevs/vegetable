@@ -30,48 +30,6 @@ button.pws-service {
     opacity: .3;
 }
 
-td.calendar-current-month.pws-calendar-day span {
-    border: 1px solid #ffffff;
-    border-radius: 20px;
-}
-
-    td.calendar-current-month.pws-calendar-day span:hover {
-        border: 1px solid #1e87f0;
-        cursor: pointer;
-    }
-
-    td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
-        border: 1px solid #ffffff;
-        cursor: not-allowed;
-    }
-
-button.pws-calendar-button {
-    border: none;
-    border-bottom: 1px solid #b2b2b2;
-}
-
-/*button.pws-calendar-button:hover{
-    border-bottom: 1px solid #b2b2b2;
-}*/
-
-
-/*.busy-half {
-    background-image: linear-gradient( to right, #cacaca 50%, #ffffff 50%);
-}
-
-.busy-qr {
-    background-image: linear-gradient( to right, #cacaca 25%, #ffffff 75%);
-}
-
-.busy-thqr {
-    background-image: linear-gradient( to right, #cacaca 75%, #ffffff 25%);
-}*/
-
-.busy-unavailable {
-    /*border: 1px solid #f0506e ;*/
-    /*background-image: linear-gradient(transparent 10px,#cc1f1f 10px,#cc1f1f 15px,transparent 15px);*/
-    color: rgba(204, 31, 31, 0.3);
-}
 
 .pws-modal{
     background: none !important;
@@ -477,6 +435,51 @@ button.pws-calendar-button {
         display: none;
     }
 }
+
+
+td.calendar-current-month.pws-calendar-day span {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+}
+
+    td.calendar-current-month.pws-calendar-day span:hover {
+        border: 1px solid #1e87f0;
+        cursor: pointer;
+    }
+
+    td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
+        border: 1px solid #ffffff;
+        cursor: not-allowed;
+    }
+
+button.pws-calendar-button {
+    border: none;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+/*button.pws-calendar-button:hover{
+    border-bottom: 1px solid #b2b2b2;
+}*/
+
+
+/*.busy-half {
+    background-image: linear-gradient( to right, #cacaca 50%, #ffffff 50%);
+}
+
+.busy-qr {
+    background-image: linear-gradient( to right, #cacaca 25%, #ffffff 75%);
+}
+
+.busy-thqr {
+    background-image: linear-gradient( to right, #cacaca 75%, #ffffff 25%);
+}*/
+
+.busy-unavailable {
+    /*border: 1px solid #f0506e ;*/
+    /*background-image: linear-gradient(transparent 10px,#cc1f1f 10px,#cc1f1f 15px,transparent 15px);*/
+    color: rgba(204, 31, 31, 0.3);
+}
+
 
 /***  calendar end  ***/
 

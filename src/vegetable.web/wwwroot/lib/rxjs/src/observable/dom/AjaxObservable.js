@@ -221,10 +221,10 @@ var AjaxSubscriber = (function (_super) {
                 return null;
             }
             // timeout, responseType and withCredentials can be set once the XHR is open
-            if (async) {
-                xhr.timeout = request.timeout;
-                xhr.responseType = request.responseType;
-            }
+            //if (async) {
+            //    xhr.timeout = request.timeout;
+            //    xhr.responseType = request.responseType;
+            //}
             if ('withCredentials' in xhr) {
                 xhr.withCredentials = !!request.withCredentials;
             }
