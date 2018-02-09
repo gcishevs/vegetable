@@ -13,9 +13,9 @@ var AdminApp;
             }
             this.holderCache = cacheFactory.get(holderCacheKey);
         }
-        CacheService.$inject = ['CacheFactory'];
         return CacheService;
     }());
+    CacheService.$inject = ['CacheFactory'];
     AdminApp.CacheService = CacheService;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=CacheService.js.map

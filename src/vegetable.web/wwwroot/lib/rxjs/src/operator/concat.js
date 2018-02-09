@@ -1,7 +1,8 @@
 "use strict";
-var isScheduler_1 = require('../util/isScheduler');
-var ArrayObservable_1 = require('../observable/ArrayObservable');
-var mergeAll_1 = require('./mergeAll');
+Object.defineProperty(exports, "__esModule", { value: true });
+var isScheduler_1 = require("../util/isScheduler");
+var ArrayObservable_1 = require("../observable/ArrayObservable");
+var mergeAll_1 = require("./mergeAll");
 /**
  * Creates an output Observable which sequentially emits all values from every
  * given input Observable after the current Observable.
@@ -45,7 +46,7 @@ var mergeAll_1 = require('./mergeAll');
 function concat() {
     var observables = [];
     for (var _i = 0; _i < arguments.length; _i++) {
-        observables[_i - 0] = arguments[_i];
+        observables[_i] = arguments[_i];
     }
     return concatStatic.apply(void 0, [this].concat(observables));
 }
@@ -95,7 +96,7 @@ exports.concat = concat;
 function concatStatic() {
     var observables = [];
     for (var _i = 0; _i < arguments.length; _i++) {
-        observables[_i - 0] = arguments[_i];
+        observables[_i] = arguments[_i];
     }
     var scheduler = null;
     var args = observables;

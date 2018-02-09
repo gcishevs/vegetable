@@ -109,9 +109,9 @@ var AdminApp;
             }
             return "0,0";
         };
-        EditAddressController.$inject = ['$mdDialog', 'addressToEdit', 'yandexGeoService'];
         return EditAddressController;
     }());
+    EditAddressController.$inject = ['$mdDialog', 'addressToEdit', 'yandexGeoService'];
     AdminApp.EditAddressController = EditAddressController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=EditAddressController.js.map

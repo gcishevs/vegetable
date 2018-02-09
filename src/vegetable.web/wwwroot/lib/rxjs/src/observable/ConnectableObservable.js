@@ -1,23 +1,30 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var Subject_1 = require('../Subject');
-var Observable_1 = require('../Observable');
-var Subscriber_1 = require('../Subscriber');
-var Subscription_1 = require('../Subscription');
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Subject_1 = require("../Subject");
+var Observable_1 = require("../Observable");
+var Subscriber_1 = require("../Subscriber");
+var Subscription_1 = require("../Subscription");
 /**
  * @class ConnectableObservable<T>
  */
 var ConnectableObservable = (function (_super) {
     __extends(ConnectableObservable, _super);
     function ConnectableObservable(source, subjectFactory) {
-        _super.call(this);
-        this.source = source;
-        this.subjectFactory = subjectFactory;
-        this._refCount = 0;
+        var _this = _super.call(this) || this;
+        _this.source = source;
+        _this.subjectFactory = subjectFactory;
+        _this._refCount = 0;
+        return _this;
     }
     ConnectableObservable.prototype._subscribe = function (subscriber) {
         return this.getSubject().subscribe(subscriber);
@@ -54,8 +61,9 @@ exports.ConnectableObservable = ConnectableObservable;
 var ConnectableSubscriber = (function (_super) {
     __extends(ConnectableSubscriber, _super);
     function ConnectableSubscriber(destination, connectable) {
-        _super.call(this, destination);
-        this.connectable = connectable;
+        var _this = _super.call(this, destination) || this;
+        _this.connectable = connectable;
+        return _this;
     }
     ConnectableSubscriber.prototype._error = function (err) {
         this._unsubscribe();
@@ -99,8 +107,9 @@ var RefCountOperator = (function () {
 var RefCountSubscriber = (function (_super) {
     __extends(RefCountSubscriber, _super);
     function RefCountSubscriber(destination, connectable) {
-        _super.call(this, destination);
-        this.connectable = connectable;
+        var _this = _super.call(this, destination) || this;
+        _this.connectable = connectable;
+        return _this;
     }
     RefCountSubscriber.prototype._unsubscribe = function () {
         var connectable = this.connectable;

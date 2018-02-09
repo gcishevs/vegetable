@@ -1,6 +1,7 @@
 "use strict";
-var MulticastObservable_1 = require('../observable/MulticastObservable');
-var ConnectableObservable_1 = require('../observable/ConnectableObservable');
+Object.defineProperty(exports, "__esModule", { value: true });
+var MulticastObservable_1 = require("../observable/MulticastObservable");
+var ConnectableObservable_1 = require("../observable/ConnectableObservable");
 /**
  * Returns an Observable that emits the results of invoking a specified selector on items
  * emitted by a ConnectableObservable that shares a single subscription to the underlying stream.

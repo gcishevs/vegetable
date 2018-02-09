@@ -68,9 +68,9 @@ var AdminApp;
             this.currentHolder.addresses = this.holderAddresses;
             this.holderService.SaveHolder(this.currentHolder);
         };
-        ProfileAddressesController.$inject = ['$mdDialog', 'holderService'];
         return ProfileAddressesController;
     }());
+    ProfileAddressesController.$inject = ['$mdDialog', 'holderService'];
     AdminApp.ProfileAddressesController = ProfileAddressesController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=ProfileAddressesController.js.map

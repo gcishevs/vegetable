@@ -32,9 +32,9 @@ var AdminApp;
                 _this.isHolderLoaded = true;
             });
         };
-        MainController.$inject = ['$mdSidenav', 'holderService'];
         return MainController;
     }());
+    MainController.$inject = ['$mdSidenav', 'holderService'];
     AdminApp.MainController = MainController;
 })(AdminApp || (AdminApp = {}));
-//# sourceMappingURL=MainController.js.map
+//# sourceMappingURL=mainController.js.map
