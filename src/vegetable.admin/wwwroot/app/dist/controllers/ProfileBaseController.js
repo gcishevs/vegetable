@@ -11,9 +11,9 @@ var AdminApp;
         ProfileBaseController.prototype.submitHolderInfo = function (data) {
             var info = this.holder;
         };
+        ProfileBaseController.$inject = ['holderService', '$scope'];
         return ProfileBaseController;
     }());
-    ProfileBaseController.$inject = ['holderService', '$scope'];
     AdminApp.ProfileBaseController = ProfileBaseController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=ProfileBaseController.js.map

@@ -1,9 +1,7 @@
 var AdminApp;
 (function (AdminApp) {
     var HolderInfo = (function () {
-        function HolderInfo(holderId, title, description, moniker, tags, email, addresses
-            //public socialNetworks: SocialNetwork[]
-        ) {
+        function HolderInfo(holderId, title, description, moniker, tags, email, addresses) {
             this.holderId = holderId;
             this.title = title;
             this.description = description;

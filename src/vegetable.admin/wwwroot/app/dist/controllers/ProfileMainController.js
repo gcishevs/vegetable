@@ -45,9 +45,9 @@ var AdminApp;
             }
             return results;
         };
+        ProfileMainController.$inject = ['dataToolsService', 'holderService'];
         return ProfileMainController;
     }());
-    ProfileMainController.$inject = ['dataToolsService', 'holderService'];
     AdminApp.ProfileMainController = ProfileMainController;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=ProfileMainController.js.map

@@ -39,9 +39,9 @@ var AdminApp;
                 _this.toastMessagingService.SendFail(error);
             });
         };
+        HolderService.$inject = ['$http', '$mdToast', 'cacheService', '$q', 'toastMessagingService'];
         return HolderService;
     }());
-    HolderService.$inject = ['$http', '$mdToast', 'cacheService', '$q', 'toastMessagingService'];
     AdminApp.HolderService = HolderService;
 })(AdminApp || (AdminApp = {}));
-//# sourceMappingURL=holderService.js.map
+//# sourceMappingURL=HolderService.js.map

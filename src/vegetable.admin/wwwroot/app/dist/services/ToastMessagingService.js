@@ -13,9 +13,9 @@ var AdminApp;
             this.$mdToast.show(this.$mdToast.simple().content(message).hideDelay(10000)
                 .position('top right').theme("fail-toast"));
         };
+        ToastMessagingService.$inject = ['$mdToast'];
         return ToastMessagingService;
     }());
-    ToastMessagingService.$inject = ['$mdToast'];
     AdminApp.ToastMessagingService = ToastMessagingService;
 })(AdminApp || (AdminApp = {}));
 //# sourceMappingURL=ToastMessagingService.js.map
