@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 <Project Sdk="Microsoft.NET.Sdk">
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk">
->>>>>>> wizard
-
+  
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;netcoreapp1.0</TargetFrameworks>
     <AssemblyName>vegetable.core</AssemblyName>
