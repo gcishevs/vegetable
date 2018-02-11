@@ -1,6 +1,7 @@
 "use strict";
-var Observable_1 = require('../Observable');
-var ReplaySubject_1 = require('../ReplaySubject');
+Object.defineProperty(exports, "__esModule", { value: true });
+var Observable_1 = require("../Observable");
+var ReplaySubject_1 = require("../ReplaySubject");
 /**
  * @param bufferSize
  * @param windowTime
