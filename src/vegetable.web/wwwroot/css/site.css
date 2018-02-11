@@ -1,197 +1,44 @@
-﻿body {
-    padding-top: 5px;
+﻿.pws-accordion-title {
+    border-bottom: 1px solid #2c2e2f;
 }
 
-.pws-navigation-container{
-    padding-top:20px;
-}
-
-#carousel-wizard{
-    padding-top:30px;
-}
-
-.custom-control-input:checked ~ .custom-control-indicator {
-    color: #fff;
-    background-color: #55595c;
-}
-
-.custom-control-input:focus ~ .custom-control-indicator {
-    -webkit-box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #55595c;
-    box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #55595c;
-}
-
-.custom-control-input:active ~ .custom-control-indicator {
-    color: #fff;
-    background-color: #ddd;
-}
-
-.pws-tick {
-    background-color: #d73444;
-    height: 2px;
-    width: 10px;
-    position: absolute;
-}
-
-
-.pws-btn-navigation {
-    border-radius: 0;
-    border-color: #55595c;
-    background-color: white;
-    color: #55595c;
-    width: 50%;
-}
-
-.btn-group > .pws-btn-navigation:hover {
-    border-color: #55595c;
-    background-color: #55595c;
-    color: white;
-    width: 50%;
-}
-
-/* Navigation */
-
-.stepsCheckout {
-    margin-top: 10px;
-}
-
-.labelSteps {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
-}
-
-.stepsCheckout .col-xs-4 {
-    color: #999;
-    padding-top: 10px;
+.uk-open > .pws-accordion-title {
+    font-size: 25px;
+    font-weight: 600;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 11px;
 }
 
-.margin {
-    padding-left: 1.3em;
-}
-
-.medium {
-    color: #333;
-}
-
-.flechaSteps {
-    width: 33px;
-    height: 33px;
-    position: relative;
-    top: -17px;
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/00_check.png);
-    background-size: 100%;
-    margin: 0 auto;
-}
-
-.bolasSteps .col-xs-4 {
-    padding-top: 0;
-}
-
-.medium1 .flechaSteps {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/01_b.png);
-}
-
-.medium2 .flechaSteps {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/02_b.png);
-}
-
-.medium3 .flechaSteps {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/03_b.png);
-}
-
-.medium1 .flechaSteps, .medium2 .flechaSteps, .medium3 .flechaSteps, .medium4 .flechaSteps {
-    width: 37px;
-    height: 37px;
-    top: -19px;
-}
-
-.flechaSteps.paso1 {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/01_a.png);
-}
-
-.flechaSteps.paso2 {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/02_a.png);
-}
-
-.flechaSteps.paso3 {
-    background-image: url(//st.mngbcn.com/web/i/testeando/checkoutDesktop2/img/03_a.png);
+h4.pws-accordion-title::after {
+    content: none;
 }
 
 
-
-@media (min-width: 767px) {
-    
-    .carousel-item{
-        min-height: 60vh;
-    }
-      
-    .pws-book {
-        padding-left: 90px;
-        padding-right: 90px;
-    }
-
-    .pws-vertical-center-container {
-        min-height: 100%;
-        min-height: 99vh;
-        display: flex;
-        align-items: center;
-        padding-left: 90px;
-        padding-right: 90px;
-    }
-
-    .pws-vertical-center-items {
-        flex-grow: 1;
-    }
-
-    .pws-content {
-        border-right-style: solid;
-        border-right-width: thin;
-    }
-
-    /*.pws-wizard-navigation {
-        position: absolute;
-        bottom: 0;
-    }*/
+h4.pws-accordion-title {
+    font-size: 16px;
 }
 
-@media (min-width: 1024px) {
-    .pws-tick {
-        height: 2px;
-    }
+button.pws-service {
+    font-size: 20px;
 }
 
-/*** hoverLink start ***/
-a, a:visited, a:hover, a:active {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    position: relative;
-    transition: 0.5s color ease;
-    text-decoration: none !important;
-    color: black !important;
+.pws-container {
+    background-image: url('../images/grace-menu-lemon.jpg');
+    background-repeat: no-repeat;
 }
 
-    a.after:after {
-        content: "";
-        transition: 0.5s all ease;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        position: absolute;
-        height: 2px;
-        width: 0;
-        background: #d73444;
-    }
+.pws-disabled {
+    opacity: .3;
+}
 
-    a.first:after {
-        left: 0;
-    }
 
-    a.after:hover:after {
-        width: 100%;
-    }
+.pws-modal{
+    background: none !important;
+}
 
-/*** hoverLink end ***/
+.pws-modal-dialog {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
 
 
 /***  calendar start  ***/
@@ -202,7 +49,6 @@ a, a:visited, a:hover, a:active {
 
 .section-box {
     background-color: #fff;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .calendar-busy {
@@ -342,7 +188,7 @@ a, a:visited, a:hover, a:active {
     float: left;
     padding: 0 25px;
     position: relative;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.1;
 }
 
@@ -437,7 +283,7 @@ a, a:visited, a:hover, a:active {
     .calendar-busy .calendar-body th {
         color: #757575;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 600;
         line-height: 1;
         text-transform: uppercase;
         padding: 13px 5px;
@@ -445,7 +291,6 @@ a, a:visited, a:hover, a:active {
 
     .calendar-busy .calendar-body th, .calendar-busy .calendar-body td {
         width: 14.2857%;
-        border: none;
         text-align: center;
         vertical-align: middle;
     }
@@ -458,14 +303,13 @@ a, a:visited, a:hover, a:active {
 
 .calendar-busy .calendar-body td {
     color: #000;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
     padding: 5px 0;
 }
 
 .calendar-busy .calendar-body th, .calendar-busy .calendar-body td {
     width: 14.2857%;
-    border: none;
     text-align: center;
     vertical-align: middle;
 }
@@ -498,10 +342,10 @@ a, a:visited, a:hover, a:active {
         width: 14px;
         height: 14px;
         margin: 18px 0;
-        background-color: #cacaca;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
+        background-color: rgba(204, 31, 31, 0.15);
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
     }
 
 
@@ -533,7 +377,7 @@ a, a:visited, a:hover, a:active {
     }
 
     .calendar-busy .calendar-body td {
-        font-size: 14px;
+        font-size: 12px;
     }
 
         .calendar-busy .calendar-body td span {
@@ -556,7 +400,8 @@ a, a:visited, a:hover, a:active {
         top: auto;
         width: 100%;
         height: auto;
-        padding: 20px 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
         .calendar-busy .calendar-today .date {
@@ -591,55 +436,50 @@ a, a:visited, a:hover, a:active {
     }
 }
 
+
+td.calendar-current-month.pws-calendar-day span {
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+}
+
+    td.calendar-current-month.pws-calendar-day span:hover {
+        border: 1px solid #1e87f0;
+        cursor: pointer;
+    }
+
+    td.calendar-current-month.pws-calendar-day span.busy-unavailable:hover {
+        border: 1px solid #ffffff;
+        cursor: not-allowed;
+    }
+
+button.pws-calendar-button {
+    border: none;
+    border-bottom: 1px solid #b2b2b2;
+}
+
+/*button.pws-calendar-button:hover{
+    border-bottom: 1px solid #b2b2b2;
+}*/
+
+
+/*.busy-half {
+    background-image: linear-gradient( to right, #cacaca 50%, #ffffff 50%);
+}
+
+.busy-qr {
+    background-image: linear-gradient( to right, #cacaca 25%, #ffffff 75%);
+}
+
+.busy-thqr {
+    background-image: linear-gradient( to right, #cacaca 75%, #ffffff 25%);
+}*/
+
+.busy-unavailable {
+    /*border: 1px solid #f0506e ;*/
+    /*background-image: linear-gradient(transparent 10px,#cc1f1f 10px,#cc1f1f 15px,transparent 15px);*/
+    color: rgba(204, 31, 31, 0.3);
+}
+
+
 /***  calendar end  ***/
 
-
-/*** scrol right start  ***/
-
-#arrow a span {
-    position: absolute;
-    top: 0;
-    width: 15px;
-    height: 15px;
-    margin-left: -5px;
-    margin-top: 1px;
-    border-left: 2px solid #d73444;
-    border-bottom: 2px solid #d73444;
-    -webkit-transform: rotate(-135deg);
-    transform: rotate(-135deg);
-    -webkit-animation: arrow 1.5s infinite;
-    animation: arrow 1.5s infinite;
-}
-
-@-webkit-keyframes arrow {
-    0% {
-        -webkit-transform: rotate(-135deg) translate(0, 0);
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: rotate(-135deg) translate(-25px, 25px);
-        opacity: 0;
-    }
-}
-
-@keyframes arrow {
-    0% {
-        transform: rotate(-135deg) translate(0, 0);
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: rotate(-135deg) translate(-25px, 25px);
-        opacity: 0;
-    }
-}
-/*** scroll right end  ***/

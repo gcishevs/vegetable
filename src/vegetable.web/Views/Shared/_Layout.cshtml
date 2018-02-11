@@ -6,11 +6,15 @@
     <title>@ViewData["Title"] - vegetable.web</title>
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/tether/dist/css/tether.css" />
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        @*<link rel="stylesheet" href="~/lib/tether/dist/css/tether.css" />*@
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic" rel="stylesheet">
-        <link href="~/lib/Font-Awesome/css/font-awesome.min.css" rel="stylesheet" />
+        @*<link href="~/lib/Font-Awesome/css/font-awesome.min.css" rel="stylesheet" />*@
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/css/uikit.min.css" />
+        
+       
+
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -44,7 +48,7 @@
 
 </head>
 <body>
-    <div class="container-fluid body-content">
+    <div>
         @RenderBody()
     </div>
 
@@ -52,6 +56,8 @@
         <script src="~/lib/tether/dist/js/tether.js"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit-icons.min.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"

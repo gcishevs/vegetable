@@ -1,0 +1,32 @@
+﻿<form class="uk-grid-small" uk-grid>
+    <div class="uk-width-1-2@s">
+        <input class="uk-input" type="text" placeholder="First Name" [(ngModel)]="customer.firstName" name="firstName">
+    </div>
+    <div class="uk-width-1-2@s">
+        <input class="uk-input" type="text" placeholder="Last Name" [(ngModel)]="customer.lastName" name="lastName">
+    </div>
+    <div class="uk-width-1-2@s">
+        <input class="uk-input" type="text" placeholder="Email" [(ngModel)]="customer.email" name="email">
+    </div>
+    <div class="uk-width-1-2@s">
+        <input class="uk-input" type="text" placeholder="Phone Number" [(ngModel)]="customer.phoneNumber" name="phoneNumber">
+    </div>
+
+    <div class="uk-flex uk-flex-center uk-width-1-1">
+        <button class="uk-button uk-button-primary" uk-toggle="target: #modal-confirmation" (click)="book()">Book</button>
+    </div>
+</form>
+
+
+<div id="modal-confirmation" class="pws-modal" uk-modal="stack: true; bg-close: false">
+    <div class="pws-modal-dialog uk-modal-dialog uk-modal-body">
+        <p><b>Thank you, {{customer.firstName}}! Your booking has been completed. Confirmation email was sent to {{customer.email}}</b></p>
+        <span uk-icon="icon: check; ratio: 0.8"></span> {{service}} <br/>
+        <span uk-icon="icon: clock; ratio: 0.8"></span> {{dateTime.date + ' | ' + dateTime.time }} <br />
+        <span uk-icon="icon: location; ratio: 0.8"></span> street Heroes 56
+
+        <p class="uk-text-right">            
+            <button class="uk-button uk-button-text" type="button" onClick="window.location.reload()">Go to Home page</button>
+        </p>
+    </div>
+</div>

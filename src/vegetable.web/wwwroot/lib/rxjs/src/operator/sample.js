@@ -55,7 +55,10 @@ var SampleOperator = (function () {
         this.notifier = notifier;
     }
     SampleOperator.prototype.call = function (subscriber, source) {
-        return source._subscribe(new SampleSubscriber(subscriber, this.notifier));
+        var sampleSubscriber = new SampleSubscriber(subscriber);
+        var subscription = source.subscribe(sampleSubscriber);
+        subscription.add(subscribeToResult_1.subscribeToResult(sampleSubscriber, this.notifier));
+        return subscription;
     };
     return SampleOperator;
 }());
@@ -66,10 +69,9 @@ var SampleOperator = (function () {
  */
 var SampleSubscriber = (function (_super) {
     __extends(SampleSubscriber, _super);
-    function SampleSubscriber(destination, notifier) {
-        var _this = _super.call(this, destination) || this;
+    function SampleSubscriber() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.hasValue = false;
-        _this.add(subscribeToResult_1.subscribeToResult(_this, notifier));
         return _this;
     }
     SampleSubscriber.prototype._next = function (value) {

@@ -27,7 +27,7 @@ namespace vegetable.web.Controllers
             }
 
             var model = _holderData.GetHolderData(segments[0]);
-
+                      
             return View(model);
         }
     }
